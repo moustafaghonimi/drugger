@@ -76,8 +76,7 @@ final RegisterController controller = Get.put(RegisterController());
                         ),
                         controllers: controller.pharName,
                         validate: (value) {
-                          validateInput(value, '');
-                          return null;
+                          return  validateInput(value, '');
                         },
                       ),
                       CustemTextFormFiled(
@@ -89,8 +88,7 @@ final RegisterController controller = Get.put(RegisterController());
                         ),
                         controllers: controller.pharID,
                         validate: (value) {
-                          validateInput(value, "pharID");
-                          return null;
+                          return validateInput(value, "pharID");
                           // if (value == null || value.trim().isEmpty) {
                           //   return 'Pharmacy ID is required';
                           // }
@@ -106,8 +104,8 @@ final RegisterController controller = Get.put(RegisterController());
                         controllers: controller.userName,
                         validate: (value) {
 
-                          validateInput(value, 'username');
-                          return null;
+                          return validateInput(value, 'username');
+                          
                           // if (value == null || value.trim().isEmpty) {
                           //   return 'user name Required';
                           // }
@@ -122,8 +120,8 @@ final RegisterController controller = Get.put(RegisterController());
                         ),
                         controllers: controller.firstName,
                         validate: (value) {
-                          validateInput(value, '');
-                          return null;
+                          return validateInput(value, '');
+                          
                           // if (value == null || value.trim().isEmpty) {
                           //   return 'First name Required';
                           // }
@@ -137,8 +135,8 @@ final RegisterController controller = Get.put(RegisterController());
                         ),
                         controllers: controller.lastName,
                         validate: (value) {
-                          validateInput(value, '');
-                          return null;
+                          return validateInput(value, '');
+                          
 
                           // if (value == null || value.trim().isEmpty) {
                           //   return 'Last name Required';
@@ -154,11 +152,11 @@ final RegisterController controller = Get.put(RegisterController());
                         keybordtype: TextInputType.phone,
                         controllers: controller.phone,
                         validate: (value) {
-                          validateInput(value, 'phone');
+                          return validateInput(value, 'phone');
                           // if (value == null || value.trim().isEmpty) {
                           //   return 'Village name Required';
                           // }
-                          return null;
+                          
                         },
                       ),
                       CustemTextFormFiled(
@@ -170,8 +168,8 @@ final RegisterController controller = Get.put(RegisterController());
                         keybordtype: TextInputType.number,
                         controllers: controller.age,
                         validate: (value) {
-                           validateInput(value, '');
-                           return null;
+                           return validateInput(value, '');
+                           
                         //   if (value == null || value.trim().isEmpty) {
                         //     return 'Your Age Required';
                         //   }
@@ -186,7 +184,7 @@ final RegisterController controller = Get.put(RegisterController());
                         controllers: controller.email,
                         keybordtype: TextInputType.emailAddress,
                         validate: (value) {
-                          validateInput(value, 'email');
+                          return validateInput(value, 'email');
                           // if (value == null || value.trim().isEmpty) {
                           //   return 'Email not validate';
                           // }
@@ -196,68 +194,68 @@ final RegisterController controller = Get.put(RegisterController());
                           // if (!emailValid) {
                           //   return 'Please Enter Valid Email';
                           // }
-                          return null;
+                          
                         },
                       ),
-                      CustemTextFormFiled(
-                        label:'Password',
-                        icons: IconButton(
-                          icon: Obx(
-                            () => Icon(
-                              // Based on passwordVisible state choose the icon
-                              controller.passwordVisible.value
-                                  ? Icons.visibility_off
-                                  : Icons.visibility,
-                            ),
+                      Obx(
+                        ()=> CustemTextFormFiled(
+                          label:'Password',
+                          icons: IconButton(
+                            icon: Icon(
+                                // Based on passwordVisible state choose the icon
+                                controller.passwordVisible.value
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                              ),
+                            onPressed: () {
+                              controller.changeVisible();
+                            },
                           ),
-                          onPressed: () {
-                            controller.changeVisible();
+                          controllers: controller.password,
+                          hideText: controller.passwordVisible.value,
+                          validate: (value) {
+                            return validateInput(value, 'password');
+                            
+                            // if (value == null || value.trim().isEmpty) {
+                            //   return 'Password not validate';
+                            // }
                           },
                         ),
-                        controllers: controller.password,
-                        hideText: controller.passwordVisible.value,
-                        validate: (value) {
-                          validateInput(value, 'password');
-                          return null;
-                          // if (value == null || value.trim().isEmpty) {
-                          //   return 'Password not validate';
-                          // }
-                        },
                       ),
-                      CustemTextFormFiled(
-                        label:AppString.rePassword,
-                        hint: AppString.enterRePassword,
-                        icons: IconButton(
-                          icon: Obx(
-                            () => Icon(
-                              // Based on passwordVisible state choose the icon
-                              controller.cPasswordVisible.value
-                                  ? Icons.visibility_off
-                                  : Icons.visibility,
-                            ),
+                      Obx(
+                        ()=> CustemTextFormFiled(
+                          label:AppString.rePassword,
+                          hint: AppString.enterRePassword,
+                          icons: IconButton(
+                            icon: Icon(
+                                // Based on passwordVisible state choose the icon
+                                controller.cPasswordVisible.value
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                              ),
+                            onPressed: () {
+                              controller.changeCPasswordVisible();
+                              // // Update the state i.e. toogle the state of passwordVisible variable
+                              // setState(() {
+                              //   cpasswordVisible = !cpasswordVisible;
+                              // });
+                            },
                           ),
-                          onPressed: () {
-                            controller.changeCPasswordVisible();
-                            // // Update the state i.e. toogle the state of passwordVisible variable
-                            // setState(() {
-                            //   cpasswordVisible = !cpasswordVisible;
-                            // });
+                          controllers: controller.cPassword,
+                          hideText: controller.cPasswordVisible.value,
+                          validate: (value) {
+                            return validateInput(value, 'cPassword');
+
+                            // if (value == null || value.trim().isEmpty) {
+
+                              if(controller.password.text!=controller.cPassword.text){
+                                return 'two password not same';
+                              }
+                              
+                            //   return 'Re Password not validate';
+                            // }
                           },
                         ),
-                        controllers: controller.cPassword,
-                        hideText: controller.cPasswordVisible.value,
-                        validate: (value) {
-                          validateInput(value, 'cPassword');
-
-                          // if (value == null || value.trim().isEmpty) {
-
-                            if(controller.password.text!=controller.cPassword.text){
-                              return 'two password not same';
-                            }
-                            return null;
-                          //   return 'Re Password not validate';
-                          // }
-                        },
                       ),
                       SizedBox(
                         width: w * 0.9,

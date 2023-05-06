@@ -97,8 +97,7 @@ class LoginScreen extends StatelessWidget {
                                 ),
                                 controllers:controller.pharmacyIDController,
                                 validate: (value) {
-                                  validateInput(value,'pharID');
-                                  return null;
+                                  return validateInput(value,'pharID');
                                   // if (value == null || value.trim().isEmpty) {
                                   //   return 'Pharmacy ID is required';
                                   // }
@@ -115,8 +114,11 @@ class LoginScreen extends StatelessWidget {
                                 controllers: controller.emailController,
                                 keybordtype: TextInputType.emailAddress,
                                 validate: (value) {
-                                 validateInput(value, 'email');
-                                 return null;
+                                 if(value == null || value.isEmpty)
+                                   {
+                                     return 'empty' ;
+                                   }
+                                 return validateInput(value, 'email');
                                   // if (value == null || value.trim().isEmpty) {
                                   //   return 'Email not validate';
                                   // }
@@ -129,28 +131,28 @@ class LoginScreen extends StatelessWidget {
                                   // return null;
                                 },
                               ),
-                              CustemTextFormFiled(
-                               label : AppString.password,
-                               hint : AppString.enterPassword,
-                                icons: IconButton(
-                                  icon: Obx(
-                                      () => Icon(
-                                      // Based on passwordVisible state choose the icon
-                                      controller.passwordVisible.value
-                                      ? Icons.visibility_off
-                                          : Icons.visibility,
-                                      ),
-                                      ),
-                                  onPressed: () {
-                                    controller.changeVisible();
+                              Obx(
+                                ()=> CustemTextFormFiled(
+                                 label : AppString.password,
+                                 hint : AppString.enterPassword,
+                                  icons: IconButton(
+                                    icon: Icon(
+                                        // Based on passwordVisible state choose the icon
+                                        controller.passwordVisible.value
+                                        ? Icons.visibility_off
+                                            : Icons.visibility,
+                                        ),
+
+                                    onPressed: () {
+                                      controller.changeVisible();
+                                    },
+                                  ),
+                                  controllers: controller.passwordController,
+                                  hideText: controller.passwordVisible.value,
+                                  validate: (value) {
+                                    return validateInput(value, 'password');
                                   },
                                 ),
-                                controllers: controller.passwordController,
-                                hideText: controller.passwordVisible.value,
-                                validate: (value) {
-                                  validateInput(value, 'password');
-                                  return null;
-                                },
                               ),
                               Padding(
                                   padding: const EdgeInsets.only(

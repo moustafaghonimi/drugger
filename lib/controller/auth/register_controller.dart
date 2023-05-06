@@ -37,12 +37,12 @@ class RegisterController extends GetxController{
 
   changeCPasswordVisible()
   {
-    if(passwordVisible.value)
+    if(cPasswordVisible.value)
     {
-      passwordVisible(false);
+      cPasswordVisible(false);
     }
     else{
-      passwordVisible(true);
+      cPasswordVisible(true);
     }
   }
 

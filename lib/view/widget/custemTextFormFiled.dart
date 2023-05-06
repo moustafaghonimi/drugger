@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-typedef Validator = String? Function(String?);
+// typedef Validator = String? Function(String?);
 typedef OnSaved = String? Function(String?);
 
 class CustemTextFormFiled extends StatelessWidget {
@@ -8,7 +8,7 @@ class CustemTextFormFiled extends StatelessWidget {
   String label;
   IconButton? icons;
   TextEditingController? controllers;
-  Validator? validate;
+  String? Function(String?)? validate;
   OnSaved? onSaved;
   bool hideText;
   TextInputType keybordtype;

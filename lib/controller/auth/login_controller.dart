@@ -31,7 +31,7 @@ class LoginController extends GetxController{
     // print("login controller init");
     super.onInit();
   }
-  
+
   changeVisible()
   {
     if(passwordVisible.value)
@@ -44,42 +44,42 @@ class LoginController extends GetxController{
   }
 
   login (context) async{
-      if (formKey.currentState!.validate() == false) {
-        return;
-      }
-      showloding('Loading...', context);
-      try {
-        var response = await repo.baseRepositorie?.login(
-            pharmacyIDController.text,
-            emailController.text,
-            passwordController.text
-        );
-        hideMassage(context);
+      if (formKey.currentState!.validate()) {
+        showloding('Loading...', context);
+        try {
+          var response = await repo.baseRepositorie?.login(
+              pharmacyIDController.text,
+              emailController.text,
+              passwordController.text
+          );
+          hideMassage(context);
 
-        var authorization=response?.authorization;
+          var authorization=response?.authorization;
 
-        if (response?.message != null && response?.message!='Logged in successfully') {
-          showMasage(
-              context, response?.message ?? "Email OR Password not correct !", 'OK',
-                  () {
-                Get.back();
-              });
-          Get.snackbar('message', response!.message.toString());
-          return;
+          if (response?.message != null && response?.message!='Logged in successfully') {
+            showMasage(
+                context, response?.message ?? "Email OR Password not correct !", 'OK',
+                    () {
+                  Get.back();
+                });
+            Get.snackbar('message', response!.message.toString());
+            return;
+          }
+          if (authorization?.token != null ) {
+            Get.snackbar('token', authorization?.token??"");
+          }
+          myServices.sharedPreferences.setString("token", authorization?.token ?? "token null");
+          // print(sharedPref);
+          // showMasage(context, response.token??'', 'ok', () {Get.back(); });
+
+          //TODO
+          // Get.off(() => MainPage_bottomNavigation());
+
+        } catch (e) {
+          Get.snackbar('error', e.toString());
         }
-        if (authorization?.token != null ) {
-          Get.snackbar('token', authorization?.token??"");
-        }
-        myServices.sharedPreferences.setString("token", authorization?.token ?? "token null");
-        // print(sharedPref);
-        // showMasage(context, response.token??'', 'ok', () {Get.back(); });
-
-        //TODO
-        // Get.off(() => MainPage_bottomNavigation());
-
-      } catch (e) {
-        Get.snackbar('error', e.toString());
       }
+
   }
 
 
