@@ -1,3 +1,4 @@
+import 'package:drugger/routing/app_routs_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -73,7 +74,7 @@ class LoginController extends GetxController{
           // showMasage(context, response.token??'', 'ok', () {Get.back(); });
 
           //TODO
-          // Get.off(() => MainPage_bottomNavigation());
+          Get.offNamed(AppRoutes.homeScreen);
 
         } catch (e) {
           Get.snackbar('error', e.toString());

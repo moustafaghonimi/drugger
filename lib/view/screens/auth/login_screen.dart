@@ -1,5 +1,6 @@
 import 'package:drugger/constance/string_constant.dart';
 import 'package:drugger/routing/app_routs_name.dart';
+import 'package:drugger/view/widget/custemAnimetedTxt.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,8 +13,6 @@ import '../../widget/custemTextFormFiled.dart';
 import '../../widget/customButton.dart';
 import 'otp_email.dart';
 import 'register_screen.dart';
-
-
 
 class LoginScreen extends StatelessWidget {
   final LoginController controller = Get.put(LoginController());
@@ -39,20 +38,28 @@ class LoginScreen extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 35.0, left: 8, right: 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Image.asset(
-                  AppAssets.appBarLoginIcon,
-                  width: 60,
-                ),
-                Image.asset(
-                  AppAssets.cartIcon,
-                  width: 60,
-                ),
-              ],
-            ),
+            child: CustemAnimetedText(
+                Txt: AppString.welcome,
+                color: AppColor.blackColor,
+                size: 30,
+                fontWeight: FontWeight.bold),
           ),
+          // Padding(
+          //   padding: const EdgeInsets.only(top: 35.0, left: 8, right: 8),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Image.asset(
+          //         AppAssets.appBarLoginIcon,
+          //         width: 60,
+          //       ),
+          //       Image.asset(
+          //         AppAssets.cartIcon,
+          //         width: 60,
+          //       ),
+          //     ],
+          //   ),
+          // ),
           SizedBox(
             height: h * .02,
           ),
@@ -92,12 +99,13 @@ class LoginScreen extends StatelessWidget {
                                 label: AppString.pharmacyID,
                                 hint: AppString.pharmacyID,
                                 icons: IconButton(
-                                  icon: const Icon(Icons.confirmation_num_outlined),
+                                  icon: const Icon(
+                                      Icons.confirmation_num_outlined),
                                   onPressed: () {},
                                 ),
-                                controllers:controller.pharmacyIDController,
+                                controllers: controller.pharmacyIDController,
                                 validate: (value) {
-                                  return validateInput(value,'pharID');
+                                  return validateInput(value, 'pharID');
                                   // if (value == null || value.trim().isEmpty) {
                                   //   return 'Pharmacy ID is required';
                                   // }
@@ -105,8 +113,8 @@ class LoginScreen extends StatelessWidget {
                               ),
 
                               CustemTextFormFiled(
-                               label:AppString.email,
-                                hint : AppString.enterEmail,
+                                label: AppString.email,
+                                hint: AppString.enterEmail,
                                 icons: IconButton(
                                   icon: const Icon(Icons.email),
                                   onPressed: () {},
@@ -114,11 +122,10 @@ class LoginScreen extends StatelessWidget {
                                 controllers: controller.emailController,
                                 keybordtype: TextInputType.emailAddress,
                                 validate: (value) {
-                                 if(value == null || value.isEmpty)
-                                   {
-                                     return 'empty' ;
-                                   }
-                                 return validateInput(value, 'email');
+                                  if (value == null || value.isEmpty) {
+                                    return 'empty';
+                                  }
+                                  return validateInput(value, 'email');
                                   // if (value == null || value.trim().isEmpty) {
                                   //   return 'Email not validate';
                                   // }
@@ -132,17 +139,16 @@ class LoginScreen extends StatelessWidget {
                                 },
                               ),
                               Obx(
-                                ()=> CustemTextFormFiled(
-                                 label : AppString.password,
-                                 hint : AppString.enterPassword,
+                                () => CustemTextFormFiled(
+                                  label: AppString.password,
+                                  hint: AppString.enterPassword,
                                   icons: IconButton(
                                     icon: Icon(
-                                        // Based on passwordVisible state choose the icon
-                                        controller.passwordVisible.value
-                                        ? Icons.visibility_off
-                                            : Icons.visibility,
-                                        ),
-
+                                      // Based on passwordVisible state choose the icon
+                                      controller.passwordVisible.value
+                                          ? Icons.visibility_off
+                                          : Icons.visibility,
+                                    ),
                                     onPressed: () {
                                       controller.changeVisible();
                                     },
@@ -161,7 +167,7 @@ class LoginScreen extends StatelessWidget {
                                     hoverColor: AppColor.primaryColor,
                                     onTap: () {
                                       //TODO change getto
-                                     // Get.to( Otp_BY_Email());
+                                      Get.offNamed(AppRoutes.otpByEmail);
                                     },
                                     child: const Text(AppString.forgotPassword,
                                         style: TextStyle(color: Colors.black)),
@@ -169,10 +175,10 @@ class LoginScreen extends StatelessWidget {
                               Container(
                                 width: w * 0.9,
                                 child: customButton(
-                                 onPressed: () {
+                                  onPressed: () {
                                     controller.login(context);
                                   },
-                                 text: 'Sign In',
+                                  text: 'Sign In',
                                   buttonColor: AppColor.primaryColor,
                                   buttonRedias: 10,
                                   textColor: AppColor.whiteColor,
@@ -181,12 +187,12 @@ class LoginScreen extends StatelessWidget {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-
                                   CustemText(
-                                      Txt: AppString.doNotHaveAccount,
-                                      color:Colors.black54,
-                                      fontWeight: FontWeight.bold, size: 15,),
-
+                                    Txt: AppString.doNotHaveAccount,
+                                    color: Colors.black54,
+                                    fontWeight: FontWeight.bold,
+                                    size: 15,
+                                  ),
                                   TextButton(
                                     onPressed: () {
                                       //TODO
@@ -199,31 +205,35 @@ class LoginScreen extends StatelessWidget {
                                         size: 16,
                                         fontWeight: FontWeight.bold),
                                   ),
-
                                 ],
                               ),
-                              const Divider(color: AppColor.blackColor,height: 5,indent: 16,endIndent: 16,thickness: 1,),
+                              const Divider(
+                                color: AppColor.blackColor,
+                                height: 5,
+                                indent: 16,
+                                endIndent: 16,
+                                thickness: 1,
+                              ),
 
                               // Row(
                               //   mainAxisAlignment: MainAxisAlignment.center,
                               //   children: [
-                                // CustemText(
-                                //   Txt: "If Have A problem!",
-                                //   color:AppColor.blackColor,
-                                //   fontWeight: FontWeight.bold, size: 15,),
+                              // CustemText(
+                              //   Txt: "If Have A problem!",
+                              //   color:AppColor.blackColor,
+                              //   fontWeight: FontWeight.bold, size: 15,),
 
-                                // TextButton(
-                                //   onPressed: () {
-                                    // Get.to(RegisterScreen());
-                                  // },
-                                  // child: CustemText(
-                                  //     Txt: 'Call Admins',
-                                  //     color: AppColor.OnPrimaryColor,
-                                  //     size: 16,
-                                  //     fontWeight: FontWeight.bold),
-                                // ),
+                              // TextButton(
+                              //   onPressed: () {
+                              // Get.to(RegisterScreen());
+                              // },
+                              // child: CustemText(
+                              //     Txt: 'Call Admins',
+                              //     color: AppColor.OnPrimaryColor,
+                              //     size: 16,
+                              //     fontWeight: FontWeight.bold),
+                              // ),
                               // ],)
-
                             ],
                           )),
                     ),
@@ -236,5 +246,4 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-
 }

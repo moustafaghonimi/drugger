@@ -40,6 +40,12 @@ validateInput(value ,String type)
       return 'Not valid Phone number';
     }
   }
+  else if(type=='otp')
+  {
+    if (value == null || value.trim().isEmpty) {
+      return 'OTP Code is Required';
+    }
+  }
 
   return null ;
 

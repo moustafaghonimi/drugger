@@ -18,20 +18,6 @@ class RegisterScreen extends StatelessWidget {
 final RegisterController controller = Get.put(RegisterController());
 
    RegisterScreen({super.key});
-  // var repo=Repo(baseRepositorie: Remote());
-  // var formKey = GlobalKey<FormState>();
-  // var PharmacyID_Controller = TextEditingController();
-  // var Pharmacyname_Controller = TextEditingController();
-  // var userNameControler = TextEditingController();
-  // var firestNameControler = TextEditingController();
-  // var lastNameControler = TextEditingController();
-  // var emailControler = TextEditingController();
-  // var passwordControler = TextEditingController();
-  // var cpasswordControler = TextEditingController();
-  // var ageControler = TextEditingController();
-  // var phone_controller = TextEditingController();
-  // bool passwordVisible = true;
-  // bool cpasswordVisible = true;
 
 
 
@@ -39,7 +25,6 @@ final RegisterController controller = Get.put(RegisterController());
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
-  // var repo=Repo(baseRepositorie: Remote());
 
     return Scaffold(
       appBar: AppBar(
