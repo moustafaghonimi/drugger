@@ -1,3 +1,4 @@
+import 'package:drugger/constance/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        // theme: ,
+        theme: AppTheme.customLightTheme,
         // darkTheme: ,
         debugShowCheckedModeBanner: false,
         getPages: routes,

@@ -1,22 +1,52 @@
+import 'package:drugger/constance/app_color.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static ThemeData customLightTheme =ThemeData(
-
-    textTheme:AppFontTheme.fontTheme
-  );
+  static ThemeData customLightTheme = ThemeData(textTheme: AppFontTheme.fontTheme);
 }
 
 class AppFontTheme {
-  static TextTheme fontTheme =TextTheme(
-    // titleLarge: ,
-    // titleMedium: ,
-    // titleSmall: ,
-    // bodyLarge: ,
-    // bodyMedium: ,
-    // bodySmall: ,
+  static TextTheme fontTheme = const TextTheme(
+    titleLarge: TextStyle(
+      //       fontFamily:Get.locale?.languageCode == 'ar' ? 'Cairo' : 'Source_Serif_Pro',
+      color:AppColor.blackColor,
+      fontSize: 24,
+      fontWeight: FontWeight.w700,
+    ),
+    titleMedium:TextStyle(
+  //       fontFamily:Get.locale?.languageCode == 'ar' ? 'Cairo' : 'Source_Serif_Pro',
+  color:AppColor.blackColor,
+  fontSize: 18,
+  fontWeight: FontWeight.w700,
+    ),
+    titleSmall:TextStyle(
+      //       fontFamily:Get.locale?.languageCode == 'ar' ? 'Cairo' : 'Source_Serif_Pro',
+      color:AppColor.blackColor,
+      fontSize: 12,
+      fontWeight: FontWeight.w700,
+    ),
+    bodyLarge:TextStyle(
+      //       fontFamily:Get.locale?.languageCode == 'ar' ? 'Cairo' : 'Source_Serif_Pro',
+      color:AppColor.blackColor,
+      fontSize: 24,
+    ) ,
+    bodyMedium:TextStyle(
+      //       fontFamily:Get.locale?.languageCode == 'ar' ? 'Cairo' : 'Source_Serif_Pro',
+      color:AppColor.blackColor,
+      fontSize: 16,
+    ) ,
+    bodySmall: TextStyle(
+      //       fontFamily:Get.locale?.languageCode == 'ar' ? 'Cairo' : 'Source_Serif_Pro',
+      color:AppColor.blackColor,
+      fontSize: 12,
+    ),
+
     // displayLarge: ,
-    // displayMedium: ,
+    displayMedium:TextStyle(
+      //       fontFamily:Get.locale?.languageCode == 'ar' ? 'Cairo' : 'Source_Serif_Pro',
+      color:AppColor.blackColor,
+      fontSize: 22,
+    )  ,
     // displaySmall: ,
   );
 }

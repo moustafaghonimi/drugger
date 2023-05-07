@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../view/screens/add_medicine.dart';
 import '../view/screens/cart_screen.dart';
 import '../view/screens/home_screen.dart';
 import '../view/screens/profile_screen.dart';
@@ -19,7 +20,7 @@ class BottomNavBarController extends GetxController {
       }
       break;
       case 1: {
-        currentScreen=SearchScreen();
+        currentScreen=AddMedicine();
       }
       break;
       case 2: {

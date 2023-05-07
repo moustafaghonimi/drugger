@@ -1,3 +1,4 @@
+import 'package:drugger/constance/app_color.dart';
 import 'package:drugger/constance/string_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,29 +17,26 @@ class BottomNavScreen extends StatelessWidget {
         () =>SalomonBottomBar(
           currentIndex: controller.currentScreenIndex.value,
           onTap:(value) =>controller.changeScreen(value) ,
+          selectedItemColor: AppColor.primaryColor,
           items: [
             SalomonBottomBarItem(
               icon: const Icon(Icons.home),
               title: const Text(AppString.home),
-              selectedColor: Colors.purple,
             ),
 
             SalomonBottomBarItem(
-              icon: const Icon(Icons.search),
-              title: const Text(AppString.search),
-              selectedColor: Colors.pink,
+              icon: const Icon(Icons.add),
+              title: const Text(AppString.medicine),
             ),
 
             SalomonBottomBarItem(
               icon: const Icon(Icons.shopping_cart_outlined),
               title: const Text(AppString.cart),
-              selectedColor: Colors.orange,
             ),
 
             SalomonBottomBarItem(
               icon: const Icon(Icons.person),
               title: const Text(AppString.profile),
-              selectedColor: Colors.teal,
             ),
           ],
         ),

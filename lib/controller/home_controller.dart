@@ -12,7 +12,7 @@ class HomeController extends GetxController
   int size = 5 ;
   GetAllMedicine getAllMedicineService=GetAllMedicine() ;
   getMedicine()async{
-    medicineModel = await getAllMedicineService.getMedicine(page: 1,size: 5);
+    medicineModel = await getAllMedicineService.getMedicine(page: 1,size: 10);
 
     print(medicineModel.medicines[0].id);
   }
