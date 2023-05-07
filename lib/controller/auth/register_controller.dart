@@ -46,12 +46,14 @@ class RegisterController extends GetxController{
     }
   }
 
+
   void register(context) async {
     if (formKey.currentState?.validate() == false) {
       return;
     }
     showloding('Loading...', context);
     try {
+
       var response = await repo.baseRepositorie?.register(
           pharID.text,
           pharName.text,
@@ -64,9 +66,13 @@ class RegisterController extends GetxController{
           age.text,
           phone.text
       );
+      print("11111111111111111111111111111111111" );
+
+      print(response?.message );
+
       hideMassage(context);
 
-      if (response?.message != null&&response?.message=='User added successfully') {
+      if (response?.message != null&&response?.message!='User added successfully') {
         showMasage(
             context, "${response?.message}\n${response?.Error}" , 'OK',
                 () {
@@ -75,18 +81,23 @@ class RegisterController extends GetxController{
         Get.snackbar('message', response!.Error.toString());
         return;
       }
+
       if (response?.user != null ) {
-        Get.snackbar('token', response?.user??"");
+        Get.snackbar('User', response?.user??"");
+        Get.offAllNamed(AppRoutes.loginScreen);
       }
-      // sharedPref!.setString("token", authorization?.token ?? "token null");
-      // print(sharedPref);
-      // showMasage(context, response.token??'', 'ok', () {Get.back(); });
-      Get.offAllNamed(AppRoutes.loginScreen);
+
 
     } catch (e) {
+
+      showMasage(
+          context, "$e" , 'OK',
+              () {
+            Get.back();
+          });
+      Get.snackbar('error', e.toString());
       // hideMassage(context);
 
-      Get.snackbar('error', e.toString());
     }
   }
 

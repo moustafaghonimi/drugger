@@ -10,6 +10,7 @@ class AppString {
   static const String password='Enter your Password';
   static const String forgotPassword='Forgot Password?';
   static const String doNotHaveAccount="Don't have an account?";
+  static const String welcome="Welcome Back To ";
 
 
   //register Screen
@@ -25,6 +26,23 @@ class AppString {
   static const String rePassword='Re Password';
   static const String iHaveAnAccount="I Have an account?";
   static const String signIn="singIn";
+
+
+
+  // Otp
+  static const String otp="OTP Verification";
+  static const String messageOtp="We Will send you a ane time code on your account!";
+  static const String emilExample="Mostafa*****@gmail.com";
+  static const String send="Send";
+  // Reset Password
+  static const String resetPass="Reset Password";
+  static const String resetMessage="We Will Received you a ane time code on your account! \n Use this code";
+  static const String otpCode="OTP Code";
+  static const String resetOtb="OTP";
+  static const String restNewPass="Enter New Password";
+  static const String newPass="New Password";
+
+
 
 
   //bottom nav bar
