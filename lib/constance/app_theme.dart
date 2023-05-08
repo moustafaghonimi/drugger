@@ -27,26 +27,30 @@ class AppFontTheme {
     ),
     bodyLarge:TextStyle(
       //       fontFamily:Get.locale?.languageCode == 'ar' ? 'Cairo' : 'Source_Serif_Pro',
-      color:AppColor.blackColor,
+      color:Color(0xB3000000),
       fontSize: 24,
     ) ,
     bodyMedium:TextStyle(
       //       fontFamily:Get.locale?.languageCode == 'ar' ? 'Cairo' : 'Source_Serif_Pro',
-      color:AppColor.blackColor,
-      fontSize: 16,
+      color:Color(0x99000000),
+      fontSize: 19,
     ) ,
     bodySmall: TextStyle(
       //       fontFamily:Get.locale?.languageCode == 'ar' ? 'Cairo' : 'Source_Serif_Pro',
       color:AppColor.blackColor,
-      fontSize: 12,
+      fontSize: 14,
     ),
 
     // displayLarge: ,
     displayMedium:TextStyle(
       //       fontFamily:Get.locale?.languageCode == 'ar' ? 'Cairo' : 'Source_Serif_Pro',
-      color:AppColor.blackColor,
-      fontSize: 22,
+      color:AppColor.whiteColor,
+      fontSize: 20,
     )  ,
-    // displaySmall: ,
+    displaySmall:TextStyle(
+      //       fontFamily:Get.locale?.languageCode == 'ar' ? 'Cairo' : 'Source_Serif_Pro',
+      color:AppColor.whiteColor,
+      fontSize: 14,
+    )  ,
   );
 }

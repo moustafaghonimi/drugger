@@ -43,6 +43,7 @@ dependencies:
   http: ^0.13.6
   cached_network_image: ^3.2.3
   fade_shimmer: ^2.2.0
+  custom_refresh_indicator: ^2.0.1
 
 dev_dependencies:
   flutter_test:

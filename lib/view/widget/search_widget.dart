@@ -1,20 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget search(
-{required VoidCallback onTap , }
-    ) => GestureDetector(
-  onTap:onTap ,
-  child:   Container(
+import '../../constance/app_color.dart';
+
+Widget search({
+  required VoidCallback onTap,
+}) =>
+    GestureDetector(
+      onTap: onTap,
+      child: Container(
         margin: const EdgeInsets.only(
           top: 30,
+          left: 8,
+          right: 8,
         ),
         padding: const EdgeInsets.only(
           left: 7,
         ),
         height: 40,
         decoration: BoxDecoration(
-          border: Border.all(color: const Color(0xff2f365a)),
+          color: AppColor.whiteColor,
+          // border: Border.all(color: const Color(0xff2f365a)),
           borderRadius: BorderRadius.circular(
             12,
           ),
@@ -38,4 +44,4 @@ Widget search(
           ],
         ),
       ),
-);
+    );
