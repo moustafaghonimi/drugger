@@ -57,6 +57,22 @@ class AppString {
   static const String mostPopularMedicine ='Most Popular Medicine' ;
   static const String stock ='Stock' ;
   static const String price ='Price' ;
+  static const String drugger ='Drugger' ;
+  static const String exp ='Expired Date :' ;
+  static const List<String> category =[
+    "None" ,
+    "Capsules",
+    "Tablets",
+    "Injections",
+    "Syrups",
+    "Inhalers",
+    "Topical preparations",
+    "Drops",
+    "Powders",
+    "Sprays",
+    "Solutions",
+  ];
+
 
 //Search screen
   static const String searchScreen ='Search Screen' ;
