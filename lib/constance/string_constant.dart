@@ -58,5 +58,15 @@ class AppString {
   static const String stock ='Stock' ;
   static const String price ='Price' ;
 
+//Search screen
+  static const String searchScreen ='Search Screen' ;
+  static const String sortPrise ='Sort Prise ' ;
+  static const String lowestPriced ='The lowest price ' ;
+  static const String highestPriced ='The Highest priced ' ;
+  static const String sortExpireDate ='Sort Expire Date ' ;
+  static const String lowExp ='Closest to the expiry date ' ;
+  static const String highExp ='The furthest from expiration' ;
+
+
 
 }

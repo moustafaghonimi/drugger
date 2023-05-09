@@ -1,6 +1,6 @@
 import 'package:drugger/view/screens/auth/register_screen.dart';
 import 'package:drugger/view/screens/bottom_nav_screen.dart';
-import 'package:drugger/view/screens/search_screen.dart';
+import 'package:drugger/view/screens/search/search_screen.dart';
 import 'package:get/get.dart';
 
 import '../view/screens/auth/login_screen.dart';

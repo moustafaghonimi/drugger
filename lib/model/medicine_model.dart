@@ -12,6 +12,7 @@ class MedicineModel {
     medicines: List<Medicine>.from(json["medicines"].map((x) => Medicine.fromJson(x))),
   );
 
+
   Map<String, dynamic> toJson() => {
     "message": message,
     "medicines": List<dynamic>.from(medicines.map((x) => x.toJson())),

@@ -9,5 +9,6 @@ class AppAssets {
   static const String registerIcon ='$baseurl/signup.png';
   static const String otpImage ='$baseurl/otpImage.jpg';
   static const String resetPassImage ='$baseurl/reset_pass.jpg';
+  static const String searchImage ='$baseurl/search_image.png';
 
 }

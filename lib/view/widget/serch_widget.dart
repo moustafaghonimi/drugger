@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget search(
-{required VoidCallback onTap , }
-    ) => GestureDetector(
-  onTap:onTap ,
-  child:   Container(
+Widget search({
+  required VoidCallback onTap,
+                      }) =>
+    GestureDetector(
+      onTap: onTap,
+      child: Container(
         margin: const EdgeInsets.only(
           top: 30,
         ),
@@ -38,4 +39,4 @@ Widget search(
           ],
         ),
       ),
-);
+    );

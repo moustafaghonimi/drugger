@@ -1,4 +1,6 @@
 
+import 'package:drugger/model/medicine_model.dart';
+
 import '../../model/auth/respones/ForgetPasswordOTP_Response.dart';
 import '../../model/auth/respones/LoginResponse.dart';
 import '../../model/auth/respones/responseRegister.dart';
@@ -28,6 +30,12 @@ class LocalDB implements BaseRepositorie{
   @override
   Future<ForgetPasswordOtpResponse> resetPassword(String otp, String pass, String email) {
     // TODO: implement resetPassword
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<MedicineModel> getSearch(String query, {sort,  int page=1,  int size=10, filter}) {
+    // TODO: implement getSearch
     throw UnimplementedError();
   }
 
