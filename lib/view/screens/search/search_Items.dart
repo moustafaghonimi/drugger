@@ -1,11 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:drugger/constance/string_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../../../constance/app_color.dart';
-import '../../../controller/search/search_controller.dart';
 import '../../../model/medicine_model.dart';
+import '../../../routing/app_routs_name.dart';
 import '../../widget/custemText.dart';
 
 class SearchItems extends StatelessWidget {
@@ -48,7 +49,12 @@ class SearchItems extends StatelessWidget {
               Row(
                 children: [
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+
+                        Get.toNamed(AppRoutes.itemDetailes,arguments:medicine );
+
+
+                    },
                     child: ClipRRect(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10)),
@@ -64,7 +70,6 @@ class SearchItems extends StatelessWidget {
                                     imageUrl: '${medicine.medicineImage}',
                                     width: w * .25,
                                     height: h * 0.12,
-                                    fit: BoxFit.cover,
                                     imageBuilder: (context, imageProvider) =>
                                         Container(
                                       decoration: BoxDecoration(
@@ -74,10 +79,8 @@ class SearchItems extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    placeholder: (context, url) =>
-                                        const Center(
-                                            child:
-                                                CircularProgressIndicator()),
+                                    placeholder: (context, url) => const Center(
+                                        child: CircularProgressIndicator()),
                                     errorWidget: (context, url, error) =>
                                         const Icon(Icons.error),
                                   ),
@@ -86,7 +89,7 @@ class SearchItems extends StatelessWidget {
                                   ),
                                   CustemText(
                                     Txt:
-                                        "EXP : ${medicine.medicineExpireDate.year}/${medicine.medicineExpireDate.month}",
+                                        "Exp : ${medicine.medicineExpireDate.year}/${medicine.medicineExpireDate.month}",
                                     color: AppColor.onPrimaryColor,
                                     size: 14,
                                   ),
@@ -111,7 +114,8 @@ class SearchItems extends StatelessWidget {
                                       width: 5,
                                     ),
                                     CustemText(
-                                      Txt: "Type: ${medicine.medicineType}",
+                                      Txt:
+                                          "${AppString.type} :  ${medicine.medicineType}",
                                       color: Colors.grey,
                                       size: 12,
                                     ),
@@ -120,7 +124,7 @@ class SearchItems extends StatelessWidget {
                                     ),
                                     CustemText(
                                       Txt:
-                                          "Available : ${medicine.medicineStock.toString()} piece",
+                                          " ${AppString.type} : ${medicine.medicineStock.toString()} piece",
                                       maxLines: 2,
                                       color: AppColor.onPrimaryColor,
                                       size: 14,
@@ -132,8 +136,8 @@ class SearchItems extends StatelessWidget {
                                       width: w * 0.58,
                                       child: CustemText(
                                         Txt:
-                                            "Description: ${medicine.medicineDesc}",
-                                        maxLines: 2,
+                                            "${AppString.description}: ${medicine.medicineDesc}",
+                                        maxLines: 1,
                                         color: AppColor.blackColor,
                                         size: 14,
                                       ),

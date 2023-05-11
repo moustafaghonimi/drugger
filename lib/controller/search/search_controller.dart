@@ -1,30 +1,42 @@
 import 'package:drugger/model/medicine_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-
-import '../../repositorie/data_source/remote.dart';
-import '../../service/all_medicine_serices.dart';
 import '../../service/search_medicine_services.dart';
-import '../../shared/network/remote/api_manger.dart';
 
+class SearchController extends GetxController {
+  RxString query = ''.obs;
 
-class SearchController extends GetxController
-{
+  var isLoading = false.obs;
 
-    String quary = '';
   List<Medicine> searchList = [];
 
-    MedicineSearch medicineSearch=MedicineSearch() ;
-    Medicine? medicine;
+  MedicineSearch medicineSearch = MedicineSearch();
+
+  Medicine? medicine;
+  bool valueHightExp = false;
+  bool valueLowExp = false;
+
+  bool changeSort(bool value1, bool value2) {
+    if (value1 == false && value2 == true) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   List<Medicine> search() {
-    
-    medicineSearch.getSearch(sort: 1 ,page: 1,size: 20)
-        .then((searchResponces) => {searchList = searchResponces.medicines ?? []})
+    medicineSearch
+        .getSearch(query.value,
+            sort: changeSort(valueHightExp, valueLowExp)
+                ? "medicineExpireDate"
+                : "-medicineExpireDate",
+            page: 1 & 2 & 3,
+            size: 20)
+        .then(
+            (searchResponces) => {searchList = searchResponces.medicines ?? []})
         .catchError(
       (error) {
-        Get.snackbar('message',error);
-
-        debugPrint('Error in Api ${error}');
+        print(error);
+        // Get.snackbar('message', error);
       },
     );
     return searchList;
@@ -33,7 +45,10 @@ class SearchController extends GetxController
   @override
   void onInit() {
     search();
-    // getMedicine();
+
+    query;
+    searchList;
+
     super.onInit();
   }
 }

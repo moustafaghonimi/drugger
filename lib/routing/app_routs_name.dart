@@ -6,4 +6,6 @@ class AppRoutes {
   static const String searchScreen = '/searchScreen';
   static const String resetPass = '/resetPass';
   static const String otpByEmail = '/otpByEmail' ;
+  static const String itemDetailes = '/ItemDetailes' ;
+  static const String commentScreen = '/commentScreen' ;
 }

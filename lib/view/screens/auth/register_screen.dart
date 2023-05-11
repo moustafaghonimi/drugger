@@ -10,18 +10,12 @@ import '../../../routing/app_routs_name.dart';
 import '../../widget/custemTextFormFiled.dart';
 import '../../widget/customButton.dart';
 
-
-
-
-
 class RegisterScreen extends StatelessWidget {
 final RegisterController controller = Get.put(RegisterController());
 
    RegisterScreen({super.key});
 
-
-
-  @override
+@override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;

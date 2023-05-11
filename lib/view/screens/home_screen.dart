@@ -1,4 +1,5 @@
 import 'package:drugger/routing/app_routs_name.dart';
+import 'package:drugger/view/screens/search/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +11,7 @@ import '../widget/notfication_widget.dart';
 import '../widget/search_widget.dart';
 
 
+import '../widget/serch_widget.dart';
 import '../widget/swipe_action.dart';
 
 class HomeScreen extends StatelessWidget {

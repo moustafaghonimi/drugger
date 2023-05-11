@@ -7,13 +7,24 @@ import '../../../constance/app_color.dart';
 import '../../../constance/assets_constant.dart';
 import '../../../constance/string_constant.dart';
 import '../../../controller/search/search_controller.dart';
+import '../../../model/medicine_model.dart';
+import '../../../service/search_medicine_services.dart';
 import '../../widget/custemAnimetedTxt.dart';
 import '../../widget/search_widget.dart';
 import '../../widget/serch_widget.dart';
 import 'filterSearchBottomScheat_details.dart';
 
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key});
+
+
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
   final SearchController controller = Get.put(SearchController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -56,15 +67,20 @@ class SearchScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(12.0),
                 child: SearchWidget(
                   onChange: (value) {
-                    controller.quary = value!;
-                    print(controller.quary);
+                    setState(() {
+                      controller.query.value = value!;
+                    });
+
+
+                    // controller.search();
+                    // print(controller.query.value);
                   },
                 ),
               ),
               const SizedBox(
                 height: 6,
               ),
-              controller.quary == ''
+              controller.query.value==''
                   ? Padding(
                       padding: const EdgeInsets.only(top: 100),
                       child: Image.asset(
@@ -74,12 +90,13 @@ class SearchScreen extends StatelessWidget {
                       ),
                     )
                   : Expanded(
-                      child: ListView.builder(
+                      child:ListView.builder(
                         itemBuilder: (context, index) {
                           return SearchItems(
                               controller.search().elementAt(index));
                         },
                         itemCount: controller.search().length,
+
                       ),
                     )
             ],
@@ -106,4 +123,6 @@ class SearchScreen extends StatelessWidget {
                   children: const <Widget>[FilterSearchBottomScheatDetails()]),
             )));
   }
+
+
 }

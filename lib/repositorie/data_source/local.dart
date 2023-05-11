@@ -34,7 +34,7 @@ class LocalDB implements BaseRepositorie{
   }
 
   @override
-  Future<MedicineModel> getSearch(String query, {sort,  int page=1,  int size=10, filter}) {
+  Future<MedicineModel> getSearch(String query, {String sort='',  int page=1,  int size=10}) {
     // TODO: implement getSearch
     throw UnimplementedError();
   }

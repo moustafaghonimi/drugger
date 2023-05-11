@@ -30,7 +30,6 @@ abstract class BaseRepositorie{
       String email,
       );
 
-  Future<MedicineModel> getSearch(String query,{var sort,int page,int size ,var filter});
-
+  Future<MedicineModel> getSearch(String query,{String sort,int page,int size });
 
 }

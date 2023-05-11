@@ -16,7 +16,7 @@ class CustemText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(Txt,
-        maxLines: 1,
+        maxLines: maxLines,
         overflow: TextOverflow.ellipsis,
         softWrap:true,
         style: TextStyle(color: color, fontSize: size, fontWeight: fontWeight));

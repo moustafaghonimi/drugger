@@ -1,10 +1,7 @@
 import 'dart:convert';
 
-
 import 'package:drugger/api/api_constant.dart';
-import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:http/http.dart' as http;
-
 
 import '../../model/auth/respones/ForgetPasswordOTP_Response.dart';
 import '../../model/auth/respones/LoginResponse.dart';
@@ -15,7 +12,8 @@ import '../base_Repo.dart';
 class Remote implements BaseRepositorie {
   @override
   Future<ForgetPasswordOtpResponse> forgetPasswordOTP(String email) async {
-    Uri url = Uri.https(ApiConstance.base_Url, ApiConstance.forgetPasswordOTPUrl);
+    Uri url =
+        Uri.https(ApiConstance.base_Url, ApiConstance.forgetPasswordOTPUrl);
     final response = await http.post(
       url,
       headers: <String, String>{
@@ -27,6 +25,7 @@ class Remote implements BaseRepositorie {
     );
     return ForgetPasswordOtpResponse.fromJson(jsonDecode(response.body));
   }
+
 //////////////////////////////////////////////////////////////////////////////////////
   @override
   Future<LoginResponse> login(String id, String Email, String Password) async {
@@ -42,6 +41,7 @@ class Remote implements BaseRepositorie {
     );
     return LoginResponse.fromJson(jsonDecode(response.body));
   }
+
 //////////////////////////////////////////////////////////////////////////////////////
 
   @override
@@ -78,6 +78,7 @@ class Remote implements BaseRepositorie {
     );
     return ResponseRegister.fromJson(jsonDecode(response.body));
   }
+
 //////////////////////////////////////////////////////////////////////////////////////
 
   @override
@@ -99,25 +100,43 @@ class Remote implements BaseRepositorie {
     );
     return ForgetPasswordOtpResponse.fromJson(jsonDecode(response.body));
   }
+
+  // @override
+  // Future<MedicineModel> getSearch(String query, { String sort='medicineStock', int page=1, int size=20})async {
+  //   Uri URL = Uri.https(
+  //     'druggerdeployment.vercel.app','/medicine?search=$query&page=$page&size=$size&sort=$sort'
+  //       );
+  //     Response search=await http.get(URL);
+  //   try {
+  //     var json = jsonDecode(search.body);
+  //     MedicineModel medicineModel = MedicineModel.fromJson(json);
+  //     return medicineModel;
+  //   } catch (e) {
+  //     print(e);
+  //     throw e;
+  //   }
+  // }
+
+
   //////////////////////////////////////////////////////////////
+
+  //
   @override
-  Future<MedicineModel> getSearch(String query,{var sort, int page=1, int size=10 ,var filter}) async{
-    Uri URL=Uri.https(ApiConstance.base_Url,ApiConstance.searchUrl,{
-      'search':query,
-      'sort':sort,
-      'page':page,
-      'size':size,
-      'filter':filter,
-    });
-    Response search=(await http.get(URL)) as Response;
+  Future<MedicineModel> getSearch(String query, { String sort='medicineStock', int page=1, int size=20})async {
+    {
+    Uri URL = Uri.https(
+        'druggerdeployment.vercel.app','/medicine?search=$query&page=$page&size=$size&sort=$sort'
+    );
+    http.Response search=await http.get(URL);
     try{
       var json=jsonDecode(search.body);
-      MedicineModel medicineModel=MedicineModel.fromJson(json);
-      return medicineModel;
+      MedicineModel searchModel=MedicineModel.fromJson(json);
+      return searchModel;
     }
     catch(e){
       print(e);
       throw e;
     }
   }
-}
+
+}}

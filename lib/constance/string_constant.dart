@@ -93,7 +93,25 @@ class AppString {
   static const String sortExpireDate ='Sort Expire Date ' ;
   static const String lowExp ='Closest to the expiry date ' ;
   static const String highExp ='The furthest from expiration' ;
+  static const String type ='Type' ;
 
+// item details
+  static const String addToCart ='Add To Cart' ;
+  static const String addToCartLabel ='' ;
+  static const String comment ='Write Comment' ;
+  static const String commentLabel ='' ;
+  static const String available ='Available' ;
+  static const String pharmacy ='Pharmacy' ;
+  static const String description ='Description' ;
+  static const String similarItems ='Similar Items' ;
+  static const String viewAll ='View All' ;
+  static const String comments =' Show Comments\n And Write Comment' ;
+
+  // Comments
+  static const String id ='Id' ;
+  static const String createBy ='Create By' ;
+  static const String commentDesc ='Comment' ;
+  static const String publish ='Publish at' ;
 
 
 }
