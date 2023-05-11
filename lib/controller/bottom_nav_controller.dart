@@ -5,7 +5,7 @@ import '../view/screens/add_medicine.dart';
 import '../view/screens/cart_screen.dart';
 import '../view/screens/home_screen.dart';
 import '../view/screens/profile_screen.dart';
-import '../view/screens/search_screen.dart';
+import '../view/screens/search/search_screen.dart';
 
 class BottomNavBarController extends GetxController {
   RxInt currentScreenIndex =0.obs;

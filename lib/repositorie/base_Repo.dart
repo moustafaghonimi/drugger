@@ -1,6 +1,7 @@
 import '../model/auth/respones/ForgetPasswordOTP_Response.dart';
 import '../model/auth/respones/LoginResponse.dart';
 import '../model/auth/respones/responseRegister.dart';
+import '../model/medicine_model.dart';
 
 abstract class BaseRepositorie{
 
@@ -29,6 +30,7 @@ abstract class BaseRepositorie{
       String email,
       );
 
+  Future<MedicineModel> getSearch(String query,{var sort,int page,int size ,var filter});
 
 
 }
