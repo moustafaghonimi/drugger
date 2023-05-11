@@ -167,7 +167,7 @@ class LoginScreen extends StatelessWidget {
                                     hoverColor: AppColor.primaryColor,
                                     onTap: () {
                                       //TODO change getto
-                                      Get.offNamed(AppRoutes.otpByEmail);
+                                      Get.toNamed(AppRoutes.otpByEmail);
                                     },
                                     child: const Text(AppString.forgotPassword,
                                         style: TextStyle(color: Colors.black)),

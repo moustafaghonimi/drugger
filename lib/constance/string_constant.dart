@@ -73,6 +73,17 @@ class AppString {
     "Solutions",
   ];
 
+//add New Medicine
+  static const String addNewMedicine ="Add New Medicine" ;
+  static const String image ="Image :" ;
+  static const String gallery ="Gallery" ;
+  static const String camera ="Camera" ;
+  static const String chooseImage ='Choose Image' ;
+  static const String expDate ="EXP Date" ;
+  static const String description ='Description' ;
+  static const String addMedicine ="Add Medicine" ;
+  static const String name ="Name" ;
+
 
 
 }

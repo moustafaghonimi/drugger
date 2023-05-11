@@ -1,10 +1,12 @@
+import 'dart:ffi';
+
 import 'package:get/get.dart';
 
 validateInput(value ,String type)
 {
   if(value.isEmpty)
   {
-    return 'value can not be Empty';
+    return '$type can not be Empty';
   }
   else if(type=="pharID")
   {
@@ -44,6 +46,13 @@ validateInput(value ,String type)
   {
     if (value == null || value.trim().isEmpty) {
       return 'OTP Code is Required';
+    }
+  }
+
+  else if(type=='number')
+  {
+    if(int.tryParse(value) == null){
+      return 'the value must be a number';
     }
   }
 

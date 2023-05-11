@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:drugger/routing/app_routs_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -46,7 +45,20 @@ class HomeScreen extends StatelessWidget {
                           ),
                           IconButton(
                             //TODO Add notification
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.bottomSheet(
+                                    Container(
+                                      margin: EdgeInsets.only(bottom: 100),
+                                      height: 100,
+                                      width: Get.width,
+                                      color: Colors.green,
+                                      child: Column(
+                                  children: [
+
+                                  ],
+                                ),
+                                    ));
+                              },
                               icon: notification(notificationNumber: 1),
 
                           ),

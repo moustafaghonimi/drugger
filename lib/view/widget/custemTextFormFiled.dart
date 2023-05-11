@@ -6,16 +6,17 @@ typedef OnSaved = String? Function(String?);
 class CustemTextFormFiled extends StatelessWidget {
   String? hint;
   String label;
-  IconButton? icons;
+  Widget? icons;
   TextEditingController? controllers;
   String? Function(String?)? validate;
   OnSaved? onSaved;
   bool hideText;
   TextInputType keybordtype;
   VoidCallback? ontap;
+  int maxLine ;
 
   CustemTextFormFiled(
-      { this.hint,
+      {super.key,  this.hint,
       required this.label,
       this.icons,
       this.validate,
@@ -23,7 +24,9 @@ class CustemTextFormFiled extends StatelessWidget {
       this.controllers,
       this.hideText = false,
       this.keybordtype = TextInputType.text,
-      this.ontap});
+      this.ontap,
+      this.maxLine = 1
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +39,8 @@ class CustemTextFormFiled extends StatelessWidget {
         validator: validate,
         obscureText: hideText,
         keyboardType: keybordtype,
+        maxLines: maxLine,
+        onTap: ontap,
         decoration: InputDecoration(
           suffixIcon: icons,
           labelText: label,
