@@ -6,7 +6,9 @@ class ApiConstance{
   static const String forgetPasswordOTPUrl='/auth/forgetPasswordOTP'; //-/
   static const String searchUrl='/medicine';
   // static const String allMedicine='auth/forgetPasswordOTP';
-  static const String baseURL='https://druggerappdeployment-106koerzx-abanoubmamdouhhanna.vercel.app';
+  static const String baseURL='https://graduationdeployment.vercel.app/';
   static const String medicine='$baseURL/medicine';
+  static const String getAllCart='$baseURL/cart/getAllProducts';
+
 
 }
