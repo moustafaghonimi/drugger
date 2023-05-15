@@ -94,7 +94,7 @@ class AddMedicine extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 10),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
+                    border: Border.all(color: Colors.grey,width: .5),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   constraints: const BoxConstraints(

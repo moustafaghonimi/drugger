@@ -6,4 +6,5 @@ class AppColor {
   static const Color onPrimaryColor=Color.fromRGBO(251, 144, 4, 1.0);
   static const Color whiteColor=Color.fromRGBO(248, 248, 248, 1.0);
   static const Color blackColor=Color.fromRGBO(0, 0, 0, 1.0);
+
 }

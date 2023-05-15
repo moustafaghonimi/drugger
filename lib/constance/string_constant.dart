@@ -84,6 +84,10 @@ class AppString {
   static const String addMedicine ="Add Medicine" ;
   static const String name ="Name" ;
 
+  //cart
+  // static const String cart ="Name" ;
+
+
 
 //Search screen
   static const String searchScreen ='Search Screen' ;
@@ -102,7 +106,6 @@ class AppString {
   static const String commentLabel ='' ;
   static const String available ='Available' ;
   static const String pharmacy ='Pharmacy' ;
-  static const String description ='Description' ;
   static const String similarItems ='Similar Items' ;
   static const String viewAll ='View All' ;
   static const String comments =' Show Comments\n And Write Comment' ;

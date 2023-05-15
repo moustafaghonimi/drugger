@@ -8,7 +8,6 @@ import '../../constance/string_constant.dart';
 import '../../controller/home_controller.dart';
 import '../widget/home_card.dart';
 import '../widget/notfication_widget.dart';
-import '../widget/search_widget.dart';
 
 
 import '../widget/serch_widget.dart';

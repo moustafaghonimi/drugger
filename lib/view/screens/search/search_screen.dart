@@ -11,7 +11,6 @@ import '../../../model/medicine_model.dart';
 import '../../../service/search_medicine_services.dart';
 import '../../widget/custemAnimetedTxt.dart';
 import '../../widget/search_widget.dart';
-import '../../widget/serch_widget.dart';
 import 'filterSearchBottomScheat_details.dart';
 
 class SearchScreen extends StatefulWidget {

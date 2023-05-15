@@ -14,7 +14,7 @@ class HomeController extends GetxController
 
   late int currentScreen ;
   int size = 3 ;
-  GetAllMedicine getAllMedicineService=GetAllMedicine() ;
+  GetAllMedicine getAllMedicineService = GetAllMedicine() ;
 
   getMedicine()async{
     currentScreen++ ;

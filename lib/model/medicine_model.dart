@@ -102,7 +102,7 @@ class Medicine {
 class Comment {
   List<Comment> reply;
   String id;
-  String? createdBy;
+  CreatedModel? createdBy;
   String medicineId;
   String commentDesc;
   List<dynamic> like;
@@ -129,7 +129,7 @@ class Comment {
   factory Comment.fromJson(Map<String, dynamic> json) => Comment(
     reply: List<Comment>.from(json["reply"].map((x) => Comment.fromJson(x))),
     id: json["_id"],
-    createdBy: json["createdBy"],
+    createdBy:json["createdBy"]==null?null:CreatedModel.fromJson(json["createdBy"]),
     medicineId: json["medicineId"],
     commentDesc: json["commentDesc"],
     like: List<dynamic>.from(json["like"].map((x) => x)),
@@ -154,3 +154,32 @@ class Comment {
     "__v": v,
   };
 }
+
+class CreatedModel {
+  String id;
+  String pharName;
+  String email;
+  String phone;
+
+  CreatedModel({
+    required this.id,
+    required this.pharName,
+    required this.email,
+    required this.phone,
+  });
+
+  factory CreatedModel.fromJson(Map<String, dynamic> json) => CreatedModel(
+    id: json["_id"],
+    pharName: json["pharName"],
+    email: json["email"],
+    phone: json["phone"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "_id": id,
+    "pharName": pharName,
+    "email": email,
+    "phone": phone,
+  };
+}
+

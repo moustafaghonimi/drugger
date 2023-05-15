@@ -116,4 +116,14 @@ class AddMedicineController extends GetxController {
     pickedFile = null;
     super.onInit();
   }
+  @override
+  void dispose() {
+    nameController.dispose();
+    dateController.dispose();
+    stockController.dispose();
+    priceController.dispose();
+    descriptionController.dispose();
+
+    super.dispose();
+  }
 }

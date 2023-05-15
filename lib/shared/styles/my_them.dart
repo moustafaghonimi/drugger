@@ -8,7 +8,7 @@ class MyThemeData {
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: colorGreen,
     primaryColor: primaryColor,
-    colorScheme: ColorScheme(
+    colorScheme: const ColorScheme(
       primary: primaryColor,
       onPrimary: onprimaryColor,
       error: Colors.red,
@@ -25,27 +25,27 @@ class MyThemeData {
         style: ButtonStyle(backgroundColor: MaterialStateProperty.all(primaryColor),elevation: MaterialStateProperty.all(3),
         )
     ),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: primaryColor,
     ),
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       centerTitle: true,
       iconTheme: IconThemeData(
         color: Colors.white,
       ),
       backgroundColor: primaryColor,
     ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       // backgroundColor: Colors.white,
       selectedItemColor: primaryColor,
       unselectedItemColor: Colors.grey,
     ),
-    textTheme: TextTheme(
-    subtitle1: TextStyle(
+    textTheme: const TextTheme(
+    titleMedium: TextStyle(
     fontSize: 20,
     color:Colors.black,
     ),
-      headline1: TextStyle(
+      displayLarge: TextStyle(
         fontSize: 30,
         fontWeight: FontWeight.bold,
         color: Colors.black,
@@ -55,7 +55,7 @@ class MyThemeData {
   static ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: primaryDarkColor,
     primaryColor: primaryDarkColor,
-    colorScheme: ColorScheme(
+    colorScheme: const ColorScheme(
       primary: primaryDarkColor,
       onPrimary: onprimaryDarkColor,
       error: Colors.red,
@@ -68,7 +68,7 @@ class MyThemeData {
       onSecondary: primaryDarkColor,
       brightness: Brightness.light,
     ),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: primaryColor,
       highlightElevation: 3,
       splashColor: Colors.white,
@@ -80,25 +80,25 @@ class MyThemeData {
         style: ButtonStyle(backgroundColor: MaterialStateProperty.all(primaryColor),elevation: MaterialStateProperty.all(3),shadowColor: MaterialStateProperty.all(Colors.white)
         )
     ),
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       centerTitle: true,
       iconTheme: IconThemeData(
         color: Colors.black,
       ),
       backgroundColor: primaryColor,
     ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       // backgroundColor: Color.fromRGBO(20, 25, 34, 1.0),
       selectedItemColor: primaryColor,
       unselectedItemColor: Colors.black,
       elevation: 7
     ),
-    textTheme: TextTheme(
-      subtitle1: TextStyle(
+    textTheme: const TextTheme(
+      titleMedium: TextStyle(
         fontSize: 20,
         color:Colors.white,
       ),
-      headline1: TextStyle(
+      displayLarge: TextStyle(
         fontSize: 30,
         fontWeight: FontWeight.bold,
         color: Colors.white,
