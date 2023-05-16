@@ -185,7 +185,6 @@ class CreatedBy {
     "phone": phone,
   };
 }
-
 class Reply {
   String id;
   String createdBy;

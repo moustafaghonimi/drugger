@@ -1,8 +1,10 @@
+import 'package:drugger/routing/app_routs_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../../../controller/item_and_comment/comment_controller.dart';
+import 'comment_detiles.dart';
 
 
 class CreateComment extends StatelessWidget {
@@ -10,13 +12,24 @@ class CreateComment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
     final CommentController controller = Get.put(CommentController());
 
     return Container(
-      padding: EdgeInsets.all(16),
+      width: Get.width,
+      padding: const EdgeInsets.all(6),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(topRight: Radius.circular(20),topLeft:  Radius.circular(20)),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.blueGrey,
+            blurRadius: 12,
+            offset: Offset(0, 5),
+          ),
+        ],
+      ),
       child: Form(
-        key: _formKey,
+        key: controller.theKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -30,7 +43,7 @@ class CreateComment extends StatelessWidget {
             const SizedBox(height: 10),
             TextFormField(
               controller: controller.commentController,
-              maxLines: 5,
+              maxLines: 4,
               decoration: InputDecoration(
                 hintText: 'Type your comment here',
                 border: OutlineInputBorder(
@@ -53,14 +66,14 @@ class CreateComment extends StatelessWidget {
                 return null;
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 5),
             ElevatedButton(
               onPressed: () {
+                  // String comment = controller.commentController.text;
+                  return controller.addComment(context);
 
-                  String comment = controller.commentController.text;
-                  // Do something with the comment
                 },
-              child: Text('Submit'),
+              child: const Text('Submit'),
             )
           ],
         ),

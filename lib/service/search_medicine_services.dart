@@ -9,7 +9,7 @@ class MedicineSearch extends ApiHelper {
       {String sort = "medicineStock", int page = 1, int size = 20}) async {
     MedicineModel medicine = MedicineModel.fromJson(await get(
         url:
-        "https://druggerdeployment.vercel.app/medicine?page=$page&size=$size&search=$query&sort=$sort"));
+        "https://graduationdeployment.vercel.app/medicine?page=$page&size=$size&search=$query&sort=$sort"));
     // Get.snackbar('message', medicine.message);
     print(medicine.message);
 

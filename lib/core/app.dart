@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         // darkTheme: ,
         debugShowCheckedModeBanner: false,
         getPages: routes,
-        initialRoute: AppRoutes.homeScreen,
+        initialRoute: AppRoutes.myCustomSplashScreen,
       // home: LoginScreen(),
     );
   }

@@ -1,9 +1,11 @@
 
-import 'package:drugger/model/medicine_model.dart';
+
 
 import '../../model/auth/respones/ForgetPasswordOTP_Response.dart';
 import '../../model/auth/respones/LoginResponse.dart';
 import '../../model/auth/respones/responseRegister.dart';
+
+import '../../model/commentModel.dart';
 import '../base_Repo.dart';
 import 'package:http/http.dart' as http;
 
@@ -33,11 +35,24 @@ class LocalDB implements BaseRepositorie{
     throw UnimplementedError();
   }
 
+  // @override
+  // Future<MedicineModel> getSearch(String query, {String sort='',  int page=1,  int size=10}) {
+  //   // TODO: implement getSearch
+  //   throw UnimplementedError();
+  // }
+
   @override
-  Future<MedicineModel> getSearch(String query, {String sort='',  int page=1,  int size=10}) {
-    // TODO: implement getSearch
+  Future<Comment> addComment( String commentDesc,String medicineId) {
+    // TODO: implement addComment
     throw UnimplementedError();
   }
+
+  @override
+  Future<Comment> commentLike(String idItem, String idComment) {
+    // TODO: implement commentLike
+    throw UnimplementedError();
+  }
+
 
 
 }

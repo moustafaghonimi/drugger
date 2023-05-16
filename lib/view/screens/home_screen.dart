@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../constance/app_color.dart';
 import '../../constance/string_constant.dart';
 import '../../controller/home_controller.dart';
+import '../../service/services.dart';
 import '../widget/home_card.dart';
 import '../widget/notfication_widget.dart';
 
@@ -15,6 +16,7 @@ import '../widget/swipe_action.dart';
 
 class HomeScreen extends StatelessWidget {
   final HomeController controller = Get.put(HomeController());
+  MyServices myServices =Get.find();
 
   HomeScreen({Key? key}) : super(key: key);
 
@@ -22,6 +24,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+
         child: FetchMoreIndicator(
           onAction: ()async=> await controller.getMedicine(),
           child: SingleChildScrollView(
@@ -45,25 +48,16 @@ class HomeScreen extends StatelessWidget {
                                 .copyWith(color: AppColor.whiteColor),
                           ),
                           IconButton(
-                            //TODO Add notification
-                              onPressed: () {
-                                Get.bottomSheet(
-                                    Container(
-                                      margin: EdgeInsets.only(bottom: 100),
-                                      height: 100,
-                                      width: Get.width,
-                                      color: Colors.green,
-                                      child: Column(
-                                  children: [
-
-                                  ],
-                                ),
-                                    ));
-                              },
-                              icon: notification(notificationNumber: 1),
-
-                          ),
-                          // CachedNetworkImage(
+                  onPressed: () {
+                    if (myServices.sharedPreferences == null) {
+                      Get.offNamed(AppRoutes.homeScreen);
+                      return;
+                    }
+                    myServices.sharedPreferences.clear();
+                    Get.offNamed(AppRoutes.loginScreen);
+                  },
+                  icon: const Icon(Icons.logout,color: Colors.white,)),
+//                          // CachedNetworkImage(
                           //   width: 50,
                           //   height: 50,
                           //   imageUrl: ' controller.userData.data!.image',

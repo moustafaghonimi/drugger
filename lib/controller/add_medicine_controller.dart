@@ -77,7 +77,8 @@ class AddMedicineController extends GetxController {
     if (globalKey.currentState!.validate()) {
       isLoadingUpdate.value =true ;
       if (pickedFile != null) {
-       bool success = await UploadMedicineService.sendMedicineData(
+
+        bool success = await UploadMedicineService.sendMedicineData(
             nameController.text,
             selectedType.value,
             descriptionController.text,
@@ -88,6 +89,8 @@ class AddMedicineController extends GetxController {
         );
        if(success)
          {
+           print('2222222');
+
            Get.snackbar('Done', "Your Medicine has been published");
              nameController.clear();
              dateController.clear();

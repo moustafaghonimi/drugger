@@ -20,7 +20,6 @@ Widget homeCard({
     InkWell(
       onTap: () {
         Get.toNamed(AppRoutes.itemDetailes,arguments:medicineModel );
-
       },
       child: Card(
         color: bgColor,

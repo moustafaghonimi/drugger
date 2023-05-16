@@ -29,8 +29,8 @@ class SearchController extends GetxController {
             sort: changeSort(valueHightExp, valueLowExp)
                 ? "medicineExpireDate"
                 : "-medicineExpireDate",
-            page: 1 & 2 & 3,
-            size: 20)
+            page:1&2&3&4&5&6&7&8&9&10 ,
+            size: 10|20)
         .then(
             (searchResponces) => {searchList = searchResponces.medicines ?? []})
         .catchError(
