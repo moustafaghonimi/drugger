@@ -2,14 +2,11 @@ import 'package:drugger/constance/app_color.dart';
 import 'package:drugger/constance/string_constant.dart';
 import 'package:drugger/view/widget/custemText.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:like_button/like_button.dart';
 
 import '../../../controller/item_and_comment/itemDetails_controller.dart';
 import '../../../core/function/format_date_to_hour.dart';
-import 'creatComment.dart';
 
 class CommentDetails extends StatelessWidget {
   const CommentDetails({Key? key}) : super(key: key);
@@ -38,7 +35,7 @@ class CommentDetails extends StatelessWidget {
                             BoxShadow(
                               color: Colors.black.withOpacity(0.2),
                               blurRadius: 12,
-                              offset: Offset(0, 5),
+                              offset: const Offset(0, 5),
                             ),
                           ],
                         ),
@@ -85,7 +82,7 @@ class CommentDetails extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 10.0),
-                                  child: Container(
+                                  child: SizedBox(
                                     width: Get.width * .8,
                                     child: Text(
                                       controller.medicine?.comments[index]
@@ -154,11 +151,12 @@ class CommentDetails extends StatelessWidget {
                                         "love",
                                         style: TextStyle(color: color),
                                       );
-                                    } else
+                                    } else {
                                       result = Text(
                                         text,
                                         style: TextStyle(color: color),
                                       );
+                                    }
                                     return result;
                                   },
                                 ),

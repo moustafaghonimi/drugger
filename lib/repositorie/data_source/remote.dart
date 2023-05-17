@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:dio/dio.dart';
 import 'package:drugger/api/api_constant.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:http/http.dart' as http;
@@ -11,7 +10,6 @@ import '../../model/auth/respones/LoginResponse.dart';
 import '../../model/auth/respones/responseRegister.dart';
 import '../../model/commentModel.dart';
 import '../base_Repo.dart';
-import 'package:dio/dio.dart' as dio;
 
 class Remote implements BaseRepositorie {
   @override
