@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../view/screens/add_medicine.dart';
-import '../view/screens/cart_screen.dart';
+import '../view/screens/cart/cart_screen.dart';
 import '../view/screens/home_screen.dart';
+import '../view/screens/profile/user_pro.dart';
 import '../view/screens/profile_screen.dart';
-import '../view/screens/search/search_screen.dart';
 
 class BottomNavBarController extends GetxController {
   RxInt currentScreenIndex =0.obs;
@@ -28,7 +28,7 @@ class BottomNavBarController extends GetxController {
       }
       break;
       case 3:{
-        currentScreen=  ProfileScreen();
+        currentScreen=  user_profile();
       }
       break;
       default: {

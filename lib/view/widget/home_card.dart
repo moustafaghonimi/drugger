@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:drugger/constance/string_constant.dart';
+import 'package:drugger/controller/cart/cart_controller.dart';
 import 'package:drugger/core/function/format_date.dart';
 import 'package:drugger/routing/app_routs_name.dart';
 import 'package:fade_shimmer/fade_shimmer.dart';
@@ -16,11 +17,11 @@ Widget homeCard({
   double? imageW,
   double? imageH,
   required Medicine medicineModel,
-}) =>
-    InkWell(
+}) {
+  final CartController cartController = Get.find();
+  return InkWell(
       onTap: () {
         Get.toNamed(AppRoutes.itemDetailes,arguments:medicineModel );
-
       },
       child: Card(
         color: bgColor,
@@ -110,7 +111,11 @@ Widget homeCard({
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: IconButton(
-                          onPressed: () {},
+                          onPressed: ()async{
+                            print('Icon Pressed');
+                            cartController.addToCart(medicineModel.id, "1");
+
+                          },
                           icon: const Icon(
                             Icons.shopping_cart,
                             color: AppColor.primaryColor,
@@ -122,3 +127,4 @@ Widget homeCard({
         ),
       ),
     );
+}

@@ -85,7 +85,7 @@ class AppString {
   static const String name ="Name" ;
 
   //cart
-  // static const String cart ="Name" ;
+  static const String checkOut ="Check Out" ;
 
 
 

@@ -11,7 +11,7 @@ import '../widget/add_medicine_tff.dart';
 
 class AddMedicine extends StatelessWidget {
   AddMedicine({Key? key}) : super(key: key);
-  final AddMedicineController controller = Get.put(AddMedicineController());
+  final AddMedicineController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {

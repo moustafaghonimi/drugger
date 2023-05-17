@@ -2,7 +2,6 @@ import 'dart:convert';
 
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart'as http;
 class ApiHelper
 {
@@ -27,7 +26,7 @@ class ApiHelper
   {
     http.Response response=await http.post(
       Uri.parse(url),
-      body :body,
+      body :jsonEncode(body),
       headers: headers ,
     );
     if(response.statusCode==200||response.statusCode==201)
@@ -37,16 +36,29 @@ class ApiHelper
     }
     else
     {
+      print(response.body);
       throw Exception('there is a problem with status code ${response.statusCode}');
     }
   }
 
-  Future<Map<String,dynamic>> update({required String url,@required dynamic body})async
+  Future<Map<String,dynamic>> update({required String url, body ,Map<String,String> ? headers})async
   {
-    http.Response response=await http.put(Uri.parse(url),body: body,headers:{
-      'lang' :Get.locale!.languageCode,
-      // 'Authorization':token,
-    });
+    http.Response response=await http.patch(
+        Uri.parse(url),body: body ,headers: headers);
+    if(response.statusCode==200)
+    {
+      Map<String,dynamic> data =jsonDecode(response.body);
+      return data;
+    }
+    else
+    {
+      print(response.body);
+      throw Exception('there is a problem with status code ${response.statusCode}');
+    }
+  }
+
+  Future<Map<String,dynamic>> put({required url ,headers})async{
+    http.Response response= await http.put(Uri.parse(url),headers: headers);
     if(response.statusCode==200)
     {
       Map<String,dynamic> data =jsonDecode(response.body);
@@ -57,8 +69,6 @@ class ApiHelper
       throw Exception('there is a problem with status code ${response.statusCode}');
     }
   }
-
-
 }
 
 

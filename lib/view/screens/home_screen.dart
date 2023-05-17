@@ -1,10 +1,10 @@
 import 'package:drugger/routing/app_routs_name.dart';
-import 'package:drugger/view/screens/search/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../constance/app_color.dart';
 import '../../constance/string_constant.dart';
+import '../../controller/cart/cart_controller.dart';
 import '../../controller/home_controller.dart';
 import '../widget/home_card.dart';
 import '../widget/notfication_widget.dart';
@@ -14,7 +14,8 @@ import '../widget/serch_widget.dart';
 import '../widget/swipe_action.dart';
 
 class HomeScreen extends StatelessWidget {
-  final HomeController controller = Get.put(HomeController());
+  final HomeController controller = Get.find();
+  final CartController cartController = Get.find();
 
   HomeScreen({Key? key}) : super(key: key);
 
@@ -63,24 +64,6 @@ class HomeScreen extends StatelessWidget {
                               icon: notification(notificationNumber: 1),
 
                           ),
-                          // CachedNetworkImage(
-                          //   width: 50,
-                          //   height: 50,
-                          //   imageUrl: ' controller.userData.data!.image',
-                          //   imageBuilder: (context, imageProvider) => CircleAvatar(
-                          //     backgroundImage: imageProvider,
-                          //     backgroundColor: Theme.of(context).colorScheme.primary,
-                          //     radius: 60,
-                          //   ),
-                          //   errorWidget: (context, url, error) => CircleAvatar(
-                          //     radius: 60,
-                          //     child: Image.asset(
-                          //       "assets/images/profileimage.png",
-                          //       height: 50,
-                          //       width: 50,
-                          //     ),
-                          //   ),
-                          // ),
                         ],
                       ),
                       search(onTap: () {

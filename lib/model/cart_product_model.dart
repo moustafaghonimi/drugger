@@ -1,21 +1,20 @@
 class CartProductModel {
   String message;
+  int totalPrice;
   List<ProductList> productList;
 
   CartProductModel({
     required this.message,
+    required this.totalPrice,
     required this.productList,
   });
 
   factory CartProductModel.fromJson(Map<String, dynamic> json) => CartProductModel(
     message: json["message"],
-    productList: List<ProductList>.from(json["productList"].map((x) => ProductList.fromJson(x))),
+    totalPrice: json["totalPrice"]??0,
+    productList:json["productList"]==null? []:List<ProductList>.from(json["productList"].map((x) => ProductList.fromJson(x))),
   );
 
-  Map<String, dynamic> toJson() => {
-    "message": message,
-    "productList": List<dynamic>.from(productList.map((x) => x.toJson())),
-  };
 }
 
 class ProductList {
@@ -35,11 +34,6 @@ class ProductList {
     id: json["_id"],
   );
 
-  Map<String, dynamic> toJson() => {
-    "medicineId": medicineId.toJson(),
-    "quantity": quantity,
-    "_id": id,
-  };
 }
 
 class MedicineId {

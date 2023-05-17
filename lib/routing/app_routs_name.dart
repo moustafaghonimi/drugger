@@ -8,4 +8,5 @@ class AppRoutes {
   static const String otpByEmail = '/otpByEmail' ;
   static const String itemDetailes = '/ItemDetailes' ;
   static const String commentScreen = '/commentScreen' ;
+  static const String createOrder = '/createOrderScreen' ;
 }
