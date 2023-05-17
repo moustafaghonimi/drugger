@@ -52,6 +52,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 time: 200),
             centerTitle: true,
             actions: [
+
               IconButton(
                   onPressed: () {},
                   icon: const Icon(
@@ -89,7 +90,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                     )
                   : Expanded(
-                      child:ListView.builder(
+                      child:controller.search().isEmpty?const Text('This product Not Exist ',style:TextStyle( color:AppColor.onPrimaryColor,)):ListView.builder(
                         itemBuilder: (context, index) {
                           return SearchItems(
                               controller.search().elementAt(index));
@@ -97,7 +98,8 @@ class _SearchScreenState extends State<SearchScreen> {
                         itemCount: controller.search().length,
 
                       ),
-                    )
+                    ),
+              Text("We Fined:: ${controller.search().length.toString()} ::Product",style: const TextStyle(color: AppColor.onPrimaryColor),),
             ],
           )),
     );

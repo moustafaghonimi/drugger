@@ -31,7 +31,7 @@ class SearchItems extends StatelessWidget {
               // Add a shadow to the container
               BoxShadow(
                 color: Colors.black.withOpacity(0.2),
-                blurRadius: 5,
+                blurRadius: 7,
                 offset: Offset(0, 3),
               ),
             ],
@@ -41,7 +41,7 @@ class SearchItems extends StatelessWidget {
             )),
         width: double.infinity,
         // color: Colors.grey,
-        height: h * 0.17,
+        height: h * 0.19,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(

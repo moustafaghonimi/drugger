@@ -105,19 +105,6 @@ class ItemDetails extends StatelessWidget {
                         errorWidget: (context, url, error) =>
                             const Icon(Icons.error),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 300, bottom: 5),
-                        child: IconButton(
-                            onPressed: () {
-// controller.medicine?.wishUsers;
-                            },
-                            icon: controller.medicine?.wishUsers == []
-                                ? Icon(Icons.favorite_border)
-                                : Icon(
-                                    Icons.favorite,
-                                    color: Colors.red,
-                                  )),
-                      ),
                     ],
                   ),
                 ),
@@ -138,6 +125,9 @@ class ItemDetails extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 30),
                           )),
+                      SizedBox(
+                        height: h * .01,
+                      ),
                       CustemText(
                         Txt:
                             "${AppString.type} :  ${controller.medicine?.medicineType}",

@@ -20,7 +20,6 @@ class RegisterController extends GetxController{
   late TextEditingController age = TextEditingController();
   late TextEditingController phone = TextEditingController();
 
-
   RxBool passwordVisible = true.obs;
   RxBool cPasswordVisible = true.obs;
 
@@ -66,7 +65,6 @@ class RegisterController extends GetxController{
           age.text,
           phone.text
       );
-      print("11111111111111111111111111111111111" );
 
       print(response?.message );
 
