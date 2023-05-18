@@ -45,7 +45,7 @@ class ApiHelper
   {
     http.Response response=await http.patch(
         Uri.parse(url),body: body ,headers: headers);
-    if(response.statusCode==200)
+    if(response.statusCode==200||response.statusCode==201)
     {
       Map<String,dynamic> data =jsonDecode(response.body);
       return data;

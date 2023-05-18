@@ -13,6 +13,12 @@ import 'package:http_parser/http_parser.dart';
 
 
 class AddComment extends ApiHelper {
+
+  Map<String,String> headers = {
+    "Content-Type":"application/json",
+    'authorization' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTUxNDgyZGM1ZWZjODI4YmMyZTBmMCIsInVzZXJfbmFtZSI6Im1vc3RhZmEgZ2hvbmFpbWkiLCJlbWFpbCI6Im1vc3RhZmFnaG9uaW1pMjJAZ21haWwuY29tIiwiaWF0IjoxNjgzNDcwMzY2fQ.7mxTeEBB4hIfb8dvomQ1l4rAPFd8lAJU-cILJAGjn2E',
+  };
+
   static Future<bool> sendComment(List<Comment> comments) async {
     var request =
     http.MultipartRequest('POST', Uri.parse(ApiConstance.medicine));
@@ -38,4 +44,17 @@ class AddComment extends ApiHelper {
       return false;
     }
   }
+
+  Future<bool?> addLike(String itemId,String commId)async{
+    var response = await update(url: "${ApiConstance.baseURL}/medicine/$itemId/comments/$commId/like",
+      body: jsonEncode({
+      } ),headers: headers,);
+    print(response.toString());
+    if(response['message']=="Done")
+    {
+      return true ;
+    }
+    return false;
+  }
+
 }

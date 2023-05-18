@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../model/medicine_model.dart';
 import '../../repositorie/data_source/remote.dart';
+import '../../service/comment_services.dart';
 import '../../shared/componant/ui_utlis.dart';
 import '../../shared/network/remote/api_manger.dart';
 import '../home_controller.dart';
@@ -15,9 +16,39 @@ class CommentController extends GetxController {
   late GlobalKey<FormState> theKey;
   late final ItemDetailsController controller;
 
+  final AddComment addComments = AddComment();
+
   var repo = Repo(baseRepositorie: Remote());
 
-   addComment(context) async {
+  var isLike = false.obs;
+  var isDisliked = false.obs;
+
+  // void toggleLike() {
+  //   isLiked.value = !isLiked.value;
+  //   if (isLiked.value) {
+  //     isDisliked.value = false;
+  //   }
+  // }
+  Future<bool> onLikeButtonTapped(bool isLiked) async {
+    isLike.value=isLiked;
+    await addComments.addLike(controller.medicine!.id,"64623c0c5cf0a00b2bd23838");
+
+    Get.snackbar('liked',controller.medicine!.id);
+    return !isLiked;
+  }
+  //  addLike(String itemId,String commId, bool isLiked
+  // ) async {
+  //   await addComments.addLike(itemId,commId);
+  //
+  //   Get.snackbar(itemId,commId);
+  //   return !isLiked;
+  //
+  //  }
+
+
+
+
+  addComment(context) async {
     if (theKey.currentState!.validate()) {
       showloding('Loading...', context);
       try {

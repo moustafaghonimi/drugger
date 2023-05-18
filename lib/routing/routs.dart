@@ -10,6 +10,7 @@ import '../view/screens/item_detailes/item.dart';
 import '../view/screens/auth/login_screen.dart';
 import '../view/screens/auth/otp_email.dart';
 import '../view/screens/auth/reset_Password.dart';
+import '../view/screens/wishList/wishList_Screen.dart';
 import 'app_routs_name.dart';
 
 List<GetPage<dynamic>>? routes =[
@@ -23,4 +24,6 @@ List<GetPage<dynamic>>? routes =[
    GetPage(name:AppRoutes.itemDetailes , page: ()=> ItemDetails()),
    GetPage(name:AppRoutes.commentScreen , page: ()=> CommentScreen()),
    GetPage(name:AppRoutes.createOrder , page: ()=> CreateOrderScreen()),
+   GetPage(name:AppRoutes.createOrder , page: ()=> CreateOrderScreen()),
+   GetPage(name:AppRoutes.wishListScreen , page: ()=> WishListScreen()),
 ];

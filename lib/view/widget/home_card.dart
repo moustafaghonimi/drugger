@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../constance/app_color.dart';
+import '../../controller/wishList_controller/wishList_controller.dart';
 import '../../model/medicine_model.dart';
 
 Widget homeCard({
@@ -19,6 +20,7 @@ Widget homeCard({
   required Medicine medicineModel,
 }) {
   final CartController cartController = Get.find();
+  final WishListController wishListController = Get.put(WishListController());
   return InkWell(
       onTap: () {
         Get.toNamed(AppRoutes.itemDetailes,arguments:medicineModel );
@@ -120,7 +122,31 @@ Widget homeCard({
                             Icons.shopping_cart,
                             color: AppColor.primaryColor,
                           )),
-                    ))
+                    )),
+                Positioned(
+                  right: -5,
+                    top: -10,
+                    child:
+                    IconButton(
+                      icon: Obx(() => Icon(wishListController.isLiked.value ? Icons.favorite : Icons.favorite_border)),
+                      color: wishListController.isLiked.value==true ? Colors.black : Colors.red ,
+                      onPressed: () {
+                        wishListController.toggleLike();
+                        wishListController.addWishList(medicineModel.id);
+
+                      }
+                    ),
+                    // IconButton(
+                    //       onPressed: ()async{
+                    //         print('Icon Pressed');
+                    //         wishListController.addWishList(medicineModel.id);
+                    //
+                    //       },
+                    //       icon: const Icon(
+                    //         wishListController.added?Icons.favorite_border:Icons.favorite,
+                    //         color: AppColor.blackColor,
+                    //       )),
+                    )
               ],
             ),
           ),

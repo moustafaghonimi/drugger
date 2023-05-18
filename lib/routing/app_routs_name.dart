@@ -9,4 +9,5 @@ class AppRoutes {
   static const String itemDetailes = '/ItemDetailes' ;
   static const String commentScreen = '/commentScreen' ;
   static const String createOrder = '/createOrderScreen' ;
+  static const String wishListScreen = '/wishListScreen' ;
 }

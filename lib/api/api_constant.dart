@@ -14,6 +14,7 @@ class ApiConstance{
   static const String clearAllCart='$baseURL/cart/clearAll';
   static const String clearOneItem='$baseURL/cart/clearSelectItems';
   static const String createOrder='$baseURL/order/createOrder';
+  static const String getWishList='$baseURL/phar/userProfile';
 
 
 }

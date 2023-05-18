@@ -116,5 +116,8 @@ class AppString {
   static const String commentDesc ='Comment' ;
   static const String publish ='Publish at' ;
 
+  // WIshList
+  static const String favorite ='Favorite Screen' ;
+
 
 }

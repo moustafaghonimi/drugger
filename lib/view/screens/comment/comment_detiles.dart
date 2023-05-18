@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:like_button/like_button.dart';
 
+import '../../../controller/item_and_comment/comment_controller.dart';
 import '../../../controller/item_and_comment/itemDetails_controller.dart';
 import '../../../core/function/format_date_to_hour.dart';
 
@@ -14,6 +15,7 @@ class CommentDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ItemDetailsController controller = Get.put(ItemDetailsController());
+    final CommentController commentController = Get.put(CommentController());
 
     return Expanded(
       child: ListView.builder(
@@ -126,7 +128,9 @@ class CommentDetails extends StatelessWidget {
                                 // )
 
                                 LikeButton (
-                                  onTap: controller.onLikeButtonTapped,
+
+                                   onTap:commentController.onLikeButtonTapped,
+
 
                                   size: 30,
                                   circleColor:
@@ -136,6 +140,7 @@ class CommentDetails extends StatelessWidget {
                                     dotSecondaryColor: Color(0xff0099cc),
                                   ),
                                   likeBuilder: (bool isLiked) {
+                                    commentController.isLike.value=isLiked;
                                     return Icon(
                                       Icons.favorite,
                                       color: isLiked ? Colors.deepPurpleAccent : Colors.grey,

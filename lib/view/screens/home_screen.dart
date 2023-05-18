@@ -9,7 +9,6 @@ import '../../controller/home_controller.dart';
 import '../widget/home_card.dart';
 import '../widget/notfication_widget.dart';
 
-
 import '../widget/serch_widget.dart';
 import '../widget/swipe_action.dart';
 
@@ -24,7 +23,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: FetchMoreIndicator(
-          onAction: ()async=> await controller.getMedicine(),
+          onAction: () async => await controller.getMedicine(),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,24 +44,34 @@ class HomeScreen extends StatelessWidget {
                                 .titleLarge!
                                 .copyWith(color: AppColor.whiteColor),
                           ),
-                          IconButton(
-                            //TODO Add notification
-                              onPressed: () {
-                                Get.bottomSheet(
-                                    Container(
-                                      margin: EdgeInsets.only(bottom: 100),
-                                      height: 100,
-                                      width: Get.width,
-                                      color: Colors.green,
-                                      child: Column(
-                                  children: [
-
-                                  ],
+                          Row(
+                            children: [
+                              IconButton(
+                                //TODO Add notification
+                                onPressed: () {
+                                  Get.toNamed(AppRoutes.wishListScreen);
+                                },
+                                icon: Icon(
+                                  Icons.favorite,
+                                  color: Colors.red,
                                 ),
-                                    ));
-                              },
-                              icon: notification(notificationNumber: 1),
-
+                              ),
+                              IconButton(
+                                //TODO Add notification
+                                onPressed: () {
+                                  Get.bottomSheet(Container(
+                                    margin: EdgeInsets.only(bottom: 100),
+                                    height: 100,
+                                    width: Get.width,
+                                    color: Colors.green,
+                                    child: Column(
+                                      children: [],
+                                    ),
+                                  ));
+                                },
+                                icon: notification(notificationNumber: 1),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -75,42 +84,55 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                Obx(() =>Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                Obx(
+                  () => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Container(
                         height: 70,
                         margin: const EdgeInsets.symmetric(horizontal: 10),
                         child: ListView.separated(
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) => GestureDetector(
-                              onTap:() => controller.changeSelectedCategory(index),
-                              child: Container(
+                                  onTap: () =>
+                                      controller.changeSelectedCategory(index),
+                                  child: Container(
                                     height: 70,
                                     width: 70,
                                     decoration: BoxDecoration(
-                                      color:controller.selectedCategoryIndex.value==index ? AppColor.primaryColor:AppColor.primaryColor.withOpacity(.5),
+                                      color: controller.selectedCategoryIndex
+                                                  .value ==
+                                              index
+                                          ? AppColor.primaryColor
+                                          : AppColor.primaryColor
+                                              .withOpacity(.5),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Icon(Icons.ac_unit),
                                         Text(
                                           AppString.category[index],
-                                          style: Theme.of(context).textTheme.bodySmall!.copyWith(color: AppColor.whiteColor),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodySmall!
+                                              .copyWith(
+                                                  color: AppColor.whiteColor),
                                         ),
                                       ],
                                     ),
                                   ),
-                            ),
-                            separatorBuilder: (context, index) => const SizedBox(
+                                ),
+                            separatorBuilder: (context, index) =>
+                                const SizedBox(
                                   width: 10,
                                 ),
                             itemCount: AppString.category.length),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 15,top: 20),
+                        padding: const EdgeInsets.only(left: 15, top: 20),
                         child: Text(
                           AppString.mostPopularMedicine,
                           style: Theme.of(context).textTheme.titleLarge,
@@ -123,13 +145,12 @@ class HomeScreen extends StatelessWidget {
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         padding: const EdgeInsets.symmetric(horizontal: 10),
-                        itemBuilder: (context, index) =>
-                        homeCard(
-                            context: context,
-                            bgColor: Colors.white,
-                            medicineModel: controller.homeMedicines[index],
+                        itemBuilder: (context, index) => homeCard(
+                          context: context,
+                          bgColor: Colors.white,
+                          medicineModel: controller.homeMedicines[index],
                         ),
-                        itemCount:controller.homeMedicines.length,
+                        itemCount: controller.homeMedicines.length,
                       ),
                     ],
                   ),
