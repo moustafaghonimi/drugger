@@ -12,13 +12,13 @@ class RegisterController extends GetxController{
   late TextEditingController pharID = TextEditingController();
   late TextEditingController pharName = TextEditingController();
   late TextEditingController userName = TextEditingController();
-  late TextEditingController firstName = TextEditingController();
-  late TextEditingController lastName = TextEditingController();
+  // late TextEditingController firstName = TextEditingController();
+  // late TextEditingController lastName = TextEditingController();
   late TextEditingController email = TextEditingController();
   late TextEditingController password = TextEditingController();
   late TextEditingController cPassword = TextEditingController();
-  late TextEditingController age = TextEditingController();
-  late TextEditingController phone = TextEditingController();
+  // late TextEditingController age = TextEditingController();
+  // late TextEditingController phone = TextEditingController();
 
   RxBool passwordVisible = true.obs;
   RxBool cPasswordVisible = true.obs;
@@ -57,13 +57,13 @@ class RegisterController extends GetxController{
           pharID.text,
           pharName.text,
           userName.text,
-          firstName.text,
-          lastName.text,
+          // firstName.text,
+          // lastName.text,
           email.text,
           password.text,
-          cPassword.text,
-          age.text,
-          phone.text
+          cPassword.text
+          // age.text,
+          // phone.text
       );
 
       print(response?.message );
@@ -105,13 +105,13 @@ class RegisterController extends GetxController{
      pharID = TextEditingController();
      pharName = TextEditingController();
      userName = TextEditingController();
-     firstName = TextEditingController();
-     lastName = TextEditingController();
+     // firstName = TextEditingController();
+     // lastName = TextEditingController();
      email = TextEditingController();
      password = TextEditingController();
      cPassword = TextEditingController();
-     age = TextEditingController();
-     phone = TextEditingController();
+     // age = TextEditingController();
+     // phone = TextEditingController();
     super.onInit();
   }
 
@@ -120,13 +120,13 @@ class RegisterController extends GetxController{
      pharID.dispose();
      pharName.dispose();
      userName.dispose();
-     firstName.dispose();
-     lastName.dispose();
+     // firstName.dispose();
+     // lastName.dispose();
      email.dispose();
      password.dispose();
      cPassword.dispose();
-     age.dispose();
-     phone.dispose();
+     // age.dispose();
+     // phone.dispose();
     super.dispose();
   }
 }

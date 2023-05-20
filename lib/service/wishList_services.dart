@@ -25,7 +25,7 @@ class WishListService extends ApiHelper {
   // }
 
   Future<bool> addToWishList(String id)async{
-    var response = await update(url: "${ApiConstance.baseURL}/medicine/${id}/WishList",
+    var response = await update(url: "${ApiConstance.baseURL}/medicine/$id/WishList",
       body: jsonEncode({
       } ),headers: headers,);
     print(response.toString());
@@ -36,48 +36,16 @@ class WishListService extends ApiHelper {
     return false;
   }
 
-  Future<Map<String,dynamic>> addToCartService(String medicineID ,String quantity )async
-  {
-    var response =await post(url: ApiConstance.cart, body:
+  Future<bool> removeFromWishList(String id)async{
+    var response = await update(url: "${ApiConstance.baseURL}/medicine/${id}/removeWishList",
+      body: jsonEncode({
+      } ),headers: headers,);
+    print(response.toString());
+    if(response['message']=="success")
     {
-      "medicineId":medicineID.toString(),
-      "quantity":quantity.toString()
-    },
-
-        headers: {
-          "Content-Type":"application/json",
-          "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWZhNmFkNzkyN2FlN2NmN2E3ZTgwNSIsInVzZXJfbmFtZSI6Im1vc3RhZmExMiIsImVtYWlsIjoibW9zdGFmYXNhbWlyMTIzMUBnbWFpbC5jb20iLCJpYXQiOjE2ODQxOTk3ODR9.VpGRAhU9Lp9yZCTJqfh7LEAtDkqvWSHHTTCVRHZ8lc8"
-        }
-    );
-    return response ;
-  }
-
-  Future clearAllCartService()async{
-    return await put(url: ApiConstance.clearAllCart,headers:{
-      "Content-Type":"application/json",
-      "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWZhNmFkNzkyN2FlN2NmN2E3ZTgwNSIsInVzZXJfbmFtZSI6Im1vc3RhZmExMiIsImVtYWlsIjoibW9zdGFmYXNhbWlyMTIzMUBnbWFpbC5jb20iLCJpYXQiOjE2ODQxOTk3ODR9.VpGRAhU9Lp9yZCTJqfh7LEAtDkqvWSHHTTCVRHZ8lc8"
-    } );
-  }
-
-  Future clearOneItemService(String medicineID)async{
-    return await update(url:ApiConstance.clearOneItem,headers: {
-      "Content-Type":"application/json",
-      "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWZhNmFkNzkyN2FlN2NmN2E3ZTgwNSIsInVzZXJfbmFtZSI6Im1vc3RhZmExMiIsImVtYWlsIjoibW9zdGFmYXNhbWlyMTIzMUBnbWFpbC5jb20iLCJpYXQiOjE2ODQxOTk3ODR9.VpGRAhU9Lp9yZCTJqfh7LEAtDkqvWSHHTTCVRHZ8lc8"
-    },body: jsonEncode({
-      "medicineId":medicineID
-    } ) );
-  }
-
-  Future createOrderService(String address,List<String> phone,String paymentType )async
-  {
-    return await post(url: ApiConstance.createOrder, body: {
-      "address":address,
-      "phone":phone,
-      "paymentType":paymentType
-    },headers:{
-      "Content-Type":"application/json",
-      "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWZhNmFkNzkyN2FlN2NmN2E3ZTgwNSIsInVzZXJfbmFtZSI6Im1vc3RhZmExMiIsImVtYWlsIjoibW9zdGFmYXNhbWlyMTIzMUBnbWFpbC5jb20iLCJpYXQiOjE2ODQxOTk3ODR9.VpGRAhU9Lp9yZCTJqfh7LEAtDkqvWSHHTTCVRHZ8lc8"
-    } );
+      return true ;
+    }
+    return false;
   }
 
 

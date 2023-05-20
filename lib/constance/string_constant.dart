@@ -118,6 +118,7 @@ class AppString {
 
   // WIshList
   static const String favorite ='Favorite Screen' ;
+  static const String addFavorite ='ADD Your Favorite Drug' ;
 
 
 }

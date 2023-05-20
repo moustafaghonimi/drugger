@@ -1,4 +1,5 @@
 import 'package:drugger/constance/string_constant.dart';
+import 'package:drugger/controller/wishList_controller/wishList_controller.dart';
 import 'package:drugger/model/medicine_model.dart';
 import 'package:get/get.dart';
 
@@ -6,6 +7,7 @@ import '../service/all_medicine_serices.dart';
 
 class HomeController extends GetxController
 {
+  WishListController controller=Get.put(WishListController());
   RxBool isLoading = false.obs;
   RxBool isLoadingMore = false.obs ;
   late MedicineModel medicineModel;
@@ -53,5 +55,7 @@ class HomeController extends GetxController
     isLoading(true);
     getMedicine();
     super.onInit();
+    controller.loadList();
+
   }
 }

@@ -51,14 +51,15 @@ class Remote implements BaseRepositorie {
       String pharId,
       String pharName,
       String userName,
-      String firstName,
-      String lastName,
+      // String firstName,
+      // String lastName,
       String email,
       String password,
-      String cPassword,
-      String age,
-      String phone) async {
-    Uri url = Uri.https(ApiConstance.base_Url, ApiConstance.registerUrl);
+      String cPassword
+      // String age,
+      // String phone
+      ) async {
+    Uri url = Uri.https(ApiConstance.baseUrlRegister, ApiConstance.registerUrl);
 
     final response = await http.post(
       url,
@@ -69,13 +70,13 @@ class Remote implements BaseRepositorie {
         "pharId": pharId,
         "pharName": pharName,
         "userName": userName,
-        "firstName": firstName,
-        "lastName": lastName,
+        // "firstName": firstName,
+        // "lastName": lastName,
         "email": email,
         "password": password,
         "cPassword": cPassword,
-        "age": age,
-        "phone": phone
+        // "age": age,
+        // "phone": phone
       }),
     );
     return ResponseRegister.fromJson(jsonDecode(response.body));

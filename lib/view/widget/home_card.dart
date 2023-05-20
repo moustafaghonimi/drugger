@@ -128,24 +128,15 @@ Widget homeCard({
                     top: -10,
                     child:
                     IconButton(
-                      icon: Obx(() => Icon(wishListController.isLiked.value ? Icons.favorite : Icons.favorite_border)),
-                      color: wishListController.isLiked.value==true ? Colors.black : Colors.red ,
+                      icon: Obx(() => Icon(wishListController.localList.value.contains(medicineModel.id)&&wishListController.localList.value.isNotEmpty ? Icons.favorite : Icons.favorite_border)),
+                      color: wishListController.localList.value.contains(medicineModel.id) ? Colors.red : Colors.black ,
                       onPressed: () {
                         wishListController.toggleLike();
                         wishListController.addWishList(medicineModel.id);
 
                       }
                     ),
-                    // IconButton(
-                    //       onPressed: ()async{
-                    //         print('Icon Pressed');
-                    //         wishListController.addWishList(medicineModel.id);
-                    //
-                    //       },
-                    //       icon: const Icon(
-                    //         wishListController.added?Icons.favorite_border:Icons.favorite,
-                    //         color: AppColor.blackColor,
-                    //       )),
+
                     )
               ],
             ),

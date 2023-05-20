@@ -4,6 +4,7 @@ import 'package:drugger/view/screens/search/search_screen.dart';
 import 'package:get/get.dart';
 
 import '../binding/home_binding.dart';
+import '../splash.dart';
 import '../view/screens/cart/create_order_screen.dart';
 import '../view/screens/comment/comment_screen.dart';
 import '../view/screens/item_detailes/item.dart';
@@ -26,4 +27,5 @@ List<GetPage<dynamic>>? routes =[
    GetPage(name:AppRoutes.createOrder , page: ()=> CreateOrderScreen()),
    GetPage(name:AppRoutes.createOrder , page: ()=> CreateOrderScreen()),
    GetPage(name:AppRoutes.wishListScreen , page: ()=> WishListScreen()),
+   GetPage(name:AppRoutes.splashScreen , page: ()=> MyCustomSplashScreen()),
 ];

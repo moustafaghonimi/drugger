@@ -9,7 +9,7 @@ Widget search({
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(
-          top: 30,
+          top: 15,
         ),
         padding: const EdgeInsets.only(
           left: 7,

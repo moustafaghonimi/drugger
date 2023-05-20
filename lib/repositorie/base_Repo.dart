@@ -8,13 +8,14 @@ abstract class BaseRepositorie {
       String pharId,
       String pharName,
       String userName,
-      String firstName,
-      String lastName,
+      // String firstName,
+      // String lastName,
       String email,
       String password,
       String cPassword,
-      String age,
-      String phone);
+      // String age,
+      // String phone
+      );
 
   Future<LoginResponse> login(String id, String Email, String Password);
 

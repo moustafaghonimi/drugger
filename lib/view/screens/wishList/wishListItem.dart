@@ -20,159 +20,165 @@ Widget wishListItem({
   double? imageH,
   required Wishlist wishItem,
 }) {
-  final WishListController wishController = Get.find();
+  final WishListController wishListController = Get.put(WishListController());
   var h = MediaQuery.of(context).size.height;
   var w = MediaQuery.of(context).size.width;
-  return InkWell(
-      onTap: () {
-        Get.toNamed(AppRoutes.itemDetailes, arguments: wishItem);
-      },
-      child: Expanded(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            decoration: BoxDecoration(
-                color: Colors.white,
-                // Set the background color
-                borderRadius: BorderRadius.circular(12),
-                // Round the corners of the container
-                boxShadow: [
-                  // Add a shadow to the container
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 7,
-                    offset: Offset(0, 3),
-                  ),
-                ],
-                border: Border.all(
-                  color: Colors.black12, // Set the color of the border
-                  width: 2, // Set the width of the border
-                )),
-            width: double.infinity,
-            // color: Colors.grey,
-            height: h * 0.19,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-
-                          Get.toNamed(AppRoutes.itemDetailes,arguments:wishItem );
-
-
-                        },
-                        child: ClipRRect(
-                            borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                            child: Container(
-                              width: w * 0.9,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CachedNetworkImage(
-                                    imageUrl: '${wishItem.medicineImage}',
-                                    width: w * .25,
-                                    height: h * 0.12,
-                                    imageBuilder: (context, imageProvider) =>
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: imageProvider,
-                                              fit: BoxFit.fill,
-                                            ),
-                                          ),
+  return Stack(
+    children: [
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.white,
+              // Set the background color
+              borderRadius: BorderRadius.circular(12),
+              // Round the corners of the container
+              boxShadow: [
+                // Add a shadow to the container
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  blurRadius: 7,
+                  offset: Offset(0, 3),
+                ),
+              ],
+              border: Border.all(
+                color: Colors.black12, // Set the color of the border
+                width: 2, // Set the width of the border
+              )),
+          width: double.infinity,
+          // color: Colors.grey,
+          height: h * 0.20,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    ClipRRect(
+                        borderRadius:
+                        const BorderRadius.all(Radius.circular(10)),
+                        child: Container(
+                          width: w * 0.9,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CachedNetworkImage(
+                                imageUrl: '${wishItem.medicineImage}',
+                                width: w * .25,
+                                height: h * 0.12,
+                                imageBuilder: (context, imageProvider) =>
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: imageProvider,
+                                          fit: BoxFit.fill,
                                         ),
-                                    placeholder: (context, url) => const Center(
-                                        child: CircularProgressIndicator()),
-                                    errorWidget: (context, url, error) =>
-                                    const Icon(Icons.error),
-                                  ),
-                                  const SizedBox(
-                                    height: 3,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 12.0),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                            width: w * .5,
-                                            child: CustemText(
-                                              Txt: wishItem.medicineName,
-                                              color: AppColor.blackColor,
-                                              size: 22,
-                                            )),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        CustemText(
-                                          Txt:
-                                          "${AppString.type} :  ${wishItem.medicineType}",
-                                          color: Colors.grey,
-                                          size: 12,
-                                        ),
-                                        const SizedBox(
-                                          height: 6,
-                                        ),
-                                        CustemText(
-                                          Txt:
-                                          " ${AppString.type} : ${wishItem.medicineStock.toString()} piece",
-                                          maxLines: 2,
-                                          color: AppColor.onPrimaryColor,
-                                          size: 14,
-                                        ),
-                                        const SizedBox(
-                                          height: 6,
-                                        ),
-                                        CustemText(
-                                          Txt:
-                                          "Exp : ${wishItem.medicineExpireDate}",
-                                          color: AppColor.onPrimaryColor,
-                                          size: 14,
-                                        ),
-
-                                        const SizedBox(
-                                          height: 6,
-                                        ),
-                                        SizedBox(
-                                          width: w * 0.58,
-                                          child: CustemText(
-                                            Txt:
-                                            "${AppString.description}: ${wishItem.medicineDesc}",
-                                            maxLines: 1,
-                                            color: AppColor.blackColor,
-                                            size: 14,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 4,
-                                        ),
-                                        CustemText(
-                                          Txt:
-                                          "Prise : ${wishItem.medicineUnitPrice.toString()}",
-                                          color: AppColor.onPrimaryColor,
-                                          size: 20,
-                                        ),
-                                      ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                placeholder: (context, url) => const Center(
+                                    child: CircularProgressIndicator()),
+                                errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
                               ),
-                            )),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                              const SizedBox(
+                                height: 3,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12.0),
+                                child: Column(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                        width: w * .5,
+                                        child: CustemText(
+                                          Txt: wishItem.medicineName,
+                                          color: AppColor.blackColor,
+                                          size: 22,
+                                        )),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    CustemText(
+                                      Txt:
+                                      "${AppString.type} :  ${wishItem.medicineType}",
+                                      color: Colors.grey,
+                                      size: 12,
+                                    ),
+                                    const SizedBox(
+                                      height: 6,
+                                    ),
+                                    CustemText(
+                                      Txt:
+                                      " ${AppString.type} : ${wishItem.medicineStock.toString()} piece",
+                                      maxLines: 2,
+                                      color: AppColor.onPrimaryColor,
+                                      size: 14,
+                                    ),
+                                    const SizedBox(
+                                      height: 6,
+                                    ),
+                                    CustemText(
+                                      Txt:
+                                      "Exp : ${(wishItem.medicineExpireDate).substring(0,10)}",
+                                      color: AppColor.onPrimaryColor,
+                                      size: 14,
+                                    ),
+
+                                    const SizedBox(
+                                      height: 6,
+                                    ),
+                                    SizedBox(
+                                      width: w * 0.58,
+                                      child: CustemText(
+                                        Txt:
+                                        "${AppString.description}: ${wishItem.medicineDesc}",
+                                        maxLines: 1,
+                                        color: AppColor.blackColor,
+                                        size: 14,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 4,
+                                    ),
+                                    CustemText(
+                                      Txt:
+                                      "Prise : ${wishItem.medicineUnitPrice.toString()}",
+                                      color: AppColor.onPrimaryColor,
+                                      size: 20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        )),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
-      ));
+      ),
+      Positioned(
+        right: 10,
+        top: 6,
+        child:
+        IconButton(
+            icon: Obx(() => Icon(wishListController.localList.contains(wishItem.sid) ? Icons.favorite : Icons.favorite_border)),
+            color: wishListController.localList.contains(wishItem.sid) ? Colors.red : Colors.black ,
+            onPressed: () {
+              wishListController.toggleLike();
+              wishListController.removeWishList(wishItem.sid);
+
+            }
+        ),
+
+      )
+
+    ],
+  );
 }

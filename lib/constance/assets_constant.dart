@@ -11,6 +11,8 @@ class AppAssets {
   static const String otpImage ='$baseurl/otpImage.jpg';
   static const String resetPassImage ='$baseurl/reset_pass.jpg';
   static const String searchImage ='$baseurl/search_image.png';
-  static const String logoSplash ='$baseurl/logo.png';
+  static const String logoSplash ='$baseurl/logoDrugger.png';
+  static const String wishEmpty ='$baseurl/wishEmpty.jpg';
+
 
 }

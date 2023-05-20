@@ -84,76 +84,76 @@ final RegisterController controller = Get.put(RegisterController());
                         validate: (value) {
 
                           return validateInput(value, 'username');
-                          
+
                           // if (value == null || value.trim().isEmpty) {
                           //   return 'user name Required';
                           // }
                         },
                       ),
-                      CustemTextFormFiled(
-                        label:AppString.firstName,
-                        hint:AppString.firstName,
-                        icons: IconButton(
-                          icon: const Icon(Icons.looks_one),
-                          onPressed: () {},
-                        ),
-                        controllers: controller.firstName,
-                        validate: (value) {
-                          return validateInput(value, '');
-                          
-                          // if (value == null || value.trim().isEmpty) {
-                          //   return 'First name Required';
-                          // }
-                        },
-                      ),
-                      CustemTextFormFiled(
-                        label:AppString.lastName,
-                        icons: IconButton(
-                          icon: const Icon(Icons.looks_two),
-                          onPressed: () {},
-                        ),
-                        controllers: controller.lastName,
-                        validate: (value) {
-                          return validateInput(value, '');
-                          
-
-                          // if (value == null || value.trim().isEmpty) {
-                          //   return 'Last name Required';
-                          // }
-                        },
-                      ),
-                      CustemTextFormFiled(
-                        label:AppString.phone,
-                        icons: IconButton(
-                          icon: const Icon(Icons.phone),
-                          onPressed: () {},
-                        ),
-                        keybordtype: TextInputType.phone,
-                        controllers: controller.phone,
-                        validate: (value) {
-                          return validateInput(value, 'phone');
-                          // if (value == null || value.trim().isEmpty) {
-                          //   return 'Village name Required';
-                          // }
-                          
-                        },
-                      ),
-                      CustemTextFormFiled(
-                         label: AppString.age,
-                        icons: IconButton(
-                          icon: const Icon(Icons.numbers),
-                          onPressed: () {},
-                        ),
-                        keybordtype: TextInputType.number,
-                        controllers: controller.age,
-                        validate: (value) {
-                           return validateInput(value, '');
-                           
-                        //   if (value == null || value.trim().isEmpty) {
-                        //     return 'Your Age Required';
-                        //   }
-                        },
-                      ),
+                      // CustemTextFormFiled(
+                      //   label:AppString.firstName,
+                      //   hint:AppString.firstName,
+                      //   icons: IconButton(
+                      //     icon: const Icon(Icons.looks_one),
+                      //     onPressed: () {},
+                      //   ),
+                      //   controllers: controller.firstName,
+                      //   validate: (value) {
+                      //     return validateInput(value, '');
+                      //
+                      //     // if (value == null || value.trim().isEmpty) {
+                      //     //   return 'First name Required';
+                      //     // }
+                      //   },
+                      // ),
+                      // CustemTextFormFiled(
+                      //   label:AppString.lastName,
+                      //   icons: IconButton(
+                      //     icon: const Icon(Icons.looks_two),
+                      //     onPressed: () {},
+                      //   ),
+                      //   controllers: controller.lastName,
+                      //   validate: (value) {
+                      //     return validateInput(value, '');
+                      //
+                      //
+                      //     // if (value == null || value.trim().isEmpty) {
+                      //     //   return 'Last name Required';
+                      //     // }
+                      //   },
+                      // ),
+                      // CustemTextFormFiled(
+                      //   label:AppString.phone,
+                      //   icons: IconButton(
+                      //     icon: const Icon(Icons.phone),
+                      //     onPressed: () {},
+                      //   ),
+                      //   keybordtype: TextInputType.phone,
+                      //   controllers: controller.phone,
+                      //   validate: (value) {
+                      //     return validateInput(value, 'phone');
+                      //     // if (value == null || value.trim().isEmpty) {
+                      //     //   return 'Village name Required';
+                      //     // }
+                      //
+                      //   },
+                      // ),
+                      // CustemTextFormFiled(
+                      //    label: AppString.age,
+                      //   icons: IconButton(
+                      //     icon: const Icon(Icons.numbers),
+                      //     onPressed: () {},
+                      //   ),
+                      //   keybordtype: TextInputType.number,
+                      //   controllers: controller.age,
+                      //   validate: (value) {
+                      //      return validateInput(value, '');
+                      //
+                      //   //   if (value == null || value.trim().isEmpty) {
+                      //   //     return 'Your Age Required';
+                      //   //   }
+                      //   },
+                      // ),
                       CustemTextFormFiled(
                         label: AppString.email,
                         icons: IconButton(

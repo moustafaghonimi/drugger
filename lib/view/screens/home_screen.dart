@@ -50,8 +50,9 @@ class HomeScreen extends StatelessWidget {
                                 //TODO Add notification
                                 onPressed: () {
                                   Get.toNamed(AppRoutes.wishListScreen);
+
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.favorite,
                                   color: Colors.red,
                                 ),

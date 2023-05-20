@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../constance/app_color.dart';
+import '../../../controller/cart/cart_controller.dart';
 import '../../../controller/item_and_comment/itemDetails_controller.dart';
+import '../../../controller/wishList_controller/wishList_controller.dart';
 import '../../../core/function/format_date.dart';
 import '../../../routing/app_routs_name.dart';
 import '../../widget/custemAnimetedTxt.dart';
@@ -19,6 +21,8 @@ class ItemDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ItemDetailsController controller = Get.put(ItemDetailsController());
+    final WishListController wishListController = Get.put(WishListController());
+    final CartController cartController = Get.find();
 
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
@@ -32,7 +36,10 @@ class ItemDetails extends StatelessWidget {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                cartController.addToCart(controller.medicine!.id, "1");
+                Get.snackbar('message', '${controller.medicine?.medicineName} is Added To Cart');
+              },
               icon: const Icon(
                 Icons.shopping_cart,
                 color: Colors.black,
@@ -68,7 +75,10 @@ class ItemDetails extends StatelessWidget {
               label: AppString.addToCartLabel,
               tooltip: AppString.addToCart,
               icon: customButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    cartController.addToCart(controller.medicine!.id, "1");
+Get.snackbar('message', '${controller.medicine?.medicineName} is Added To Cart');
+                  },
                   text: AppString.addToCart,
                   buttonColor: AppColor.primaryColor,
                   buttonRedias: 20,
@@ -87,6 +97,22 @@ class ItemDetails extends StatelessWidget {
                       context, controller.medicine),
                   child: Stack(
                     children: [
+                      Positioned(
+                        right: -5,
+                        top: -10,
+                        child:
+                        IconButton(
+                            icon: Obx(() => Icon(wishListController.localList.contains(controller.medicine?.id)&&wishListController.localList.isNotEmpty ? Icons.favorite : Icons.favorite_border)),
+                            color: wishListController.localList.contains(controller.medicine?.id) ? Colors.red : Colors.black ,
+                            onPressed: () {
+                              wishListController.toggleLike();
+                              wishListController.addWishList(controller.medicine!.id);
+
+                            }
+                        ),
+
+                      ),
+
                       CachedNetworkImage(
                         imageUrl: '${controller.medicine?.medicineImage}',
                         width: w * 1,

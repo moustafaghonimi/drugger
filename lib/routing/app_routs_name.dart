@@ -10,4 +10,5 @@ class AppRoutes {
   static const String commentScreen = '/commentScreen' ;
   static const String createOrder = '/createOrderScreen' ;
   static const String wishListScreen = '/wishListScreen' ;
+  static const String splashScreen = '/splashScreen' ;
 }
