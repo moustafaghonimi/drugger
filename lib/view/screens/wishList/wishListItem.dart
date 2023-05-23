@@ -18,7 +18,10 @@ Widget wishListItem({
   Color bgColor = Colors.grey,
   double? imageW,
   double? imageH,
+  required int index ,
   required Wishlist wishItem,
+  required WishListController controller ,
+
 }) {
   final WishListController wishListController = Get.put(WishListController());
   var h = MediaQuery.of(context).size.height;

@@ -70,9 +70,11 @@ class CreateComment extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                   // String comment = controller.commentController.text;
-                  return controller.addComment(context);
+                   controller.addComment(context);
+                   Get.back();
 
-                },
+
+              },
               child: const Text('Submit'),
             )
           ],

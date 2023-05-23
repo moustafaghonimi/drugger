@@ -28,7 +28,7 @@ class WishListController extends GetxController {
 
   void loadList() async {
     final prefs = await SharedPreferences.getInstance();
-    localList.value = prefs.getStringList('localList') ?? [];
+    localList.value = prefs.getStringList('localList2') ?? [];
   }
 
   void removeFromList(int index) async {
@@ -38,39 +38,26 @@ class WishListController extends GetxController {
 
   void _saveList() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList('localList', localList.toList());
+    await prefs.setStringList('localList2', localList.toList());
   }
 
   addWishList(String id) async {
+    var response = await wishListService.addToWishList(id);
+    localList.add(id);
+    _saveList();
+    await getWishListData();
+    update();
 
-favorite.clear();
-await wishListService.addToWishList(id);
-    for (var item in wishListModel.result.wishlist) {
-      {
-        favorite.add(item);
-        localList.add(id);
-        _saveList();
-        update();
-        Get.snackbar('message', id);
-      }
-
-
-    }
   }
-  // removeWishList(String id) async {
-  //   await wishListService.removeFromWishList(id);
-  //   wishList.remove(id);
-  //   _saveList();
-  //   Get.snackbar('message removed', id);
-  // }
+
 
   removeWishList(String medicineID) async {
     localList.remove(medicineID);
 
     Wishlist wishlist=favorite.where((element) => medicineID==element.sid).first;
-
-    var response = await wishListService.removeFromWishList(medicineID);
     favorite.remove(wishlist);
+    var response = await wishListService.removeFromWishList(medicineID);
+
 
     _saveList();
       Get.snackbar('message removed', medicineID);

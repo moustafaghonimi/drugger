@@ -15,6 +15,7 @@ class WishListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final WishListController controller = Get.put(WishListController());
+//    controller.getWishListData();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -43,6 +44,8 @@ class WishListScreen extends StatelessWidget {
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) => wishListItem(
                           context: context,
+                          index: index,
+                          controller: controller,
                           wishItem: controller.favorite[index],
                         ),
                         itemCount: controller.favorite.length,

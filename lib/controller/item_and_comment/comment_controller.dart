@@ -20,30 +20,18 @@ class CommentController extends GetxController {
 
   var repo = Repo(baseRepositorie: Remote());
 
-  var isLike = false.obs;
+  // var isLike = false.obs;
   var isDisliked = false.obs;
 
-  // void toggleLike() {
-  //   isLiked.value = !isLiked.value;
-  //   if (isLiked.value) {
-  //     isDisliked.value = false;
-  //   }
-  // }
+
   Future<bool> onLikeButtonTapped(bool isLiked) async {
-    isLike.value=isLiked;
+    // isLike.value=isLiked;
     await addComments.addLike(controller.medicine!.id,"64623c0c5cf0a00b2bd23838");
 
     Get.snackbar('liked',controller.medicine!.id);
     return !isLiked;
   }
-  //  addLike(String itemId,String commId, bool isLiked
-  // ) async {
-  //   await addComments.addLike(itemId,commId);
-  //
-  //   Get.snackbar(itemId,commId);
-  //   return !isLiked;
-  //
-  //  }
+
 
 
 
@@ -71,14 +59,13 @@ class CommentController extends GetxController {
       }
     }
 
-
+commentController.clear();
    }
 
   @override
   void onInit() {
     controller= Get.put(ItemDetailsController());
-    // medicine;
-    // Get.snackbar('message', medicine!.id);
+
     update();
     commentController = TextEditingController();
     theKey = GlobalKey<FormState>();
