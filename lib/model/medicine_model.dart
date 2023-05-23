@@ -15,11 +15,6 @@ class MedicineModel {
     medicines: List<Medicine>.from(json["medicines"].map((x) => Medicine.fromJson(x))),
   );
 
-  Map<String, dynamic> toJson() => {
-    "message": message,
-    "medicineCount": medicineCount,
-    "medicines": List<dynamic>.from(medicines.map((x) => x.toJson())),
-  };
 }
 
 class Medicine {
@@ -81,25 +76,6 @@ class Medicine {
     comments: List<Comment>.from(json["comments"].map((x) => Comment.fromJson(x))),
   );
 
-  Map<String, dynamic> toJson() => {
-    "_id": id,
-    "medicineName": medicineName,
-    "medicineSlug": medicineSlug,
-    "customId": customId,
-    "medicineImage": medicineImage,
-    "medicineType": medicineType,
-    "medicineExpireDate": medicineExpireDate.toIso8601String(),
-    "medicineDesc": medicineDesc,
-    "medicineStock": medicineStock,
-    "medicineUnitPrice": medicineUnitPrice,
-    "wishUsers": List<dynamic>.from(wishUsers.map((x) => x)),
-    "createdBy": createdBy,
-    "isDeleted": isDeleted,
-    "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
-    "__v": v,
-    "comments": List<dynamic>.from(comments.map((x) => x.toJson())),
-  };
 }
 
 class Comment {
@@ -109,7 +85,7 @@ class Comment {
   String commentDesc;
   List<CreatedBy> like;
   List<dynamic> unlike;
-  List<Reply> reply;
+  List<Comment> reply;
   bool isDeleted;
   DateTime createdAt;
   DateTime updatedAt;
@@ -136,107 +112,36 @@ class Comment {
     commentDesc: json["commentDesc"],
     like: List<CreatedBy>.from(json["like"].map((x) => CreatedBy.fromJson(x))),
     unlike: List<dynamic>.from(json["unlike"].map((x) => x)),
-    reply: List<Reply>.from(json["reply"].map((x) => Reply.fromJson(x))),
+    reply: List<Comment>.from(json["reply"].map((x) => Comment.fromJson(x))),
     isDeleted: json["isDeleted"],
     createdAt: DateTime.parse(json["createdAt"]),
     updatedAt: DateTime.parse(json["updatedAt"]),
     v: json["__v"],
   );
-
-  Map<String, dynamic> toJson() => {
-    "_id": id,
-    "createdBy": createdBy.toJson(),
-    "medicineId": medicineId,
-    "commentDesc": commentDesc,
-    "like": List<dynamic>.from(like.map((x) => x.toJson())),
-    "unlike": List<dynamic>.from(unlike.map((x) => x)),
-    "reply": List<dynamic>.from(reply.map((x) => x.toJson())),
-    "isDeleted": isDeleted,
-    "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
-    "__v": v,
-  };
 }
 
 class CreatedBy {
-  String? id;
-  String? pharName;
-  String? email;
-  String? phone;
+  String id;
+  String pharName;
+  String email;
+  String phone;
+  String? profileUrl;
 
   CreatedBy({
-    this.id,
-    this.pharName,
-    this.email,
-    this.phone,
+    required this.id,
+    required this.pharName,
+    required this.email,
+    required this.phone,
+    this.profileUrl,
   });
 
   factory CreatedBy.fromJson(Map<String, dynamic> json) => CreatedBy(
     id: json["_id"],
-    pharName: json["pharName"],
+    pharName:json["pharName"],
     email: json["email"],
     phone: json["phone"],
+    profileUrl: json["profileURL"],
   );
 
-  Map<String, dynamic> toJson() => {
-    "_id": id,
-    "pharName": pharName,
-    "email": email,
-    "phone": phone,
-  };
 }
-class Reply {
-  String id;
-  String createdBy;
-  String medicineId;
-  String commentDesc;
-  List<dynamic> like;
-  List<dynamic> unlike;
-  List<dynamic> reply;
-  bool isDeleted;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
 
-  Reply({
-    required this.id,
-    required this.createdBy,
-    required this.medicineId,
-    required this.commentDesc,
-    required this.like,
-    required this.unlike,
-    required this.reply,
-    required this.isDeleted,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.v,
-  });
-
-  factory Reply.fromJson(Map<String, dynamic> json) => Reply(
-    id: json["_id"],
-    createdBy: json["createdBy"],
-    medicineId: json["medicineId"],
-    commentDesc: json["commentDesc"],
-    like: List<dynamic>.from(json["like"].map((x) => x)),
-    unlike: List<dynamic>.from(json["unlike"].map((x) => x)),
-    reply: List<dynamic>.from(json["reply"].map((x) => x)),
-    isDeleted: json["isDeleted"],
-    createdAt: DateTime.parse(json["createdAt"]),
-    updatedAt: DateTime.parse(json["updatedAt"]),
-    v: json["__v"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "_id": id,
-    "createdBy": createdBy,
-    "medicineId": medicineId,
-    "commentDesc": commentDesc,
-    "like": List<dynamic>.from(like.map((x) => x)),
-    "unlike": List<dynamic>.from(unlike.map((x) => x)),
-    "reply": List<dynamic>.from(reply.map((x) => x)),
-    "isDeleted": isDeleted,
-    "createdAt": createdAt.toIso8601String(),
-    "updatedAt": updatedAt.toIso8601String(),
-    "__v": v,
-  };
-}

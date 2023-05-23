@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../constance/app_color.dart';
 import '../../../constance/string_constant.dart';
@@ -104,7 +105,20 @@ class CartScreen extends StatelessWidget {
                     const Divider(endIndent: 20, indent: 20),
                     InkWell(
                       onTap: (){
-                        Get.toNamed(AppRoutes.createOrder );
+                        if(controller.cartList.isEmpty)
+                          {
+                            Fluttertoast.showToast(
+                              msg: "Cart Is Empty",
+                              toastLength: Toast.LENGTH_SHORT,
+                              textColor: AppColor.whiteColor,
+                              backgroundColor: Colors.black,
+                              gravity: ToastGravity.BOTTOM,
+                            );
+                          }
+                        else
+                          {
+                            Get.toNamed(AppRoutes.createOrder );
+                          }
                       },
                       child: Container(
                         width: double.infinity,

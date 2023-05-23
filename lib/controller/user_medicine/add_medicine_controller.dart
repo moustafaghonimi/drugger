@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../core/function/format_date.dart';
-import '../service/upload_medicine_service.dart';
+import '../../core/function/format_date.dart';
+import '../../model/medicine_model.dart';
+import '../../service/user_medicines_service.dart';
 
 class AddMedicineController extends GetxController {
   late TextEditingController nameController;
@@ -21,6 +22,8 @@ class AddMedicineController extends GetxController {
 
   final selectedType = ''.obs;
   RxBool isLoadingUpdate =false.obs ;
+
+  Medicine ? medicine ;
 
   List<String> type = [
     "Capsules",
@@ -78,7 +81,7 @@ class AddMedicineController extends GetxController {
       isLoadingUpdate.value =true ;
       if (pickedFile != null) {
 
-        bool success = await UploadMedicineService.sendMedicineData(
+        bool success = await UserMedicineService.sendMedicineData(
             nameController.text,
             selectedType.value,
             descriptionController.text,
@@ -108,8 +111,18 @@ class AddMedicineController extends GetxController {
     }
   }
 
+  void assignData(Medicine medicine)
+  {
+    nameController.text =medicine.medicineName ;
+    dateController.text = medicine.medicineExpireDate.toString()  ;
+    stockController.text = medicine.medicineStock.toString() ;
+    priceController.text = medicine.medicineUnitPrice.toString() ;
+    descriptionController.text = medicine.medicineDesc ;
+    update();
+  }
   @override
   void onInit() {
+    // print(Get.arguments['editData']);
     dateController = TextEditingController();
     nameController = TextEditingController();
     stockController = TextEditingController();
@@ -117,8 +130,13 @@ class AddMedicineController extends GetxController {
     descriptionController = TextEditingController();
     globalKey = GlobalKey<FormState>();
     pickedFile = null;
+    // Get.arguments['editData'] ==null?null:assignData(Get.arguments['editData']) ;
     super.onInit();
   }
+
+
+
+
   @override
   void dispose() {
     nameController.dispose();

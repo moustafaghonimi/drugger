@@ -1,8 +1,10 @@
 import 'package:drugger/routing/app_routs_name.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
+import '../../api/api_constant.dart';
 import '../../repositorie/data_source/remote.dart';
 import '../../service/services.dart';
 import '../../shared/componant/ui_utlis.dart';
@@ -65,15 +67,17 @@ class LoginController extends GetxController{
                 });
             Get.snackbar('message', response!.message.toString());
             return;
+
           }
           if (authorization?.token != null ) {
             Get.snackbar('token', authorization?.token??"");
           }
-          myServices.sharedPreferences.setString("token", authorization?.token ?? "token null");
+          myServices.sharedPreferences.setString("token", authorization!.token!);
+          token = authorization.token! ;
           // print(sharedPref);
           // showMasage(context, response.token??'', 'ok', () {Get.back(); });
 
-          //TODO
+
           Get.offNamed(AppRoutes.homeScreen);
 
         } catch (e) {
@@ -92,5 +96,11 @@ class LoginController extends GetxController{
     passwordController.dispose();
     pharmacyIDController.dispose();
     super.dispose();
+  }
+
+  @override
+  void onReady() {
+    FlutterNativeSplash.remove();
+    super.onReady();
   }
 }

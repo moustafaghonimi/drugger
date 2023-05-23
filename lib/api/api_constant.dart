@@ -7,7 +7,7 @@ class ApiConstance{
   static const String forgetPasswordOTPUrl='/auth/forgetPasswordOTP'; //-/
   static const String searchUrl='/medicine';
   // static const String allMedicine='auth/forgetPasswordOTP';
-  static const String baseURL='https://graduationdeployment.vercel.app';
+  static const String baseURL='https://depv3.vercel.app';
   static const String medicine='$baseURL/medicine';
   static const String getAllCart='$baseURL/cart/getAllProducts';
   static const String cart='$baseURL/cart/';
@@ -16,6 +16,12 @@ class ApiConstance{
   static const String clearOneItem='$baseURL/cart/clearSelectItems';
   static const String createOrder='$baseURL/order/createOrder';
   static const String getWishList='$baseURL/phar/userProfile';
+  static const String userMedicines='$baseURL/medicine/usermedicine';
+  static const String userProfile='$baseURL/phar/userProfile';
+  static const String userOrder='$baseURL/order/userOrder';
 
 
 }
+
+
+String token = "";

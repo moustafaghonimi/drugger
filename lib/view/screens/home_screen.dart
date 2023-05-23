@@ -7,7 +7,6 @@ import '../../constance/string_constant.dart';
 import '../../controller/cart/cart_controller.dart';
 import '../../controller/home_controller.dart';
 import '../widget/home_card.dart';
-import '../widget/notfication_widget.dart';
 
 import '../widget/serch_widget.dart';
 import '../widget/swipe_action.dart';
@@ -34,6 +33,7 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
                   child: Column(
                     children: [
+                      SizedBox(height: 10,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -44,38 +44,38 @@ class HomeScreen extends StatelessWidget {
                                 .titleLarge!
                                 .copyWith(color: AppColor.whiteColor),
                           ),
-                          Row(
-                            children: [
-                              IconButton(
-                                //TODO Add notification
-                                onPressed: () {
-                                  Get.toNamed(AppRoutes.wishListScreen);
-
-                                },
-                                icon: const Icon(
-                                  Icons.favorite,
-                                  color: Colors.red,
-                                ),
-                              ),
-                              IconButton(
-                                //TODO Add notification
-                                onPressed: () {
-                                  Get.bottomSheet(Container(
-                                    margin: EdgeInsets.only(bottom: 100),
-                                    height: 100,
-                                    width: Get.width,
-                                    color: Colors.green,
-                                    child: Column(
-                                      children: [],
-                                    ),
-                                  ));
-                                },
-                                icon: notification(notificationNumber: 1),
-                              ),
-                            ],
-                          ),
+                          // Row(
+                          //   children: [
+                          //     IconButton(
+                          //       //TODO Add notification
+                          //       onPressed: () {
+                          //         Get.toNamed(AppRoutes.wishListScreen);
+                          //       },
+                          //       icon: Icon(
+                          //         Icons.favorite,
+                          //         color: Colors.red,
+                          //       ),
+                          //     ),
+                          //     IconButton(
+                          //       //TODO Add notification
+                          //       onPressed: () {
+                          //         Get.bottomSheet(Container(
+                          //           margin: EdgeInsets.only(bottom: 100),
+                          //           height: 100,
+                          //           width: Get.width,
+                          //           color: Colors.green,
+                          //           child: Column(
+                          //             children: [],
+                          //           ),
+                          //         ));
+                          //       },
+                          //       icon: notification(notificationNumber: 1),
+                          //     ),
+                          //   ],
+                          // ),
                         ],
                       ),
+                      SizedBox(height: 12 ,),
                       search(onTap: () {
                         Get.toNamed(AppRoutes.searchScreen);
                       }),

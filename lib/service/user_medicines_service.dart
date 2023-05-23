@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 
 
-class UploadMedicineService extends ApiHelper {
+class UserMedicineService extends ApiHelper {
   static Future<bool> sendMedicineData(String name,String type, String description,
       String expireDate, String stock, String price, XFile photo) async {
     var request =
@@ -40,7 +40,6 @@ class UploadMedicineService extends ApiHelper {
     );
 
 
-
     try {
       var response = await request.send();
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -55,5 +54,12 @@ class UploadMedicineService extends ApiHelper {
       Get.snackbar("ERROR", e.toString());
       return false;
     }
+  }
+
+   Future getUserMedicineService ()async
+  {
+    return await get(url: ApiConstance.userMedicines,headers: {
+      "authorization" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWZhNmFkNzkyN2FlN2NmN2E3ZTgwNSIsImVtYWlsIjoibW9zdGFmYXNhbWlyMTIzMUBnbWFpbC5jb20iLCJpYXQiOjE2ODQ0MjMyNzV9.G9mDz9nKWNPAIblMvyLsa7EZ-PYWjunxBNX6i7988o4"
+    });
   }
 }

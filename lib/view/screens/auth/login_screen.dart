@@ -41,22 +41,6 @@ class LoginScreen extends StatelessWidget {
                     size: 30,
                     fontWeight: FontWeight.bold),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(top: 35.0, left: 8, right: 8),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //     children: [
-              //       Image.asset(
-              //         AppAssets.appBarLoginIcon,
-              //         width: 60,
-              //       ),
-              //       Image.asset(
-              //         AppAssets.cartIcon,
-              //         width: 60,
-              //       ),
-              //     ],
-              //   ),
-              // ),
               SizedBox(
                 height: h * .02,
               ),
@@ -164,7 +148,7 @@ class LoginScreen extends StatelessWidget {
                                       child: InkWell(
                                         hoverColor: AppColor.primaryColor,
                                         onTap: () {
-                                          //TODO change getto
+                                          //TODO change get to
                                           Get.toNamed(AppRoutes.otpByEmail);
                                         },
                                         child: const Text(AppString.forgotPassword,

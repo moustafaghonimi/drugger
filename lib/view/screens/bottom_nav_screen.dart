@@ -25,12 +25,17 @@ class BottomNavScreen extends StatelessWidget {
             ),
 
             SalomonBottomBarItem(
-              icon: const Icon(Icons.add),
+              icon: const Icon(Icons.favorite),
+              title: const Text(AppString.wishList),
+            ),
+
+            SalomonBottomBarItem(
+              icon: const Icon(Icons.medical_services),
               title: const Text(AppString.medicine),
             ),
 
             SalomonBottomBarItem(
-              icon: const Icon(Icons.shopping_cart_outlined),
+              icon: const Icon(Icons.shopping_cart),
               title: const Text(AppString.cart),
             ),
 

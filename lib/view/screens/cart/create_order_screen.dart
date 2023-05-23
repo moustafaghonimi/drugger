@@ -1,5 +1,6 @@
 import 'package:drugger/controller/cart/checkout_controller.dart';
 import 'package:drugger/core/function/validate.dart';
+import 'package:fade_shimmer/fade_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +18,7 @@ class CreateOrderScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColor.primaryColor,
         centerTitle: true,
-        key:const Key("AppBarCreateOrderScreen") ,
+        key: const Key("AppBarCreateOrderScreen"),
         title: Text(
           AppString.checkOut,
           style: Theme.of(context)
@@ -29,124 +30,149 @@ class CreateOrderScreen extends StatelessWidget {
       body: Form(
         key: controller.globalKey,
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 30,
-              ),
-              addMedicineTFF(
-                context: context,
-                label: "Phone",
-                controller: controller.phone,
-                validator: (value) => validateInput(value, 'phone'),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              GetBuilder<CheckOutController>(
-                builder: (controller) => addMedicineTFF(
-                  context: context,
-                  label: "Address",
-                  controller: controller.address,
-                  validator:(value) => validateInput(value, 'address'),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              GetBuilder<CheckOutController>(builder: (controller) => Row(
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: ()=>controller.changePayment("Cash"),
-                      child: Container(
-                        margin: const EdgeInsets.only(left: 20, right: 5),
-                        height: Get.height * .25,
-                        decoration: BoxDecoration(
-                            color: controller.payment != "Cash"?Colors.white38:Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 3,
-                                blurRadius: 5,
-                                offset: const Offset(0, 3),
-                              ),
-                            ]),
-                        child: Column(
+          child: Obx(
+            () => controller.isLoading.value
+                ? ListView.builder(
+              shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) => Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                      child: FadeShimmer.round(
+                        size: 100,
+                        fadeTheme: FadeTheme.light,
+                      ),
+                    ),
+                    itemCount: 5,
+                  )
+                : Column(
+                    children: [
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      GetBuilder<CheckOutController>(
+                        builder: (controller) => addMedicineTFF(
+                          context: context,
+                          label: "Phone",
+                          controller: controller.phone,
+                          validator: (value) => validateInput(value, 'phone'),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      GetBuilder<CheckOutController>(
+                        builder: (controller) => addMedicineTFF(
+                          context: context,
+                          label: "Address",
+                          controller: controller.address,
+                          validator: (value) => validateInput(value, 'address'),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      GetBuilder<CheckOutController>(
+                        builder: (controller) => Row(
                           children: [
-                            Image(
-                              width: double.infinity,
-                              height: Get.height * .15,
-                              image:
-                              const AssetImage("assets/images/payment/cash.png"),
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () => controller.changePayment("Cash"),
+                                child: Container(
+                                  margin:
+                                      const EdgeInsets.only(left: 20, right: 5),
+                                  height: Get.height * .25,
+                                  decoration: BoxDecoration(
+                                      color: controller.payment != "Cash"
+                                          ? Colors.white38
+                                          : Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 3,
+                                          blurRadius: 5,
+                                          offset: const Offset(0, 3),
+                                        ),
+                                      ]),
+                                  child: Column(
+                                    children: [
+                                      Image(
+                                        width: double.infinity,
+                                        height: Get.height * .15,
+                                        image: const AssetImage(
+                                            "assets/images/payment/cash.png"),
+                                      ),
+                                      const Spacer(),
+                                      const Text("Cash"),
+                                      const Spacer(),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             ),
-                            const Spacer(),
-                            const Text("Cash"),
-                            const Spacer(),
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () => controller.changePayment("Card"),
+                                child: Container(
+                                  margin:
+                                      const EdgeInsets.only(left: 5, right: 20),
+                                  height: Get.height * .25,
+                                  decoration: BoxDecoration(
+                                      color: controller.payment != "Card"
+                                          ? Colors.white38
+                                          : Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 3,
+                                          blurRadius: 5,
+                                          offset: const Offset(0, 3),
+                                        ),
+                                      ]),
+                                  child: Column(
+                                    children: [
+                                      Image(
+                                        width: double.infinity,
+                                        height: Get.height * .15,
+                                        image: const AssetImage(
+                                            "assets/images/payment/credit-card.png"),
+                                      ),
+                                      const Spacer(),
+                                      const Text("Card"),
+                                      const Spacer(),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
-                    ),
-                  ),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: ()=>controller.changePayment("Card"),
-                      child: Container(
-                        margin: const EdgeInsets.only(left: 5, right: 20),
-                        height: Get.height * .25,
-                        decoration: BoxDecoration(
-                            color: controller.payment != "Card"?Colors.white38:Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 3,
-                                blurRadius: 5,
-                                offset: const Offset(0, 3),
-                              ),
-                            ]),
-                        child: Column(
-                          children: [
-                            Image(
-                              width: double.infinity,
-                              height: Get.height * .15,
-                              image: const AssetImage(
-                                  "assets/images/payment/credit-card.png"),
-                            ),
-                            const Spacer(),
-                            const Text("Card"),
-                            const Spacer(),
-                          ],
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          controller.confirm();
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: Get.height * .06,
+                          alignment: Alignment.center,
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: AppColor.primaryColor,
+                          ),
+                          child: Text(
+                            "Confirm",
+                            style: Theme.of(context).textTheme.displayMedium,
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),),
-              const SizedBox(
-                height: 30,
-              ),
-              InkWell(
-                onTap: () {
-                  controller.confirm();
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: Get.height * .06,
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: AppColor.primaryColor,
-                  ),
-                  child: Text(
-                    "Confirm",
-                    style: Theme.of(context).textTheme.displayMedium,
-                  ),
-                ),
-              ),
-            ],
           ),
         ),
       ),
