@@ -50,7 +50,7 @@ Widget wishListItem({
               )),
           width: double.infinity,
           // color: Colors.grey,
-          height: h * 0.20,
+          height: h * 0.22,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
