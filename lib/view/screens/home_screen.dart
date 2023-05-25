@@ -113,7 +113,7 @@ class HomeScreen extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        index==0?Icon(Icons.add_circle,):Image.asset(
+                                        index==0?Icon(Icons.public,):Image.asset(
                                             controller.filterIcons[index]!,
                                           width: 27,
                                         ),

@@ -1,6 +1,6 @@
 class ApiConstance{
   // static const String base_Url='druggerappdeployment-106koerzx-abanoubmamdouhhanna.vercel.app';
-  static const String baseUrlRegister='depv3.vercel.app';
+  static const String baseUrlRegister='depv4-new.vercel.app';
   static const String registerUrl='/auth/register';
   static const String loginUrl='/auth/login';
   static const String resetPasswordOTPUrl='/auth/resetPasswordOTP';

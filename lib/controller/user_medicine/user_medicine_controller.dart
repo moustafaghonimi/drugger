@@ -9,7 +9,7 @@ class UserMedicineController extends GetxController
 
   RxList<Medicine> userMedicineList = <Medicine>[].obs;
   getUserMedicine()async{
-   var response =   await userMedicineService.getUserMedicineService();
+   var response = await userMedicineService.getUserMedicineService();
    if(response['message']=="success")
      {
        for(var item in response['Usermedicines'])
