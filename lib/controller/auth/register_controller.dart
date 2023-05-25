@@ -11,9 +11,9 @@ class RegisterController extends GetxController{
   late GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late TextEditingController pharID = TextEditingController();
   late TextEditingController pharName = TextEditingController();
-  late TextEditingController userName = TextEditingController();
-  // late TextEditingController firstName = TextEditingController();
-  // late TextEditingController lastName = TextEditingController();
+  // late TextEditingController userName = TextEditingController();
+  late TextEditingController firstName = TextEditingController();
+  late TextEditingController lastName = TextEditingController();
   late TextEditingController email = TextEditingController();
   late TextEditingController password = TextEditingController();
   late TextEditingController cPassword = TextEditingController();
@@ -56,9 +56,9 @@ class RegisterController extends GetxController{
       var response = await repo.baseRepositorie?.register(
           pharID.text,
           pharName.text,
-          userName.text,
-          // firstName.text,
-          // lastName.text,
+          // userName.text,
+          firstName.text,
+          lastName.text,
           email.text,
           password.text,
           cPassword.text
@@ -104,9 +104,9 @@ class RegisterController extends GetxController{
      formKey = GlobalKey<FormState>();
      pharID = TextEditingController();
      pharName = TextEditingController();
-     userName = TextEditingController();
-     // firstName = TextEditingController();
-     // lastName = TextEditingController();
+     // userName = TextEditingController();
+     firstName = TextEditingController();
+     lastName = TextEditingController();
      email = TextEditingController();
      password = TextEditingController();
      cPassword = TextEditingController();
@@ -119,9 +119,9 @@ class RegisterController extends GetxController{
   void dispose() {
      pharID.dispose();
      pharName.dispose();
-     userName.dispose();
-     // firstName.dispose();
-     // lastName.dispose();
+     // userName.dispose();
+     firstName.dispose();
+     lastName.dispose();
      email.dispose();
      password.dispose();
      cPassword.dispose();

@@ -21,27 +21,27 @@ class BottomNavScreen extends StatelessWidget {
           items: [
             SalomonBottomBarItem(
               icon: const Icon(Icons.home),
-              title: const Text(AppString.home),
+              title: const Text(AppString.home,style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
             ),
 
             SalomonBottomBarItem(
               icon: const Icon(Icons.favorite),
-              title: const Text(AppString.wishList),
+              title: const Text(AppString.wishList,style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
             ),
 
             SalomonBottomBarItem(
               icon: const Icon(Icons.medical_services),
-              title: const Text(AppString.medicine),
+              title: const Text(AppString.medicine,style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
             ),
 
             SalomonBottomBarItem(
               icon: const Icon(Icons.shopping_cart),
-              title: const Text(AppString.cart),
+              title: const Text(AppString.cart,style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
             ),
 
             SalomonBottomBarItem(
               icon: const Icon(Icons.person),
-              title: const Text(AppString.profile),
+              title: const Text(AppString.profile,style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
             ),
           ],
         ),

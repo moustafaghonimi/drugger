@@ -6,6 +6,7 @@ import '../view/screens/profile/profile_screen.dart';
 import '../view/screens/cart/cart_screen.dart';
 import '../view/screens/home_screen.dart';
 import '../view/screens/user_medicine/user_medicine_screen.dart';
+import '../view/screens/wishList/wishList_Screen.dart';
 
 class BottomNavBarController extends GetxController {
   RxInt currentScreenIndex =0.obs;
@@ -21,7 +22,7 @@ class BottomNavBarController extends GetxController {
       break;
       case 1: {
         //TODO change the screen to wishlist
-        currentScreen=UserMedicineScreen();
+        currentScreen= WishListScreen();
       }
       break;
       case 2: {

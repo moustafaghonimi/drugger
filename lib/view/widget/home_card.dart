@@ -20,7 +20,7 @@ Widget homeCard({
   required Medicine medicineModel,
 }) {
   final CartController cartController = Get.find();
-  // final WishListController wishListController = Get.put(WishListController());
+  final WishListController wishListController = Get.put(WishListController());
   return InkWell(
       onTap: () {
         Get.toNamed(AppRoutes.itemDetails,arguments:medicineModel );
@@ -123,6 +123,21 @@ Widget homeCard({
                             color: AppColor.primaryColor,
                           )),
                     )),
+
+            Positioned(
+              right: -15,
+              top: -13,
+              child:
+              IconButton(
+                  icon: Obx(() => Icon(wishListController.localList.value.contains(medicineModel.id)&&wishListController.localList.value.isNotEmpty ? Icons.favorite : Icons.favorite_border)),
+                  color: wishListController.localList.value.contains(medicineModel.id) ? Colors.red : Colors.black ,
+                  onPressed: () {
+                    wishListController.toggleLike();
+                    wishListController.addWishList(medicineModel.id);
+
+                  }
+              ),
+            ),
               ],
             ),
           ),

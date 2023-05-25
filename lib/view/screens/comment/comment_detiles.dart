@@ -140,7 +140,7 @@ class CommentDetails extends StatelessWidget {
                                     dotSecondaryColor: Color(0xff0099cc),
                                   ),
                                   likeBuilder: (bool isLiked) {
-                                    isLiked= controller.medicine!.comments[index].like.isNotEmpty;
+                                    // isLiked= controller.medicine!.comments[index].like.isNotEmpty;
                                     return Icon(
                                       Icons.favorite,
                                       color: isLiked ? Colors.deepPurpleAccent : Colors.grey,

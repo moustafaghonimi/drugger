@@ -70,7 +70,7 @@ class LoginController extends GetxController{
 
           }
           if (authorization?.token != null ) {
-            Get.snackbar('token', authorization?.token??"");
+            // Get.snackbar('token', authorization?.token??"");
           }
           myServices.sharedPreferences.setString("token", authorization!.token!);
           token = authorization.token! ;

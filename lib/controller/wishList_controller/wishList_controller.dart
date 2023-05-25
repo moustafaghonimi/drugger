@@ -28,7 +28,7 @@ class WishListController extends GetxController {
 
   void loadList() async {
     final prefs = await SharedPreferences.getInstance();
-    localList.value = prefs.getStringList('localList2') ?? [];
+    localList.value = prefs.getStringList('localList3') ?? [];
   }
 
   void removeFromList(int index) async {
@@ -38,11 +38,13 @@ class WishListController extends GetxController {
 
   void _saveList() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList('localList2', localList.toList());
+    await prefs.setStringList('localList3', localList.toList());
   }
 
   addWishList(String id) async {
     var response = await wishListService.addToWishList(id);
+    Get.snackbar('message removed', id);
+
     localList.add(id);
     _saveList();
     await getWishListData();
@@ -60,18 +62,18 @@ class WishListController extends GetxController {
 
 
     _saveList();
-      Get.snackbar('message removed', medicineID);
+    Get.snackbar('message removed', medicineID);
     update();
   }
 
   getWishListData() async {
     favorite.clear();
-    // wishListModel = await wishListService.getWishList();
+    wishListModel = await wishListService.getWishList();
     for(var item in wishListModel.result.wishlist){
-       {
-          favorite.add(item);
-          _saveList();
-          update();
+      {
+        favorite.add(item);
+        _saveList();
+        update();
 
       }
     }

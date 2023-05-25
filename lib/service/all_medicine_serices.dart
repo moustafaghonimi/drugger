@@ -5,7 +5,7 @@ import 'package:drugger/model/medicine_model.dart';
 class GetAllMedicine extends ApiHelper
 {
    Future getMedicine({required int page ,required int size})async{
-   MedicineModel medicine = MedicineModel.fromJson(await get(url: "${ApiConstance.baseURL}/medicine?page=$page&size=$size"));
+   MedicineModel medicine = MedicineModel.fromJson(await get(url: "${ApiConstance.baseURLMed}/medicine?page=$page&size=$size"));
    return medicine ;
   }
 }

@@ -2,14 +2,15 @@ import '../model/auth/respones/ForgetPasswordOTP_Response.dart';
 import '../model/auth/respones/LoginResponse.dart';
 import '../model/auth/respones/responseRegister.dart';
 import '../model/commentModel.dart';
+import '../model/resetPasswordModel.dart';
 
 abstract class BaseRepositorie {
   Future<ResponseRegister> register(
       String pharId,
       String pharName,
-      String userName,
-      // String firstName,
-      // String lastName,
+      // String userName,
+      String firstName,
+      String lastName,
       String email,
       String password,
       String cPassword,
@@ -32,4 +33,10 @@ abstract class BaseRepositorie {
 
   Future<Comment> addComment(String commentDesc, String medicineId);
   Future<Comment> commentLike(String idItem, String idComment);
+
+  Future<ResetPasswordModel> resetProfilePassword(
+      String oldPass,
+      String newPass,
+
+      );
 }

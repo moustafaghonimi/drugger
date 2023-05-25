@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:drugger/api/api_constant.dart';
+import 'package:drugger/model/resetPasswordModel.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:http/http.dart' as http;
 
@@ -50,9 +51,9 @@ class Remote implements BaseRepositorie {
   Future<ResponseRegister> register(
       String pharId,
       String pharName,
-      String userName,
-      // String firstName,
-      // String lastName,
+      // String userName,
+      String firstName,
+      String lastName,
       String email,
       String password,
       String cPassword
@@ -69,9 +70,9 @@ class Remote implements BaseRepositorie {
       body: jsonEncode(<String, String>{
         "pharId": pharId,
         "pharName": pharName,
-        "userName": userName,
-        // "firstName": firstName,
-        // "lastName": lastName,
+        // "userName": userName,
+        "firstName": firstName,
+        "lastName": lastName,
         "email": email,
         "password": password,
         "cPassword": cPassword,
@@ -89,7 +90,7 @@ class Remote implements BaseRepositorie {
       String otp, String pass, String email) async {
     Uri url = Uri.https(
       ApiConstance.baseUrlRegister,
-      '/auth/resetPasswordOTP/${email}',
+      '/auth/resetPasswordOTP',
     );
     final response = await http.post(
       url,
@@ -97,12 +98,14 @@ class Remote implements BaseRepositorie {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
+        "email":email,
         "otp": otp,
         "password": pass,
       }),
     );
     return ForgetPasswordOtpResponse.fromJson(jsonDecode(response.body));
   }
+
 
   // @override
   // Future<MedicineModel> getSearch(String query,
@@ -131,8 +134,7 @@ class Remote implements BaseRepositorie {
       url,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
-        'authorization':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTUxNDgyZGM1ZWZjODI4YmMyZTBmMCIsInVzZXJfbmFtZSI6Im1vc3RhZmEgZ2hvbmFpbWkiLCJlbWFpbCI6Im1vc3RhZmFnaG9uaW1pMjJAZ21haWwuY29tIiwiaWF0IjoxNjgzOTg5ODUxfQ.r2Tk_hndm2s2YmrFaD87GhTsnu96OJDL-UMjmiB1FvQ',
+        'authorization':token,
       },
       body: jsonEncode(<String, String>{
         "commentDesc": commentDesc,
@@ -149,8 +151,7 @@ class Remote implements BaseRepositorie {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Host': '<calculated when request is sent>',
-        'authorization':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTUxNDgyZGM1ZWZjODI4YmMyZTBmMCIsInVzZXJfbmFtZSI6Im1vc3RhZmEgZ2hvbmFpbWkiLCJlbWFpbCI6Im1vc3RhZmFnaG9uaW1pMjJAZ21haWwuY29tIiwiaWF0IjoxNjgzOTg5ODUxfQ.r2Tk_hndm2s2YmrFaD87GhTsnu96OJDL-UMjmiB1FvQ',
+        'authorization':token,
       },
       body: jsonEncode(<String, String>{}),
     );
@@ -163,6 +164,25 @@ class Remote implements BaseRepositorie {
       // then throw an exception.
       throw Exception();
 
+  }
+
+  @override
+  Future<ResetPasswordModel> resetProfilePassword(String oldPass, String newPass) async {
+    Uri url = Uri.https(
+      "depv3.vercel.app/phar/changePassword",
+    );
+    final response = await http.patch(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        "authorization":token
+      },
+      body: jsonEncode(<String, String>{
+        "oldPassword":oldPass,
+        "newPassword":newPass
+      }),
+    );
+    return ResetPasswordModel.fromJson(jsonDecode(response.body));
   }
 // Future<Comment> commentLike(String idItem, String idComment) async {
 //   Uri url = Uri.https("graduationdeployment.vercel.app/medicine/64487b857e32e628eefab3e7/comments/64623808c1de3548fb75280f/like");

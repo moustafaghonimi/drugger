@@ -16,7 +16,7 @@ class AddComment extends ApiHelper {
 
   Map<String,String> headers = {
     "Content-Type":"application/json",
-    'authorization' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTUxNDgyZGM1ZWZjODI4YmMyZTBmMCIsInVzZXJfbmFtZSI6Im1vc3RhZmEgZ2hvbmFpbWkiLCJlbWFpbCI6Im1vc3RhZmFnaG9uaW1pMjJAZ21haWwuY29tIiwiaWF0IjoxNjgzNDcwMzY2fQ.7mxTeEBB4hIfb8dvomQ1l4rAPFd8lAJU-cILJAGjn2E',
+    'authorization' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NmRkYjVlYjQxY2RlODNlNzg4NjU0MCIsImVtYWlsIjoibW9zdGFmYWdob25pbWkyMkBnbWFpbC5jb20iLCJpYXQiOjE2ODQ5MjE4MjJ9.N1LYjVxBPD5M-GPOVrTlvUB9sP70flIZe2zgO6w_2IQ',
   };
 
   static Future<bool> sendComment(List<Comment> comments) async {
@@ -24,7 +24,7 @@ class AddComment extends ApiHelper {
     http.MultipartRequest('POST', Uri.parse(ApiConstance.medicine));
 
     request.headers.addAll({
-      "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTUxNDgyZGM1ZWZjODI4YmMyZTBmMCIsInVzZXJfbmFtZSI6Im1vc3RhZmEgZ2hvbmFpbWkiLCJlbWFpbCI6Im1vc3RhZmFnaG9uaW1pMjJAZ21haWwuY29tIiwiaWF0IjoxNjgzNDcwMzY2fQ.7mxTeEBB4hIfb8dvomQ1l4rAPFd8lAJU-cILJAGjn2E"
+      "authorization": token
     });
     jsonEncode(<dynamic>[comments]);
 

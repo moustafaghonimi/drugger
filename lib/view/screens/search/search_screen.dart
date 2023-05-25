@@ -51,15 +51,6 @@ class _SearchScreenState extends State<SearchScreen> {
                 size: 20,
                 time: 200),
             centerTitle: true,
-            actions: [
-
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.shopping_cart_rounded,
-                    color: AppColor.blackColor,
-                  )),
-            ],
           ),
           body: Column(
             children: [
@@ -82,7 +73,7 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
               controller.query.value==''
                   ? Padding(
-                      padding: const EdgeInsets.only(top: 100),
+                      padding: const EdgeInsets.only(top: 50),
                       child: Image.asset(
                         AppAssets.searchImage,
                         fit: BoxFit.cover,

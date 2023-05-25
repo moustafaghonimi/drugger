@@ -73,55 +73,56 @@ final RegisterController controller = Get.put(RegisterController());
                           // }
                         },
                       ),
+                      // CustemTextFormFiled(
+                      //   label:AppString.userName,
+                      //   hint:AppString.userName,
+                      //   icons: IconButton(
+                      //     icon: const Icon(Icons.person),
+                      //     onPressed: () {},
+                      //   ),
+                      //   controllers: controller.userName,
+                      //   validate: (value) {
+                      //
+                      //     return validateInput(value, 'username');
+                      //
+                      //     // if (value == null || value.trim().isEmpty) {
+                      //     //   return 'user name Required';
+                      //     // }
+                      //   },
+                      // ),
+
                       CustemTextFormFiled(
-                        label:AppString.userName,
-                        hint:AppString.userName,
+                        label:AppString.firstName,
+                        hint:AppString.firstName,
                         icons: IconButton(
-                          icon: const Icon(Icons.person),
+                          icon: const Icon(Icons.looks_one),
                           onPressed: () {},
                         ),
-                        controllers: controller.userName,
+                        controllers: controller.firstName,
                         validate: (value) {
-
-                          return validateInput(value, 'username');
+                          return validateInput(value, '');
 
                           // if (value == null || value.trim().isEmpty) {
-                          //   return 'user name Required';
+                          //   return 'First name Required';
                           // }
                         },
                       ),
-                      // CustemTextFormFiled(
-                      //   label:AppString.firstName,
-                      //   hint:AppString.firstName,
-                      //   icons: IconButton(
-                      //     icon: const Icon(Icons.looks_one),
-                      //     onPressed: () {},
-                      //   ),
-                      //   controllers: controller.firstName,
-                      //   validate: (value) {
-                      //     return validateInput(value, '');
-                      //
-                      //     // if (value == null || value.trim().isEmpty) {
-                      //     //   return 'First name Required';
-                      //     // }
-                      //   },
-                      // ),
-                      // CustemTextFormFiled(
-                      //   label:AppString.lastName,
-                      //   icons: IconButton(
-                      //     icon: const Icon(Icons.looks_two),
-                      //     onPressed: () {},
-                      //   ),
-                      //   controllers: controller.lastName,
-                      //   validate: (value) {
-                      //     return validateInput(value, '');
-                      //
-                      //
-                      //     // if (value == null || value.trim().isEmpty) {
-                      //     //   return 'Last name Required';
-                      //     // }
-                      //   },
-                      // ),
+                      CustemTextFormFiled(
+                        label:AppString.lastName,
+                        icons: IconButton(
+                          icon: const Icon(Icons.looks_two),
+                          onPressed: () {},
+                        ),
+                        controllers: controller.lastName,
+                        validate: (value) {
+                          return validateInput(value, '');
+
+
+                          // if (value == null || value.trim().isEmpty) {
+                          //   return 'Last name Required';
+                          // }
+                        },
+                      ),
                       // CustemTextFormFiled(
                       //   label:AppString.phone,
                       //   icons: IconButton(

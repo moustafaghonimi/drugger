@@ -54,13 +54,13 @@ class Result {
   Result.fromJson(Map<String, dynamic> json){
     sid = json['_id'];
     pharId = json['pharId'];
-    userName = json['userName'];
+    // userName = json['userName'];
     firstName = json['firstName'];
     lastName = json['lastName'];
     pharName = json['pharName'];
     email = json['email'];
-    age = json['age'];
-    phone = json['phone'];
+    // age = json['age'];
+    // phone = json['phone'];
     gender = json['gender'];
     wishlist = List.from(json['wishlist']).map((e)=>Wishlist.fromJson(e)).toList();
     V = json['__v'];

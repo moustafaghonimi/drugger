@@ -54,6 +54,7 @@ class ResetPassController extends GetxController {
       if (response?.status != null) {
         Get.snackbar('status', response!.status.toString());
         Get.snackbar('message', response.message.toString());
+
         Get.offNamed(AppRoutes.loginScreen);
       }
       if (response?.message == null ||

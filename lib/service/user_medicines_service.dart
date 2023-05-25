@@ -17,7 +17,7 @@ class UserMedicineService extends ApiHelper {
     http.MultipartRequest('POST', Uri.parse(ApiConstance.medicine));
 
     request.headers.addAll({
-      "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTY1ZTYzOWU4NTBlZTA5NThhMDg5OSIsInVzZXJfbmFtZSI6Im1vc3RhZmExMjMyIiwiZW1haWwiOiJtb3N0YWZhc2FtaXIxMjMyQGdtYWlsLmNvbSIsImlhdCI6MTY4MzY1MjA4OH0.6Zsz3pZ2FOJ8nqN9pKg_93c2sEI9Xfhhqg_0igQYZcg"
+      "authorization": token
     });
     request.fields['medicineName'] = name;
     request.fields['medicineType'] = type;
@@ -59,7 +59,7 @@ class UserMedicineService extends ApiHelper {
    Future getUserMedicineService ()async
   {
     return await get(url: ApiConstance.userMedicines,headers: {
-      "authorization" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWZhNmFkNzkyN2FlN2NmN2E3ZTgwNSIsImVtYWlsIjoibW9zdGFmYXNhbWlyMTIzMUBnbWFpbC5jb20iLCJpYXQiOjE2ODQ0MjMyNzV9.G9mDz9nKWNPAIblMvyLsa7EZ-PYWjunxBNX6i7988o4"
+      "authorization" : token
     });
   }
 }

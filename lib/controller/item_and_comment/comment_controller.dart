@@ -48,7 +48,7 @@ class CommentController extends GetxController {
             );
         hideMassage(context);
         Get.snackbar('message',"Comment is added");
-
+        controller.medicine!.comments;
         return response;
 
       } catch (e) {
@@ -58,6 +58,7 @@ class CommentController extends GetxController {
         Get.snackbar('error', e.toString());
       }
     }
+    update();
 
 commentController.clear();
    }

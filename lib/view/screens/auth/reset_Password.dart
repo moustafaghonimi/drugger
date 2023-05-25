@@ -82,18 +82,19 @@ class ResetPass extends StatelessWidget {
                     CustemTextFormFiled(
                       hint:AppString.restNewPass,
                      label: AppString.newPass,
-                      icons: IconButton(
-                        icon: Icon(
-                          // Based on passwordVisible state choose the icon
-                          controller.passwordVisible.value
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                        ),
-                        onPressed: () {
-                          controller.changeVisible();
-                        },
-                      ),
-                      controllers: controller.passwordController,
+                      icons:IconButton(
+                    icon: Icon(
+                    // Based on passwordVisible state choose the icon
+                    controller.passwordVisible.value
+                      ? Icons.visibility_off
+                      : Icons.visibility,
+                    ),
+              onPressed: () {
+                controller.changeVisible();
+              },
+            ),
+
+        controllers: controller.passwordController,
                       hideText:controller.passwordVisible.value
                           ? true : false,
                       validate: (value) {
