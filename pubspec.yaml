@@ -94,6 +94,7 @@ flutter:
     - assets/images/
     - assets/images/payment/
     - assets/images/onboarding/
+    - assets/images/icon-filter/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

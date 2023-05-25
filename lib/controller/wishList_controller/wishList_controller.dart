@@ -66,7 +66,7 @@ class WishListController extends GetxController {
 
   getWishListData() async {
     favorite.clear();
-    wishListModel = await wishListService.getWishList();
+    // wishListModel = await wishListService.getWishList();
     for(var item in wishListModel.result.wishlist){
        {
           favorite.add(item);

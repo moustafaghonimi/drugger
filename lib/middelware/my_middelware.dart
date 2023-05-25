@@ -14,9 +14,9 @@ class MyMiddleWare extends GetMiddleware
   int get priority =>1;
 
   @override
-  RouteSettings? redirect(String? route) {
+  RouteSettings? redirect(String? route){
     if(myServices.sharedPreferences.getString('token')!=null){
-      token =myServices.sharedPreferences.getString('token')! ;
+      token = myServices.sharedPreferences.getString('token')! ;
       // var token = myServices.sharedPreferences.getString('token')!;
       return const RouteSettings(name: AppRoutes.homeScreen);
     }

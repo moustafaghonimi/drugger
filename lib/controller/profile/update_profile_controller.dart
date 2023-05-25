@@ -17,14 +17,15 @@ class UpdateProfileController extends GetxController
 
   initValues(UserModel userData)
   {
+    print(userData.status);
     firstName.text = userData.result.firstName;
     lastName.text = userData.result.lastName ;
-    userName.text = userData.result.userName;
+    userName.text = userData.result.userName??"";
     pharName.text= userData.result.pharName ;
     email.text = userData.result.email ;
-    age.text = userData.result.age.toString() ;
-    phone.text = userData.result.phone ;
-    gender.text = userData.result.gender ;
+    age.text = userData.result.age.toString()??"" ;
+    phone.text = userData.result.phone.toString()??"" ;
+    gender.text = userData.result.gender??"" ;
     update();
   }
 

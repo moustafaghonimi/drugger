@@ -14,7 +14,7 @@ class WishListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final WishListController controller = Get.put(WishListController());
+    // final WishListController controller = Get.put(WishListController());
 //    controller.getWishListData();
     return Scaffold(
       appBar: AppBar(
@@ -22,37 +22,37 @@ class WishListScreen extends StatelessWidget {
         title: const Text(AppString.favorite),
         backgroundColor: AppColor.onPrimaryColor,
       ),
-      body: SingleChildScrollView(
-        child: controller.favorite.isEmpty
-            ? Column(
-                children: [
-                  Image.asset(
-                    AppAssets.wishEmpty,
-                  ),
-                  const Center(
-                      child: Text(
-                    AppString.addFavorite,
-                    style: TextStyle(color: AppColor.onPrimaryColor),
-                  )),
-                ],
-              )
-            : Obx(
-                () => controller.isLoading.value
-                    ? const Center(child: CircularProgressIndicator())
-                    : ListView.builder(
-                        key: const Key("WishScreenListView"),
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => wishListItem(
-                          context: context,
-                          index: index,
-                          controller: controller,
-                          wishItem: controller.favorite[index],
-                        ),
-                        itemCount: controller.favorite.length,
-                        shrinkWrap: true,
-                      ),
-              ),
-      ),
+      // body: SingleChildScrollView(
+      //   child: controller.favorite.isEmpty
+      //       ? Column(
+      //           children: [
+      //             Image.asset(
+      //               AppAssets.wishEmpty,
+      //             ),
+      //             const Center(
+      //                 child: Text(
+      //               AppString.addFavorite,
+      //               style: TextStyle(color: AppColor.onPrimaryColor),
+      //             )),
+      //           ],
+      //         )
+      //       : Obx(
+      //           () => controller.isLoading.value
+      //               ? const Center(child: CircularProgressIndicator())
+      //               : ListView.builder(
+      //                   key: const Key("WishScreenListView"),
+      //                   physics: const NeverScrollableScrollPhysics(),
+      //                   itemBuilder: (context, index) => wishListItem(
+      //                     context: context,
+      //                     index: index,
+      //                     controller: controller,
+      //                     wishItem: controller.favorite[index],
+      //                   ),
+      //                   itemCount: controller.favorite.length,
+      //                   shrinkWrap: true,
+      //                 ),
+      //         ),
+      // ),
     );
   }
 }

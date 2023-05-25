@@ -17,7 +17,7 @@ Widget wishListItem({
   double? imageH,
   required Wishlist wishItem,
 }) {
-  final WishListController wishController = Get.find();
+  // final WishListController wishController = Get.find();
   var h = MediaQuery.of(context).size.height;
   var w = MediaQuery.of(context).size.width;
   return InkWell(

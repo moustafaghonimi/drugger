@@ -21,7 +21,7 @@ class ItemDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ItemDetailsController controller = Get.put(ItemDetailsController());
-    final WishListController wishListController = Get.put(WishListController());
+    // final WishListController wishListController = Get.put(WishListController());
     final CartController cartController = Get.find();
 
     double h = MediaQuery.of(context).size.height;
@@ -97,21 +97,21 @@ Get.snackbar('message', '${controller.medicine?.medicineName} is Added To Cart')
                       context, controller.medicine),
                   child: Stack(
                     children: [
-                      Positioned(
-                        right: -5,
-                        top: -10,
-                        child:
-                        IconButton(
-                            icon: Obx(() => Icon(wishListController.localList.contains(controller.medicine?.id)&&wishListController.localList.isNotEmpty ? Icons.favorite : Icons.favorite_border)),
-                            color: wishListController.localList.contains(controller.medicine?.id) ? Colors.red : Colors.black ,
-                            onPressed: () {
-                              wishListController.toggleLike();
-                              wishListController.addWishList(controller.medicine!.id);
-
-                            }
-                        ),
-
-                      ),
+                      // Positioned(
+                      //   right: -5,
+                      //   top: -10,
+                      //   child:
+                      //   IconButton(
+                      //       icon: Obx(() => Icon(wishListController.localList.contains(controller.medicine?.id)&&wishListController.localList.isNotEmpty ? Icons.favorite : Icons.favorite_border)),
+                      //       color: wishListController.localList.contains(controller.medicine?.id) ? Colors.red : Colors.black ,
+                      //       onPressed: () {
+                      //         wishListController.toggleLike();
+                      //         wishListController.addWishList(controller.medicine!.id);
+                      //
+                      //       }
+                      //   ),
+                      //
+                      // ),
 
                       CachedNetworkImage(
                         imageUrl: '${controller.medicine?.medicineImage}',

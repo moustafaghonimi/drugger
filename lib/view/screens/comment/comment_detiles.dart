@@ -53,7 +53,7 @@ class CommentDetails extends StatelessWidget {
                                 SizedBox(
                                     child: CustemText(
                                   Txt:
-                                      "${AppString.createBy}: ${controller.medicine?.comments[index].createdBy.pharName ?? ""}",
+                                      "${AppString.createBy}: ${controller.medicine?.comments[index].createdBy?.pharName ?? ""}",
                                   color: AppColor.blackColor,
                                   size: 18,
                                   fontWeight: FontWeight.w300,

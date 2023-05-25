@@ -1,5 +1,5 @@
 class ApiConstance{
-  static const String base_Url='druggerappdeployment-106koerzx-abanoubmamdouhhanna.vercel.app';
+  // static const String base_Url='druggerappdeployment-106koerzx-abanoubmamdouhhanna.vercel.app';
   static const String baseUrlRegister='depv3.vercel.app';
   static const String registerUrl='/auth/register';
   static const String loginUrl='/auth/login';
@@ -7,7 +7,7 @@ class ApiConstance{
   static const String forgetPasswordOTPUrl='/auth/forgetPasswordOTP'; //-/
   static const String searchUrl='/medicine';
   // static const String allMedicine='auth/forgetPasswordOTP';
-  static const String baseURL='https://depv3.vercel.app';
+  static const String baseURL='https://depv4-new.vercel.app';
   static const String medicine='$baseURL/medicine';
   static const String getAllCart='$baseURL/cart/getAllProducts';
   static const String cart='$baseURL/cart/';

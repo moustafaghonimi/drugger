@@ -1,3 +1,4 @@
+import 'package:drugger/api/api_constant.dart';
 import 'package:drugger/service/services.dart';
 import 'package:get/get.dart';
 
@@ -16,9 +17,11 @@ class ProfileController extends GetxController
   RxBool isLoading =false.obs ;
 
   getUserData()async{
+    // print(await profileService.getUserData());
     profileData = UserModel.fromJson(await profileService.getUserData());
-    isLoading(false);
+    print("object");
     print(profileData.message);
+    isLoading(false);
   }
 
 
@@ -28,10 +31,13 @@ class ProfileController extends GetxController
       'profileData': profileData
     });
   }
+
+
   logOut()
   {
     print('logOut');
     myServices.sharedPreferences.remove('token');
+    token='';
     Get.offAllNamed(AppRoutes.loginScreen);
   }
 

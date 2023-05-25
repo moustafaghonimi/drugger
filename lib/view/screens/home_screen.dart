@@ -13,7 +13,7 @@ import '../widget/swipe_action.dart';
 
 class HomeScreen extends StatelessWidget {
   final HomeController controller = Get.find();
-  final CartController cartController = Get.find();
+  // final CartController cartController = Get.find();
 
   HomeScreen({Key? key}) : super(key: key);
 
@@ -113,7 +113,11 @@ class HomeScreen extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        Icon(Icons.ac_unit),
+                                        index==0?Icon(Icons.add_circle,):Image.asset(
+                                            controller.filterIcons[index]!,
+                                          width: 27,
+                                        ),
+
                                         Text(
                                           AppString.category[index],
                                           style: Theme.of(context)

@@ -48,7 +48,7 @@ class ProfileScreen extends StatelessWidget {
                       alignment: Alignment.bottomRight,
                       children: [
                         CachedNetworkImage(
-                          imageUrl: controller.profileData.result.profileUrl!,
+                          imageUrl: controller.profileData.result.profileUrl??"",
                           imageBuilder: (context, imageProvider) =>
                               CircleAvatar(
                                 radius: 75,

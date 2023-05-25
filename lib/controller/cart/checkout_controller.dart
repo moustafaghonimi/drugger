@@ -106,7 +106,7 @@ class CheckOutController extends GetxController {
     ProfileService profileService = ProfileService();
     UserModel userModel =
         UserModel.fromJson(await profileService.getUserData());
-    phone.text = userModel.result.phone;
+    phone.text = userModel.result.phone??"";
     update();
     isLoading(false);
   }

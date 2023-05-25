@@ -20,7 +20,7 @@ Widget homeCard({
   required Medicine medicineModel,
 }) {
   final CartController cartController = Get.find();
-  final WishListController wishListController = Get.put(WishListController());
+  // final WishListController wishListController = Get.put(WishListController());
   return InkWell(
       onTap: () {
         Get.toNamed(AppRoutes.itemDetails,arguments:medicineModel );

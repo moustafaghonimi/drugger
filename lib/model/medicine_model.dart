@@ -80,7 +80,7 @@ class Medicine {
 
 class Comment {
   String id;
-  CreatedBy createdBy;
+  CreatedBy ? createdBy;
   String medicineId;
   String commentDesc;
   List<CreatedBy> like;
@@ -124,7 +124,7 @@ class CreatedBy {
   String id;
   String pharName;
   String email;
-  String phone;
+  String? phone;
   String? profileUrl;
 
   CreatedBy({

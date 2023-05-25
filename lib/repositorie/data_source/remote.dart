@@ -15,7 +15,7 @@ class Remote implements BaseRepositorie {
   @override
   Future<ForgetPasswordOtpResponse> forgetPasswordOTP(String email) async {
     Uri url =
-        Uri.https(ApiConstance.baseURL, ApiConstance.forgetPasswordOTPUrl);
+        Uri.https(ApiConstance.baseUrlRegister, ApiConstance.forgetPasswordOTPUrl);
     final response = await http.post(
       url,
       headers: <String, String>{
@@ -31,7 +31,7 @@ class Remote implements BaseRepositorie {
 //////////////////////////////////////////////////////////////////////////////////////
   @override
   Future<LoginResponse> login(String id, String Email, String Password) async {
-    Uri url = Uri.https(ApiConstance.baseURL, ApiConstance.loginUrl);
+    Uri url = Uri.https(ApiConstance.baseUrlRegister, ApiConstance.loginUrl);
 
     final response = await http.post(
       url,
@@ -88,7 +88,7 @@ class Remote implements BaseRepositorie {
   Future<ForgetPasswordOtpResponse> resetPassword(
       String otp, String pass, String email) async {
     Uri url = Uri.https(
-      ApiConstance.base_Url,
+      ApiConstance.baseUrlRegister,
       '/auth/resetPasswordOTP/${email}',
     );
     final response = await http.post(

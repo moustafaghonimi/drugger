@@ -2,12 +2,10 @@ import 'dart:convert';
 
 import 'package:drugger/api/api_constant.dart';
 import 'package:drugger/api/api_helper.dart';
-import 'package:drugger/service/services.dart';
 
 import '../model/cart_product_model.dart';
 
 class CartService extends ApiHelper {
-  MyServices myServices = MyServices();
   Map<String,String> headers = {
     "Content-Type":"application/json",
   'authorization' : token,
@@ -42,7 +40,7 @@ class CartService extends ApiHelper {
 
         headers: {
           "Content-Type":"application/json",
-      "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWZhNmFkNzkyN2FlN2NmN2E3ZTgwNSIsInVzZXJfbmFtZSI6Im1vc3RhZmExMiIsImVtYWlsIjoibW9zdGFmYXNhbWlyMTIzMUBnbWFpbC5jb20iLCJpYXQiOjE2ODQxOTk3ODR9.VpGRAhU9Lp9yZCTJqfh7LEAtDkqvWSHHTTCVRHZ8lc8"
+      "authorization":token
     }
     );
     return response ;
@@ -51,14 +49,14 @@ class CartService extends ApiHelper {
   Future clearAllCartService()async{
    return await put(url: ApiConstance.clearAllCart,headers:{
     "Content-Type":"application/json",
-    "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWZhNmFkNzkyN2FlN2NmN2E3ZTgwNSIsInVzZXJfbmFtZSI6Im1vc3RhZmExMiIsImVtYWlsIjoibW9zdGFmYXNhbWlyMTIzMUBnbWFpbC5jb20iLCJpYXQiOjE2ODQxOTk3ODR9.VpGRAhU9Lp9yZCTJqfh7LEAtDkqvWSHHTTCVRHZ8lc8"
+    "authorization":token
     } );
   }
 
   Future clearOneItemService(String medicineID)async{
     return await update(url:ApiConstance.clearOneItem,headers: {
       "Content-Type":"application/json",
-      "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWZhNmFkNzkyN2FlN2NmN2E3ZTgwNSIsInVzZXJfbmFtZSI6Im1vc3RhZmExMiIsImVtYWlsIjoibW9zdGFmYXNhbWlyMTIzMUBnbWFpbC5jb20iLCJpYXQiOjE2ODQxOTk3ODR9.VpGRAhU9Lp9yZCTJqfh7LEAtDkqvWSHHTTCVRHZ8lc8"
+      "authorization":token
     },body: jsonEncode({
       "medicineId":medicineID
     } ) );
@@ -72,7 +70,7 @@ class CartService extends ApiHelper {
       "paymentType":paymentType
     },headers:{
       "Content-Type":"application/json",
-      "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWZhNmFkNzkyN2FlN2NmN2E3ZTgwNSIsInVzZXJfbmFtZSI6Im1vc3RhZmExMiIsImVtYWlsIjoibW9zdGFmYXNhbWlyMTIzMUBnbWFpbC5jb20iLCJpYXQiOjE2ODQxOTk3ODR9.VpGRAhU9Lp9yZCTJqfh7LEAtDkqvWSHHTTCVRHZ8lc8"
+      "authorization":token
     } );
   }
   
