@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../core/function/format_date.dart';
-import '../../model/medicine_model.dart';
 import '../../service/user_medicines_service.dart';
 
 class AddMedicineController extends GetxController {
@@ -22,8 +21,6 @@ class AddMedicineController extends GetxController {
 
   final selectedType = ''.obs;
   RxBool isLoadingUpdate =false.obs ;
-
-  Medicine ? medicine ;
 
   List<String> type = [
     "Capsules",
@@ -80,7 +77,7 @@ class AddMedicineController extends GetxController {
     if (globalKey.currentState!.validate()) {
       isLoadingUpdate.value =true ;
       if (pickedFile != null) {
-
+        print("test");
         bool success = await UserMedicineService.sendMedicineData(
             nameController.text,
             selectedType.value,
@@ -92,7 +89,6 @@ class AddMedicineController extends GetxController {
         );
        if(success)
          {
-           print('2222222');
 
            Get.snackbar('Done', "Your Medicine has been published");
              nameController.clear();
@@ -111,18 +107,8 @@ class AddMedicineController extends GetxController {
     }
   }
 
-  void assignData(Medicine medicine)
-  {
-    nameController.text =medicine.medicineName ;
-    dateController.text = medicine.medicineExpireDate.toString()  ;
-    stockController.text = medicine.medicineStock.toString() ;
-    priceController.text = medicine.medicineUnitPrice.toString() ;
-    descriptionController.text = medicine.medicineDesc ;
-    update();
-  }
   @override
   void onInit() {
-    // print(Get.arguments['editData']);
     dateController = TextEditingController();
     nameController = TextEditingController();
     stockController = TextEditingController();
@@ -130,13 +116,8 @@ class AddMedicineController extends GetxController {
     descriptionController = TextEditingController();
     globalKey = GlobalKey<FormState>();
     pickedFile = null;
-    // Get.arguments['editData'] ==null?null:assignData(Get.arguments['editData']) ;
     super.onInit();
   }
-
-
-
-
   @override
   void dispose() {
     nameController.dispose();
