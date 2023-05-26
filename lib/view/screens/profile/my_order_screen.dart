@@ -22,37 +22,44 @@ class MyOrderScreen extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) => Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
-                color: Colors.white,
+                margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+                padding: EdgeInsets.all(8),
                 height: 200,
                 width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Row(
-                      children: [
-                        Image(
-                          height: 100,
-                          image: NetworkImage('https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80'),
-                        ),
-                        SizedBox(width: 15,),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(controller.orderList[index].products[0].name,style: Theme.of(context).textTheme.titleLarge,overflow: TextOverflow.ellipsis,maxLines: 2,),
-                              Text(controller.orderList[index].products[0].description),
-                              Text(controller.orderList[index].products[0].unitPrice.toString()),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                    Spacer(flex: 2,),
-                    EasyStripper( itemState: controller.orderList[index].status),
-                    Spacer(),
-                  ],
+                decoration: BoxDecoration(
+                color: Colors.white,
+                  boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 3,
+                        blurRadius: 5,
+                        offset: const Offset(0, 3),
+                      ),
+                  ]
+                ),
+                child: Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+
+                      Text("Order Id: ${controller.orderList[index].id}",style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 16
+                      ),overflow: TextOverflow.ellipsis,maxLines: 2,),
+                      Text("Location :${controller.orderList[index].address[0]}",overflow: TextOverflow.ellipsis,maxLines: 1,style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 16
+                      ),),
+                      Text("total Price :${controller.orderList[index].totalFinalPrice.toString()} \$",style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 16
+                      ),),
+
+                      Spacer(flex: 2,),
+                      EasyStripper( itemState: controller.orderList[index].status),
+                      Spacer(),
+                    ],
+                  ),
                 ),
               ),
               itemCount: controller.orderList.length,

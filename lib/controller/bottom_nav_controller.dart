@@ -6,7 +6,7 @@ import '../view/screens/profile/profile_screen.dart';
 import '../view/screens/cart/cart_screen.dart';
 import '../view/screens/home_screen.dart';
 import '../view/screens/user_medicine/user_medicine_screen.dart';
-import '../view/screens/wishList/wishList_Screen.dart';
+import '../view/screens/wishList/wishlist_screen.dart';
 
 class BottomNavBarController extends GetxController {
   RxInt currentScreenIndex =0.obs;

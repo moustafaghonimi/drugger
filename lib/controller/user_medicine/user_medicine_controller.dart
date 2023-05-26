@@ -1,3 +1,4 @@
+import 'package:drugger/routing/app_routs_name.dart';
 import 'package:get/get.dart';
 
 import '../../model/medicine_model.dart';
@@ -17,6 +18,20 @@ class UserMedicineController extends GetxController
            userMedicineList.add(Medicine.fromJson(item));
          }
      }
+  }
+
+  goToEditMedicine(Medicine medicine)
+  {
+    Get.toNamed(AppRoutes.addNewMedicine,arguments: medicine);
+  }
+  goToAddMedicine()
+  {
+    Get.toNamed(AppRoutes.addNewMedicine,arguments: null);
+  }
+  deleteMedicine(Medicine medicine)
+  {
+    userMedicineList.removeWhere((element) => element.id==medicine.id);
+
   }
 
   @override

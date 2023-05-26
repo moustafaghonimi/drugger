@@ -1,29 +1,26 @@
 import 'package:drugger/constance/app_color.dart';
 import 'package:drugger/constance/assets_constant.dart';
 import 'package:drugger/constance/string_constant.dart';
-import 'package:drugger/view/screens/wishList/wishListItem.dart';
+import 'package:drugger/view/screens/wishList/wishlist_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-import '../../../controller/home_controller.dart';
 import '../../../controller/wishList_controller/wishList_controller.dart';
 
 class WishListScreen extends StatelessWidget {
-  const WishListScreen({Key? key}) : super(key: key);
+   WishListScreen({Key? key}) : super(key: key);
+    final WishListController controller = Get.put(WishListController());
 
   @override
   Widget build(BuildContext context) {
-    final WishListController controller = Get.put(WishListController());
-//    controller.getWishListData();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: const Text(AppString.favorite),
-        backgroundColor: AppColor.onPrimaryColor,
+        backgroundColor: AppColor.primaryColor,
       ),
       body: SingleChildScrollView(
-        child: controller.favorite.isEmpty
+        child: controller.wishList.isEmpty
             ? Column(
                 children: [
                   Image.asset(
@@ -48,9 +45,9 @@ class WishListScreen extends StatelessWidget {
                             context: context,
                             // index: index,
                             controller: controller,
-                            wishItem: controller.favorite[index],
+                            wishItem: controller.wishList[index],
                           ),
-                          itemCount: controller.favorite.length,
+                          itemCount: controller.wishList.length,
                           shrinkWrap: true,
                         ),
                     ),

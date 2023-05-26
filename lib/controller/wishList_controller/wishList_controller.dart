@@ -1,10 +1,8 @@
-import 'dart:convert';
 
 import 'package:drugger/service/wishList_services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../model/patchWishListModel.dart';
 import '../../model/wishListModel.dart';
 
 class WishListController extends GetxController {
@@ -13,66 +11,42 @@ class WishListController extends GetxController {
 
   RxBool isLoading = false.obs;
 
-  RxList<String> localList = RxList<String>([]);
 
-  RxList<Wishlist> favorite = <Wishlist>[].obs;
-  var isLiked = false.obs;
-  var isDisliked = false.obs;
+  RxList<String> isInFavorite = <String>[].obs;
 
-  void toggleLike() {
-    isLiked.value = !isLiked.value;
-    if (isLiked.value) {
-      isDisliked.value = false;
-    }
-  }
-
-  void loadList() async {
-    final prefs = await SharedPreferences.getInstance();
-    localList.value = prefs.getStringList('localList3') ?? [];
-  }
-
-  void removeFromList(int index) async {
-    localList.removeAt(index);
-    _saveList();
-  }
-
-  void _saveList() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList('localList3', localList.toList());
-  }
-
-  addWishList(String id) async {
-    var response = await wishListService.addToWishList(id);
-    Get.snackbar('message removed', id);
-
-    localList.add(id);
-    _saveList();
-    await getWishListData();
-    update();
-
-  }
+  RxList<Wishlist> wishList = <Wishlist>[].obs;
 
 
-  removeWishList(String medicineID) async {
-    localList.remove(medicineID);
-
-    Wishlist wishlist=favorite.where((element) => medicineID==element.sid).first;
-    favorite.remove(wishlist);
-    var response = await wishListService.removeFromWishList(medicineID);
 
 
-    _saveList();
-    Get.snackbar('message removed', medicineID);
+  addOrRemoveWishList(String id)async{
+
+    if(!isInFavorite.contains(id))
+      {
+        var response = await wishListService.addOrRemoveWishList(id);
+        Get.snackbar('message removed', id);
+        isInFavorite.remove(id);
+        await getWishListData();
+      }
+    else
+      {
+        isInFavorite.remove(id);
+        Wishlist wishlist=wishList.where((element) => id==element.sid).first;
+        wishList.remove(wishlist);
+        var response = await wishListService.addOrRemoveWishList(id);
+      }
     update();
   }
+
+
 
   getWishListData() async {
-    favorite.clear();
-    wishListModel = await wishListService.getWishList();
+    wishList.clear();
+    wishListModel = await wishListService.getWishListService();
     for(var item in wishListModel.result.wishlist){
       {
-        favorite.add(item);
-        _saveList();
+        isInFavorite.add(item.sid);
+        wishList.add(item);
         update();
 
       }
@@ -81,14 +55,10 @@ class WishListController extends GetxController {
 
   @override
   void onInit() async {
-    localList;
-
     isLoading(true);
     await getWishListData();
-    toggleLike();
     isLoading(false);
     super.onInit();
-    loadList();
 
   }
 }

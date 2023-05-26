@@ -55,10 +55,18 @@ dependencies:
   flutter_native_splash: ^2.2.19
   url_launcher:
   fluttertoast: ^8.2.1
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo2.png"
+  min_sdk_android: 21
 
 flutter_native_splash:
   color: "#2970C9"

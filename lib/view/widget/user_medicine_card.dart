@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controller/user_medicine/user_medicine_controller.dart';
 import '../../model/medicine_model.dart';
 
 Widget userMedicinesCard({
@@ -14,9 +15,8 @@ Widget userMedicinesCard({
   double? imageW,
   double? imageH,
   required Medicine medicineModel,
-  required VoidCallback onPressedDelete ,
-  required void Function() onPressedEdit ,
 }) {
+  final UserMedicineController controller = Get.find();
   return Card(
     color: bgColor,
     shadowColor: Colors.black,
@@ -100,21 +100,29 @@ Widget userMedicinesCard({
               top: 0,
               right: 0,
               child: PopupMenuButton<String>(
-                itemBuilder: (BuildContext context) {
-                  return [
-                    PopupMenuItem<String>(
-                      value: 'edit',
-                      child: const Text('Edit'),
-                      onTap: onPressedEdit,
-                    ),
-                     PopupMenuItem<String>(
-                      value: 'delete',
-                      child: const Text('Delete'),
-                      onTap: onPressedDelete ,
-                    ),
-                  ];
+                onSelected: (value) {
+                  // Navigate to the selected screen
+                  if (value == '1') {
+                    print("edit inside");
+
+                    controller.goToEditMedicine(medicineModel);
+
+                  } else if (value == '2') {
+                    print("delete inside");
+                    controller.deleteMedicine(medicineModel);
+                  }
                 },
-                child: const Icon(Icons.more_horiz),
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    value: '1',
+                    child: Text('Edit'),
+                  ),
+                  PopupMenuItem(
+                    value: '2',
+                    child: Text('Delete'),
+                  ),
+                ],
+                child: Icon(Icons.more_horiz),
               ),
             )
           ],

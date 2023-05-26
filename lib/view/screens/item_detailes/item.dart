@@ -27,226 +27,275 @@ class ItemDetails extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        leading: BackButton(
-          color: Colors.black,
-          onPressed: () {
-            Get.offNamed(AppRoutes.homeScreen);
-          },
-        ),
-        actions: [
+      // appBar: AppBar(
+      //   // leading: BackButton(
+      //   //   color: Colors.black,
+      //   //   onPressed: () {
+      //   //     Get.offNamed(AppRoutes.homeScreen);
+      //   //   },
+      //   // ),
+      //   elevation: 0.0,
+      //   backgroundColor: AppColor.primaryColor,
+      //   scrolledUnderElevation: 5,
+      //   centerTitle: true,
+      // title: Text(controller.medicine!.medicineName,style: Theme.of(context).textTheme.titleLarge!.copyWith(color: Colors.white),),
+      // ),
+      floatingActionButton: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           IconButton(
-              onPressed: () {
-                cartController.addToCart(controller.medicine!.id, "1");
-                Get.snackbar('message', '${controller.medicine?.medicineName} is Added To Cart');
-              },
-              icon: const Icon(
-                Icons.shopping_cart,
-                color: Colors.black,
-              )),
-        ],
-        elevation: 0.0,
-        backgroundColor: Colors.white,
-        scrolledUnderElevation: 100,
-        centerTitle: true,
-        title: CustemAnimetedText(
-            Txt: controller.medicine!.medicineName,
-            color: Colors.black,
-            size: 20,
-            time: 200),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        showUnselectedLabels: false,
-        showSelectedLabels: false,
-        items: [
-          BottomNavigationBarItem(
-              tooltip: AppString.comment,
-              label: AppString.commentLabel,
-              icon: customButton(
-                  onPressed: () {
-                    Get.toNamed(AppRoutes.commentScreen);
-                  },
-                  text: AppString.comment,
-                  buttonColor: AppColor.onPrimaryColor,
-                  buttonRedias: 20,
-                  textColor: AppColor.whiteColor),
-              backgroundColor: Colors.white),
-          BottomNavigationBarItem(
-              label: AppString.addToCartLabel,
-              tooltip: AppString.addToCart,
-              icon: customButton(
-                  onPressed: () {
-                    cartController.addToCart(controller.medicine!.id, "1");
-Get.snackbar('message', '${controller.medicine?.medicineName} is Added To Cart');
-                  },
-                  text: AppString.addToCart,
-                  buttonColor: AppColor.primaryColor,
-                  buttonRedias: 20,
-                  textColor: AppColor.whiteColor),
-              backgroundColor: Colors.white),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(children: [
-          Container(
-            color: Colors.white,
-            child: Column(
-              children: [
-                InkWell(
-                  onTap: () => imageDetailsSearchBottomScheat(
-                      context, controller.medicine),
-                  child: Stack(
-                    children: [
-
-                      CachedNetworkImage(
-                        imageUrl: '${controller.medicine?.medicineImage}',
-                        width: w * 1,
-                        height: h / 3,
-                        fit: BoxFit.cover,
-                        imageBuilder: (context, imageProvider) => Container(
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              isAntiAlias: true,
-                              image: imageProvider,
-                            ),
-                          ),
-                        ),
-                        placeholder: (context, url) =>
-                            const Center(child: CircularProgressIndicator()),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
-                      ),
-                      Positioned(
-                        right: -5,
-                        top: -10,
-                        child:
-                        IconButton(
-                            icon: Obx(() => Icon(wishListController.localList.contains(controller.medicine?.id)&&wishListController.localList.isNotEmpty ? Icons.favorite : Icons.favorite_border)),
-                            color: wishListController.localList.contains(controller.medicine?.id) ? Colors.red : Colors.black ,
-                            onPressed: () {
-                              wishListController.toggleLike();
-                              wishListController.addWishList(controller.medicine!.id);
-
-                            }
-                        ),
-
-                      ),
-
-                    ],
-
-                  ),
-                ),
-                SizedBox(
-                  height: h * .02,
-                ),
-                SizedBox(
-                  width: w * 0.9,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                          width: w,
-                          child: Text(
-                            controller.medicine!.medicineName,
-                            style: const TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30),
-                          )),
-                      SizedBox(
-                        height: h * .01,
-                      ),
-                      CustemText(
-                        Txt:
-                            "${AppString.type} :  ${controller.medicine?.medicineType}",
-                        color: Colors.grey,
-                        size: 18,
-                      ),
-                      SizedBox(
-                        height: h * .02,
-                      ),
-                      SizedBox(
-                        width: w,
-                        child: CustemText(
-                          Txt:
-                              '${AppString.exp} : ${formatDate(controller.medicine!.medicineExpireDate)}',
-                          color: AppColor.onPrimaryColor,
-                          size: 20,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      SizedBox(
-                        height: h * .02,
-                      ),
-                      SizedBox(
-                        child: CustemText(
-                            Txt:
-                                "${AppString.price} : ${controller.medicine?.medicineUnitPrice} \$",
-                            color: AppColor.blackColor,
-                            size: 20,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      SizedBox(
-                        height: h * .02,
-                      ),
-                      CustemText(
-                        Txt:
-                            "${AppString.available} : ${controller.medicine?.medicineStock.toString()} piece In Stock",
-                        maxLines: 3,
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              size: 40,
+              color: AppColor.blackColor,
+            ),
+          ),
+          const Spacer(),
+          Padding(
+            padding: const EdgeInsets.only(left: 20,right: 20),
+            child: SizedBox(
+              //width: Get.width,
+              height: 100,
+              child: Row(
+                children: [
+                  // GetBuilder<CartControllerImp>
+                  //   (
+                  //   init: CartControllerImp(),
+                  //   builder: (cartController) => ,),
+                  Expanded(
+                    child: InkWell(
+                      onTap: ()
+                      {
+                        cartController.addToCart(controller.medicine!.id, "1");
+                      },
+                      child: Container(
                         color: AppColor.primaryColor,
-                        size: 16,
-                      ),
-                      SizedBox(
-                        height: h * .02,
-                      ),
-                      CustemText(
-                          Txt:
-                              '${AppString.pharmacy} :${controller.medicine?.createdBy}',
-                          color: Colors.grey,
-                          size: 18),
-                      SizedBox(
-                        height: h * .02,
-                      ),
-                      CustemText(
-                        Txt: "Description",
-                        color: AppColor.blackColor,
-                        size: 18,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Text(controller.medicine!.medicineDesc),
-                      ),
-                      SizedBox(
-                        height: h * .05,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Get.toNamed(AppRoutes.commentScreen);
-                        },
+                        margin: const EdgeInsets.only(
+                          bottom: 50,),
+                        width: double.infinity,
+                        height: 50,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Icon(
-                              Icons.comment,
-                              color: AppColor.onPrimaryColor,
+                            Text("Add TO Cart",style: Theme.of(context).textTheme.bodyMedium!.copyWith(color:Colors.white)),
+                            const SizedBox(
+                              width: 15,
                             ),
-                            CustemText(
-                              Txt: AppString.comments,
-                              color: AppColor.blackColor,
-                              size: 20,
-                              fontWeight: FontWeight.w500,
-                              maxLines: 3,
+                            const Icon(
+                              Icons.shopping_cart,
+                              color: Colors.white,
                             )
                           ],
                         ),
-                      )
-                    ],
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                  const SizedBox(width: 10,),
+                  Container(
+                    color: AppColor.primaryColor,
+                    margin: const EdgeInsets.only(bottom: 50,),
+                    child:
+                    GetX<WishListController>(
+                      builder: (wishListController)=>IconButton(
+                        onPressed: () {
+                          wishListController.addOrRemoveWishList(controller.medicine!.id);
+                        },
+                        // icon: Icon(Icons.favorite_border,color: Colors.white,),
+                        icon:wishListController.isInFavorite.contains(controller.medicine!.id)?const Icon(
+                            Icons.favorite,
+                            color: Colors.red)
+                            :const Icon(
+                          Icons.favorite_border,
+                          color: Colors.white,
+                        ),
+                      ),
+                    )
+                    // GetBuilder<FavoriteControllerImp>(
+                    //   init: FavoriteControllerImp(),
+                    //   builder: (favController) => ,
+                    // ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ]),
+          const SizedBox(height: 20,),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
+
+    //   bottomNavigationBar: BottomNavigationBar(
+    //     showUnselectedLabels: false,
+    //     showSelectedLabels: false,
+    //     items: [
+    //       // BottomNavigationBarItem(
+    //       //     tooltip: AppString.comment,
+    //       //     label: AppString.commentLabel,
+    //       //     icon: customButton(
+    //       //         onPressed: () {
+    //       //           Get.toNamed(AppRoutes.commentScreen);
+    //       //         },
+    //       //         text: AppString.comment,
+    //       //         buttonColor: AppColor.onPrimaryColor,
+    //       //         buttonRedias: 20,
+    //       //         textColor: AppColor.whiteColor),
+    //       //     backgroundColor: Colors.white),
+    // //       BottomNavigationBarItem(
+    // //           label: AppString.addToCartLabel,
+    // //           tooltip: AppString.addToCart,
+    // //           icon: customButton(
+    // //               onPressed: () {
+    // //                 cartController.addToCart(controller.medicine!.id, "1");
+    // // Get.snackbar('message', '${controller.medicine?.medicineName} is Added To Cart');
+    // //               },
+    // //               text: AppString.addToCart,
+    // //               buttonColor: AppColor.primaryColor,
+    // //               buttonRedias: 20,
+    // //               textColor: AppColor.whiteColor),
+    // //           backgroundColor: Colors.white),
+    //     ],
+    //   ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(children: [
+            Container(
+              padding: EdgeInsets.only(bottom: Get.height*.15),
+              color: Colors.white,
+              child: Column(
+                children: [
+                  CachedNetworkImage(
+                    imageUrl: '${controller.medicine?.medicineImage}',
+                    width: w * 1,
+                    height: h / 3,
+                    fit: BoxFit.cover,
+                    imageBuilder: (context, imageProvider) => Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          isAntiAlias: true,
+                          image: imageProvider,
+                        ),
+                      ),
+                    ),
+                    placeholder: (context, url) =>
+                        const Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                  ),
+                  SizedBox(
+                    height: h * .02,
+                  ),
+                  SizedBox(
+                    width: w * 0.9,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                            width: w,
+                            child: Text(
+                              controller.medicine!.medicineName,
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30),
+                            )),
+                        SizedBox(
+                          height: h * .01,
+                        ),
+                        CustemText(
+                          Txt:
+                              "${AppString.type} :  ${controller.medicine?.medicineType}",
+                          color: Colors.grey,
+                          size: 18,
+                        ),
+                        SizedBox(
+                          height: h * .02,
+                        ),
+                        SizedBox(
+                          width: w,
+                          child: CustemText(
+                            Txt:
+                                '${AppString.exp} : ${formatDate(controller.medicine!.medicineExpireDate)}',
+                            color: AppColor.onPrimaryColor,
+                            size: 20,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(
+                          height: h * .02,
+                        ),
+                        SizedBox(
+                          child: CustemText(
+                              Txt:
+                                  "${AppString.price} : ${controller.medicine?.medicineUnitPrice} \$",
+                              color: AppColor.blackColor,
+                              size: 20,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        SizedBox(
+                          height: h * .02,
+                        ),
+                        CustemText(
+                          Txt:
+                              "${AppString.available} : ${controller.medicine?.medicineStock.toString()} piece In Stock",
+                          maxLines: 3,
+                          color: AppColor.primaryColor,
+                          size: 16,
+                        ),
+                        SizedBox(
+                          height: h * .02,
+                        ),
+                        CustemText(
+                            Txt:
+                                '${AppString.pharmacy} :${controller.medicine?.createdBy}',
+                            color: Colors.grey,
+                            size: 18),
+                        SizedBox(
+                          height: h * .02,
+                        ),
+                        CustemText(
+                          Txt: "Description",
+                          color: AppColor.blackColor,
+                          size: 18,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text(controller.medicine!.medicineDesc),
+                        ),
+                        SizedBox(
+                          height: h * .05,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.commentScreen);
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.comment,
+                                color: AppColor.onPrimaryColor,
+                              ),
+                              CustemText(
+                                Txt: AppString.comments,
+                                color: AppColor.blackColor,
+                                size: 20,
+                                fontWeight: FontWeight.w500,
+                                maxLines: 3,
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ]),
+        ),
       ),
     );
   }

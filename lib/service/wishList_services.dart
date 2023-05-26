@@ -13,18 +13,13 @@ class WishListService extends ApiHelper {
     'authorization' : token,
   };
 
-  Future getWishList()async{
-    WishListModel result = WishListModel.fromJson(await get(url: ApiConstance.getWishList ,headers: headers));
-    return result ;
+  Future getWishListService()async{
+    return  WishListModel.fromJson(await get(url: ApiConstance.getWishList ,headers: headers));
+
   }
 
-  // Future<Result> getWishList() async {
-  //   Result result =
-  //   Result.fromJson(await get(url: ApiConstance.getWishList ,headers: headers));
-  //   return result ;
-  // }
 
-  Future<bool> addToWishList(String id)async{
+  Future<bool> addOrRemoveWishList(String id)async{
     var response = await update(url: "${ApiConstance.baseURL}/medicine/$id/WishList",
       body: jsonEncode({
       } ),headers: headers,);
@@ -36,17 +31,6 @@ class WishListService extends ApiHelper {
     return false;
   }
 
-  Future<bool> removeFromWishList(String id)async{
-    var response = await update(url: "${ApiConstance.baseURL}/medicine/${id}/removeWishList",
-      body: jsonEncode({
-      } ),headers: headers,);
-    print(response.toString());
-    if(response['message']=="success")
-    {
-      return true ;
-    }
-    return false;
-  }
 
 
 

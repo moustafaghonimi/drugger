@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../core/function/format_date.dart';
+import '../../model/medicine_model.dart';
 import '../../service/user_medicines_service.dart';
 
 class AddMedicineController extends GetxController {
@@ -22,6 +23,8 @@ class AddMedicineController extends GetxController {
   final selectedType = ''.obs;
   RxBool isLoadingUpdate =false.obs ;
 
+  Medicine? medicineModel ;
+  String updateMedicine  = "";
   List<String> type = [
     "Capsules",
     "Tablets",
@@ -107,6 +110,18 @@ class AddMedicineController extends GetxController {
     }
   }
 
+  void assignData(Medicine medicine)
+  {
+    nameController.text =medicine.medicineName ;
+    selectedType.value = medicine.medicineType;
+    dateController.text = medicine.medicineExpireDate.toString()  ;
+    stockController.text = medicine.medicineStock.toString() ;
+    priceController.text = medicine.medicineUnitPrice.toString() ;
+    descriptionController.text = medicine.medicineDesc ;
+
+    update();
+  }
+
   @override
   void onInit() {
     dateController = TextEditingController();
@@ -117,7 +132,16 @@ class AddMedicineController extends GetxController {
     globalKey = GlobalKey<FormState>();
     pickedFile = null;
     super.onInit();
+
+    try{
+      medicineModel = Get.arguments as Medicine;
+      assignData(medicineModel!);
+    }catch(e){
+      medicineModel = null ;
+    };
   }
+
+
   @override
   void dispose() {
     nameController.dispose();

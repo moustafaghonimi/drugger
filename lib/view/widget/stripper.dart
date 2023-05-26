@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class EasyStripper extends StatelessWidget {
   final String itemState ;
   EasyStripper({required this.itemState});
-
   @override
   Widget build(BuildContext context) {
     final int currentStep;
@@ -30,9 +29,12 @@ class EasyStripper extends StatelessWidget {
               children: [
                 Icon(
                   Icons.pending_actions,
+                  size: 35,
                   color: currentStep >= 0 ? Colors.green : Colors.grey,
                 ),
-                Text('Preparing'),
+                Text('Preparing',style: TextStyle(
+                    fontSize: 16
+                ),),
               ],
             ),
           ),
@@ -47,10 +49,14 @@ class EasyStripper extends StatelessWidget {
             child: Column(
               children: [
                 Icon(
+                  size: 35,
+
                   Icons.local_shipping,
                   color: currentStep >= 1 ? Colors.green : Colors.grey,
                 ),
-                Text('Shipping'),
+                Text('Shipping',style: TextStyle(
+                  fontSize: 16
+                ),),
               ],
             ),
           ),
@@ -65,10 +71,14 @@ class EasyStripper extends StatelessWidget {
             child: Column(
               children: [
                 Icon(
-                  Icons.delivery_dining,
+                  size: 35,
+
+                  Icons.check_circle,
                   color: currentStep >= 2 ? Colors.green : Colors.grey,
                 ),
-                Text('Delivered'),
+                Text('Delivered',style: TextStyle(
+                    fontSize: 16
+                ),),
               ],
             ),
           ),

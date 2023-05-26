@@ -116,7 +116,7 @@ Widget wishListItem({
                                     ),
                                     CustemText(
                                       Txt:
-                                      " ${AppString.type} : ${wishItem.medicineStock.toString()} piece",
+                                      " ${AppString.stock} : ${wishItem.medicineStock.toString()} piece",
                                       maxLines: 2,
                                       color: AppColor.onPrimaryColor,
                                       size: 14,
@@ -149,7 +149,7 @@ Widget wishListItem({
                                     ),
                                     CustemText(
                                       Txt:
-                                      "Prise : ${wishItem.medicineUnitPrice.toString()}",
+                                      "Price : ${wishItem.medicineUnitPrice.toString()}",
                                       color: AppColor.onPrimaryColor,
                                       size: 20,
                                     ),
@@ -169,16 +169,15 @@ Widget wishListItem({
       Positioned(
         right: 10,
         top: 6,
-        child:
-        IconButton(
-            icon: Obx(() => Icon(wishListController.localList.contains(wishItem.sid) ? Icons.favorite : Icons.favorite_border)),
-            color: wishListController.localList.contains(wishItem.sid) ? Colors.red : Colors.black ,
-            onPressed: () {
-              wishListController.toggleLike();
-              wishListController.removeWishList(wishItem.sid);
-
-            }
-        ),
+        child:Obx(
+          () => IconButton(
+              icon:  Icon(wishListController.isInFavorite.contains(wishItem.sid)?Icons.favorite:Icons.favorite_border),
+              color: wishListController.isInFavorite.contains(wishItem.sid)?Colors.red:Colors.black,
+              onPressed: () {
+                wishListController.addOrRemoveWishList(wishItem.sid);
+              }
+          ),
+        )
 
       )
 

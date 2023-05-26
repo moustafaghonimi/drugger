@@ -29,6 +29,8 @@ class CheckOutController extends GetxController {
   final CartService cartService = CartService();
 
   void requestPermission() async {
+    print("req");
+
     permissionStatus = await Permission.location.request();
     if (permissionStatus == PermissionStatus.granted) {
       getCurrentLocation();
@@ -38,12 +40,15 @@ class CheckOutController extends GetxController {
   }
 
   void getCurrentLocation() async {
+
+    print("cur");
     currentPosition = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
     getAddressFromLatLng(currentPosition!);
   }
 
   Future<void> getAddressFromLatLng(Position position) async {
+    print("add");
     await placemarkFromCoordinates(
             currentPosition!.latitude, currentPosition!.longitude)
         .then((List<Placemark> placemarks) {

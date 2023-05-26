@@ -62,11 +62,11 @@ class ProfileScreen extends StatelessWidget {
                                   child: Image.asset(
                                       "assets/images/profileimage.png")),
                         ),
-                        Icon(
-                          Icons.add_a_photo,
-                          color: AppColor.primaryColor,
-                          size: 50,
-                        ),
+                        // Icon(
+                        //   Icons.add_a_photo,
+                        //   color: AppColor.primaryColor,
+                        //   size: 50,
+                        // ),
                       ],
                     ),
                   ),

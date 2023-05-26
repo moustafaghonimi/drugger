@@ -23,9 +23,9 @@ class UpdateProfileController extends GetxController
     userName.text = userData.result.userName??"";
     pharName.text= userData.result.pharName ;
     email.text = userData.result.email ;
-    age.text = userData.result.age.toString()??"" ;
-    phone.text = userData.result.phone.toString()??"" ;
-    gender.text = userData.result.gender??"" ;
+    age.text = userData.result.age.toString() ;
+    phone.text = userData.result.phone.toString() ;
+    gender.text = userData.result.gender ;
     update();
   }
 

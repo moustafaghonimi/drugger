@@ -16,7 +16,7 @@ import '../view/screens/profile/my_order_screen.dart';
 import '../view/screens/profile/update_password_screen.dart';
 import '../view/screens/profile/update_profile_screen.dart';
 import '../view/screens/user_medicine/add_medicine.dart';
-import '../view/screens/wishList/wishList_Screen.dart';
+import '../view/screens/wishList/wishlist_screen.dart';
 import 'app_routs_name.dart';
 
 List<GetPage<dynamic>>? routes =[

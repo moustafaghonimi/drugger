@@ -65,7 +65,7 @@ class BottomNavScreen extends StatelessWidget {
         //
         //     SalomonBottomBarItem(
         //       icon: const Icon(Icons.favorite),
-        //       title: const Text(AppString.wishList),
+        //       title: const Text(AppString.wishlist),
         //     ),
         //
         //     SalomonBottomBarItem(

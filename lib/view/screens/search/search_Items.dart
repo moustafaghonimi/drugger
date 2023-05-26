@@ -166,11 +166,10 @@ class SearchItems extends StatelessWidget {
                               top: -10,
                               child:
                               IconButton(
-                                  icon: Obx(() => Icon(wishListController.localList.value.contains(medicine.id)&&wishListController.localList.value.isNotEmpty ? Icons.favorite : Icons.favorite_border)),
-                                  color: wishListController.localList.value.contains(medicine.id) ? Colors.red : Colors.black ,
+                                  icon: Obx(() => Icon(wishListController.isInFavorite.contains(medicine.id)? Icons.favorite : Icons.favorite_border)),
+                                  color: wishListController.isInFavorite.contains(medicine.id) ? Colors.red : Colors.black ,
                                   onPressed: () {
-                                    wishListController.toggleLike();
-                                    wishListController.addWishList(medicine.id);
+                                    wishListController.addOrRemoveWishList(medicine.id);
 
                                   }
                               ),

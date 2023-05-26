@@ -47,7 +47,7 @@ class AppString {
 
   //bottom nav bar
   static const String home ='Home';
-static const String medicine ='Drugs';
+static const String medicine ='My Medicine';
   static const String cart ='Cart' ;
   static const String profile ='Profile' ;
   static const String wishList ='wishlist' ;

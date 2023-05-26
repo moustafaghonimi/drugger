@@ -16,9 +16,7 @@ class UserMedicineScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-          Get.toNamed(AppRoutes.addNewMedicine,arguments:{
-            "editData":null
-          });
+          controller.goToAddMedicine();
         },
         child: const Icon(Icons.add),
       ),
@@ -50,20 +48,6 @@ class UserMedicineScreen extends StatelessWidget {
                     context: context,
                     medicineModel:controller.userMedicineList[index],
                     bgColor: Colors.white,
-                    onPressedDelete: (){},
-                    onPressedEdit: (){
-                      print("object");
-                      // Get.toNamed(AppString.rePassword);
-                      // Get.to(AddMedicine());
-
-                      // Get.offAllNamed(AppRoutes.addNewMedicine,arguments: {"editData":null});
-                      // Get.toNamed(AppRoutes.addNewMedicine,arguments: {
-                      //   'editData':null
-                      // });
-                      // Get.toNamed(AppRoutes.addNewMedicine,arguments:{
-                      //   'editData':controller.userMedicineList[index] ,
-                      // });
-                    },
                   ),
                   itemCount: controller.userMedicineList.length,
                 ),
