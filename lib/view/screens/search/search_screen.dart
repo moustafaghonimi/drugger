@@ -52,46 +52,48 @@ class _SearchScreenState extends State<SearchScreen> {
                 time: 200),
             centerTitle: true,
           ),
-          body: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: SearchWidget(
-                  onChange: (value) {
-                    setState(() {
-                      controller.query.value = value!;
-                    });
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: SearchWidget(
+                    onChange: (value) {
+                      setState(() {
+                        controller.query.value = value!;
+                      });
 
 
-                    // controller.search();
-                    // print(controller.query.value);
-                  },
+                      // controller.search();
+                      // print(controller.query.value);
+                    },
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 6,
-              ),
-              controller.query.value==''
-                  ? Padding(
-                      padding: const EdgeInsets.only(top: 50),
-                      child: Image.asset(
-                        AppAssets.searchImage,
-                        fit: BoxFit.cover,
-                        width: w,
-                      ),
-                    )
-                  : Expanded(
-                      child:controller.search().isEmpty?const Text('This product Not Exist ',style:TextStyle( color:AppColor.onPrimaryColor,)):ListView.builder(
-                        itemBuilder: (context, index) {
-                          return SearchItems(
-                              controller.search().elementAt(index));
-                        },
-                        itemCount: controller.search().length,
+                const SizedBox(
+                  height: 6,
+                ),
+                controller.query.value==''
+                    ? Padding(
+                        padding: const EdgeInsets.only(top: 50),
+                        child: Image.asset(
+                          AppAssets.searchImage,
+                          fit: BoxFit.cover,
+                          width: w,
+                        ),
+                      )
+                    : Expanded(
+                        child:controller.search().isEmpty?const Text('This product Not Exist ',style:TextStyle( color:AppColor.onPrimaryColor,)):ListView.builder(
+                          itemBuilder: (context, index) {
+                            return SearchItems(
+                                controller.search().elementAt(index));
+                          },
+                          itemCount: controller.search().length,
 
+                        ),
                       ),
-                    ),
-              Text("We Fined:: ${controller.search().length.toString()} ::Product",style: const TextStyle(color: AppColor.onPrimaryColor),),
-            ],
+                Text("We Fined:: ${controller.search().length.toString()} ::Product",style: const TextStyle(color: AppColor.onPrimaryColor),),
+              ],
+            ),
           )),
     );
   }
